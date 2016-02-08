@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="source">
+        <in>formater.cpp</in>
+        <in>formater_test.cpp</in>
+        <in>line_status.cpp</in>
+        <in>spl2html.cpp</in>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>nbproject/private/launcher.properties</itemPath>
+      <itemPath>makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f makefile</buildCommand>
+          <cleanCommand>${MAKE} -f makefile clean</cleanCommand>
+          <executablePath>spl2html.exe</executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>source</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>_X86_=1</Elem>
+              <Elem>__CYGWIN32__=1</Elem>
+              <Elem>__DBL_DENORM_MIN__=((double)4.94065645841246544177e-324L)</Elem>
+              <Elem>__DBL_EPSILON__=((double)2.22044604925031308085e-16L)</Elem>
+              <Elem>__DBL_MAX__=((double)1.79769313486231570815e+308L)</Elem>
+              <Elem>__DBL_MIN__=((double)2.22507385850720138309e-308L)</Elem>
+              <Elem>__FLT_EVAL_METHOD__=2</Elem>
+              <Elem>__GNUC_MINOR__=5</Elem>
+              <Elem>__GNUC_PATCHLEVEL__=3</Elem>
+              <Elem>__INT64_C(c)=c ## LL</Elem>
+              <Elem>__INT64_MAX__=9223372036854775807LL</Elem>
+              <Elem>__INT64_TYPE__=long long int</Elem>
+              <Elem>__INTMAX_C(c)=c ## LL</Elem>
+              <Elem>__INTMAX_MAX__=9223372036854775807LL</Elem>
+              <Elem>__INTMAX_TYPE__=long long int</Elem>
+              <Elem>__INTPTR_MAX__=2147483647</Elem>
+              <Elem>__INTPTR_TYPE__=int</Elem>
+              <Elem>__INT_FAST16_MAX__=2147483647</Elem>
+              <Elem>__INT_FAST16_TYPE__=int</Elem>
+              <Elem>__INT_FAST32_MAX__=2147483647</Elem>
+              <Elem>__INT_FAST32_TYPE__=int</Elem>
+              <Elem>__INT_FAST64_MAX__=9223372036854775807LL</Elem>
+              <Elem>__INT_FAST64_TYPE__=long long int</Elem>
+              <Elem>__INT_LEAST64_MAX__=9223372036854775807LL</Elem>
+              <Elem>__INT_LEAST64_TYPE__=long long int</Elem>
+              <Elem>__LONG_MAX__=2147483647L</Elem>
+              <Elem>__PTRDIFF_MAX__=2147483647</Elem>
+              <Elem>__PTRDIFF_TYPE__=int</Elem>
+              <Elem>__REGISTER_PREFIX__=</Elem>
+              <Elem>__SIZEOF_LONG_DOUBLE__=12</Elem>
+              <Elem>__SIZEOF_LONG__=4</Elem>
+              <Elem>__SIZEOF_POINTER__=4</Elem>
+              <Elem>__SIZEOF_PTRDIFF_T__=4</Elem>
+              <Elem>__SIZEOF_SIZE_T__=4</Elem>
+              <Elem>__SIZE_MAX__=4294967295U</Elem>
+              <Elem>__SIZE_TYPE__=unsigned int</Elem>
+              <Elem>__UINT64_C(c)=c ## ULL</Elem>
+              <Elem>__UINT64_MAX__=18446744073709551615ULL</Elem>
+              <Elem>__UINT64_TYPE__=long long unsigned int</Elem>
+              <Elem>__UINTMAX_C(c)=c ## ULL</Elem>
+              <Elem>__UINTMAX_MAX__=18446744073709551615ULL</Elem>
+              <Elem>__UINTMAX_TYPE__=long long unsigned int</Elem>
+              <Elem>__UINTPTR_MAX__=4294967295U</Elem>
+              <Elem>__UINTPTR_TYPE__=unsigned int</Elem>
+              <Elem>__UINT_FAST16_MAX__=4294967295U</Elem>
+              <Elem>__UINT_FAST16_TYPE__=unsigned int</Elem>
+              <Elem>__UINT_FAST32_MAX__=4294967295U</Elem>
+              <Elem>__UINT_FAST32_TYPE__=unsigned int</Elem>
+              <Elem>__UINT_FAST64_MAX__=18446744073709551615ULL</Elem>
+              <Elem>__UINT_FAST64_TYPE__=long long unsigned int</Elem>
+              <Elem>__UINT_LEAST64_MAX__=18446744073709551615ULL</Elem>
+              <Elem>__UINT_LEAST64_TYPE__=long long unsigned int</Elem>
+              <Elem>__USER_LABEL_PREFIX__=_</Elem>
+              <Elem>__VERSION__="4.5.3"</Elem>
+              <Elem>__cplusplus=1</Elem>
+              <Elem>__i386=1</Elem>
+              <Elem>__i386__=1</Elem>
+              <Elem>__i686=1</Elem>
+              <Elem>__i686__=1</Elem>
+              <Elem>__pentiumpro=1</Elem>
+              <Elem>__pentiumpro__=1</Elem>
+              <Elem>i386=1</Elem>
+            </preprocessorList>
+          </ccTool>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="source/formater.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool>
+          <incDir>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
+            <pElem>Debug</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/formater_test.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool>
+          <incDir>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
+            <pElem>Debug</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/line_status.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool>
+          <incDir>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
+            <pElem>Debug</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/spl2html.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool>
+          <incDir>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
+            <pElem>Debug</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

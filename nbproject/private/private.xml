@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <code-assistance-data xmlns="http://www.netbeans.org/ns/make-project-private/1">
+        <code-model-enabled>true</code-model-enabled>
+    </code-assistance-data>
+    <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
+        <activeConfTypeElem>0</activeConfTypeElem>
+        <activeConfIndexElem>0</activeConfIndexElem>
+    </data>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Projects/cpp/yaca/makefile</file>
+            <file>file:/C:/Projects/cpp/yaca/source/formater.cpp</file>
+            <file>file:/C:/Projects/cpp/yaca/nbproject/project.xml</file>
+            <file>file:/C:/Projects/cpp/yaca/nbproject/configurations.xml</file>
+            <file>file:/C:/Projects/cpp/yaca/source/line_compare.h</file>
+            <file>file:/C:/Projects/cpp/yaca/source/layer_counter.h</file>
+            <file>file:/C:/Projects/cpp/yaca/source/formater_test.cpp</file>
+            <file>file:/C:/Projects/cpp/yaca/test/toString-expected.txt</file>
+            <file>file:/C:/Projects/cpp/yaca/source/spl2html.cpp</file>
+            <file>file:/C:/Projects/cpp/yaca/test/run-tests.bat</file>
+            <file>file:/C:/Projects/cpp/yaca/source/formater_replace.h</file>
+            <file>file:/C:/Projects/cpp/yaca/test/simple-expected.txt</file>
+            <file>file:/C:/Projects/cpp/yaca/test/simple.txt.result</file>
+            <file>file:/C:/Projects/cpp/yaca/test/simple.txt</file>
+            <file>file:/C:/Projects/cpp/yaca/source/line_status.cpp</file>
+            <file>file:/C:/Projects/cpp/yaca/source/line_status.h</file>
+            <file>file:/C:/Projects/cpp/yaca/source/formater_parameter.h</file>
+            <file>file:/C:/Projects/cpp/yaca/test/run-help.bat</file>
+            <file>file:/C:/Projects/cpp/yaca/source/formater.h</file>
+            <file>file:/C:/Projects/cpp/yaca/source/formater_mark_html.h</file>
+        </group>
+    </open-files>
+</project-private>

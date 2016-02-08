@@ -1,0 +1,5 @@
+g++ -g  -c source/yaca.cpp -o build/yaca.o
+g++ -g    -c source/formater.cpp -o build/formater.o
+g++ -g   -c source/formater_test.cpp -o build/formater_test.o
+g++ -g -c source/line_status.cpp -o build/line_status.o
+g++ -g -o  yaca build/yaca.o build/formater.o  build/formater_test.o build/line_status.o -lstdc++ 
