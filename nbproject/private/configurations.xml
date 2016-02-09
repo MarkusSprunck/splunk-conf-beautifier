@@ -20,6 +20,7 @@
         <in>std_typedef.h</in>
       </df>
       <df name="test">
+        <in>long.txt</in>
       </df>
     </df>
   </logicalFolder>
@@ -48,10 +49,12 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
+        <gdb_signals>
+        </gdb_signals>
         <gdb_options>
           <DebugOptions>
-            <option name="debug_command" value="&quot;${OUTPUT_PATH}&quot; -h simple.txt"/>
-            <option name="debug_dir" value="C:\Projects\cpp\yaca\test"/>
+            <option name="debug_command" value="&quot;${OUTPUT_PATH}&quot; -h long.txt"/>
+            <option name="debug_dir" value="C:\Projects\cpp\spl2html\test"/>
           </DebugOptions>
         </gdb_options>
         <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
@@ -65,9 +68,10 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" -f simple.txt</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" -h simple.txt</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" -h long.txt</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" -h simple.txt</runcommand>
-        <rundir>C:\Projects\cpp\yaca\test</rundir>
+        <runcommand>"${OUTPUT_PATH}" -h long.txt</runcommand>
+        <rundir>C:\Projects\cpp\spl2html\test</rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>

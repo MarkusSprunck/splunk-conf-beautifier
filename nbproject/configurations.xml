@@ -8,6 +8,9 @@
         <in>line_status.cpp</in>
         <in>spl2html.cpp</in>
       </df>
+      <df name="test">
+        <in>long.txt</in>
+      </df>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -167,6 +170,8 @@
             <pElem>Debug</pElem>
           </incDir>
         </ccTool>
+      </item>
+      <item path="test/long.txt" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

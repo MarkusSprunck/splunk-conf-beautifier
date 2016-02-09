@@ -39,10 +39,12 @@
 #include "formater_test.h"
 #include "line_compare.h"
 
-formater_test::formater_test(void) {
+formater_test::formater_test(void)
+{
     m_numberOk = m_number = m_time = 0;
 
     cout << endl;
+    executeTest("long", "ok");
     executeTest("toString", "ok");
     executeTest("simple", "ok");
 
@@ -52,7 +54,8 @@ formater_test::formater_test(void) {
     cout << m_time << " clocks" << endl;
 }
 
-void formater_test::executeTest(const string& name, const string soll) {
+void formater_test::executeTest(const string& name, const string soll)
+{
     clock_t start = clock();
     m_number++;
     m_sResult = "ok";
@@ -65,30 +68,38 @@ void formater_test::executeTest(const string& name, const string soll) {
 
     string quelle2 = name;
     quelle2.append("-expected.txt");
-    if (0 == soll.compare("ok")) {
+    if (0 == soll.compare("ok"))
+    {
         importLines(quelle2, m_LinesSoll);
     }
     cout << "run " << quelle1.c_str();
 
     // formater - start
     m_bCreateHtml = false;
-    wrapLines();
+    wrapLines("|");
+    wrapLines("latest");
     removeEmptyAll();
     formatAll();
     // formater - end
 
     if (0 != m_sResult.compare(soll))
         cout << " error: " << m_sResult << endl;
-    else {
+    else
+    {
         bool m_sResult = true;
-        if (0 == soll.compare("ok")) {
-            if (m_LinesSoll.size() <= m_Lines.size()) {
+        if (0 == soll.compare("ok"))
+        {
+            if (m_LinesSoll.size() <= m_Lines.size())
+            {
                 m_sResult = equal(m_LinesSoll.begin(), m_LinesSoll.end(), m_Lines.begin(), line_compare());
                 if (!m_sResult)
                     cout << endl << "[soll|ist]";
-            } else {
+            }
+            else
+            {
                 m_sResult = equal(m_Lines.begin(), m_Lines.end(), m_LinesSoll.begin(), line_compare());
-                if (!m_sResult) {
+                if (!m_sResult)
+                {
                     cout << endl << "[ist|soll]";
                 }
             }

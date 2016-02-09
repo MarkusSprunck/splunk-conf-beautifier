@@ -40,7 +40,7 @@
 class line_status {
 
     enum eStatusValue {
-        COMMENT, STRINGS, CHARACTER, CODE, NONE
+        COMMENT, STRINGS, CHARACTER, CODE,  NONE
     };
 
     enum eBoolValue {
@@ -67,6 +67,7 @@ public:
     const bool inCommentBlock(void);
 
     void SetActiveCode(void);
+    void SetActiveMacro(void);
     void SetActiveCommend(void);
     void SetActiveString(void);
     void SetActiveCharacter(void);

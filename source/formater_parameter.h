@@ -1,4 +1,5 @@
 #pragma once
+
 /**
  * Copyright (C) 2016, Markus Sprunck
  *
@@ -36,7 +37,8 @@
  */
 
 
-const map_string getReplace() {
+const map_string getReplace()
+{
     map_string replace;
 
     replace["\t"] = " ";
@@ -45,7 +47,8 @@ const map_string getReplace() {
     return replace;
 }
 
-const map_string getReplaceHtml() {
+const map_string getReplaceHtml()
+{
     map_string replace;
 
     replace["<"] = "&lt;";
@@ -56,15 +59,17 @@ const map_string getReplaceHtml() {
     return replace;
 }
 
-enum eCommand {
+enum eCommand
+{
     KEYWORD = 1, MARK = 2, INCREMENT = 4
 };
 
-const map_command getCommand() {
+const map_command getCommand()
+{
     map_command command;
 
     command["by"] = KEYWORD;
-    command["as"] = KEYWORD;
+    command["as"] = KEYWORD | INCREMENT;
     command["and"] = KEYWORD;
     command["or"] = KEYWORD;
     command["avg"] = KEYWORD;
@@ -72,6 +77,11 @@ const map_command getCommand() {
 
     command["index" ] = KEYWORD;
     command["table" ] = KEYWORD | INCREMENT;
+    command["first" ] = KEYWORD | INCREMENT;
+    command["last" ] = KEYWORD | INCREMENT;
+    command["earliest" ] = KEYWORD | INCREMENT;
+    command["latest" ] = KEYWORD | INCREMENT;
+    command["coalesce" ] = KEYWORD | INCREMENT;
 
     // Streaming Commands | START
     command["addinfo" ] = KEYWORD | INCREMENT;

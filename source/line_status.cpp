@@ -66,6 +66,10 @@ void line_status::SetActiveCode(void) {
     current[STATUS] = CODE;
 }
 
+void line_status::SetActiveMacro(void) {
+    current[STATUS] = MACRO;
+}
+
 void line_status::SetActiveCommend(void) {
     current[STATUS] = COMMENT;
 }

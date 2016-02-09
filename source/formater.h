@@ -55,7 +55,7 @@ protected:
    // each line
    void formatAll();
    void removeEmptyAll();
-   void wrapLines();
+   void wrapLines(string pattern);
    void appendLineNumbersToHtmlAll();
    
    // single line
