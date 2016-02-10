@@ -43,22 +43,28 @@
 
 using namespace std;
 
-class layer_counter {
+class layer_counter
+{
     line_status* m_line_status;
     const string* m_line;
 
 public:
 
-    layer_counter(line_status* line_status, const string& line) : m_line_status(line_status), m_line(&line) {
+    layer_counter(line_status* line_status, const string& line) : m_line_status(line_status), m_line(&line)
+    {
     }
 
     // The function call to process the next element
 
-    void operator()(const pair_command& p1) {
-        if (string::npos != m_line->find(p1.first)) {
-            if (INCREMENT == (INCREMENT & p1.second)) {
-                if ((*m_line_status).GetLayerCount() == 0) {
-                    (*m_line_status).IncrementMacro();
+    void operator()(const pair_command& p1)
+    {
+        if (string::npos != m_line->find(p1.first))
+        {
+            if (INCREMENT == (INCREMENT & p1.second))
+            {
+                if ((*m_line_status).GetLayer() == 0)
+                {
+                    (*m_line_status).SetLayer(1 + (*m_line_status).GetLayer());
                 }
             }
         }

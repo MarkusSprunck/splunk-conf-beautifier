@@ -55,7 +55,7 @@ void formater::run(const string& inputFile)
 
     m_bCreateHtml = false;
     wrapLines("|");
-    wrapLines("latest");
+    wrapLines(",");
     removeEmptyAll();
     formatAll();
     string outputFileResult = string(inputFile).append(".result");
@@ -143,6 +143,15 @@ bool formater::parseLine(string &line, line_status& ls)
     index_string indexStart = 0;
     index_string index = 0;
 
+    if (line[0] == ',')
+    {
+        ls.SetLayer(2);
+    }
+    if (line[0] == '|' )
+    {
+        ls.SetLayer(1);
+    }
+
     if (m_bCreateHtml)
     {
         line = for_each(m_replacePatternsHtml.begin(), m_replacePatternsHtml.end(), formater_replace(line));
@@ -153,97 +162,93 @@ bool formater::parseLine(string &line, line_status& ls)
     {
         if (ls.inCode())
         {
-            switch (line[index])
-            {
-            case '"':
-            {
-                replaceSubstrings(indexStart, index, line);
-                ls.SetActiveString();
-                if (m_bCreateHtml)
-                    ls.insertHtmlFont(index, line);
-                break;
-            }
-            case '`':
+            if (line[index] == '`')
             {
                 replaceSubstrings(indexStart, index, line);
                 ls.SetActiveMacro();
                 if (m_bCreateHtml)
                     ls.insertHtmlFont(index, line);
-                break;
             }
-            case '\'':
+            else if (line[index] == '"')
+            {
+                replaceSubstrings(indexStart, index, line);
+                ls.SetActiveString();
+                if (m_bCreateHtml)
+                    ls.insertHtmlFont(index, line);
+            }
+            else if (line[index] == '\'')
             {
                 replaceSubstrings(indexStart, index, line);
                 ls.SetActiveCharacter();
                 if (m_bCreateHtml)
                     ls.insertHtmlFont(index, line);
-                break;
             }
-            }
-
-            if (index == (line.length() - 1))
+            else if (index == (line.length() - 1))
             {
                 replaceSubstrings(indexStart, index, line);
                 ls.SetActiveCode();
                 indexStart = index;
             }
+
+            continue;
         }
-        else
+
+        if (ls.inMacro())
         {
-            if (ls.inString())
+            if (line[index] == '`')
             {
-                if ((index > 1) && (line[index] == '"'))
+                ls.SetActiveCode();
+                if (m_bCreateHtml)
                 {
-                    ls.SetActiveCode();
-                    if (m_bCreateHtml)
-                    {
-                        ls.insertHtmlFont(++index, line);
-                        index--;
-                    }
-                    indexStart = index;
+                    ls.insertHtmlFont(++index, line);
+                    index--;
                 }
+                indexStart = index;
             }
-            if (ls.inMacro())
+        }
+
+        if (ls.inString())
+        {
+            if ((index > 1) && (line[index] == '"'))
             {
-                if ((line[index] == '`'))
+                ls.SetActiveCode();
+                if (m_bCreateHtml)
                 {
-                    ls.SetActiveCode();
-                    if (m_bCreateHtml)
-                    {
-                        ls.insertHtmlFont(++index, line);
-                        index--;
-                    }
-                    indexStart = index;
+                    ls.insertHtmlFont(++index, line);
+                    index--;
                 }
+                indexStart = index;
             }
-            if (ls.inCharacter())
+        }
+
+        if (ls.inCharacter())
+        {
+            if ((line[index] == '\''))
             {
-                if ((line[index] == '\''))
+                ls.SetActiveCode();
+                if (m_bCreateHtml)
                 {
-                    ls.SetActiveCode();
-                    if (m_bCreateHtml)
-                    {
-                        ls.insertHtmlFont(++index, line);
-                        index--;
-                    }
-                    indexStart = index;
+                    ls.insertHtmlFont(++index, line);
+                    index--;
                 }
+                indexStart = index;
             }
+
         }
     }
     while (++index <= line.size());
 
-  //  if (ls.inString())
-   //     m_sResult = "invalid string";
-   // else if (ls.inCharacter())
-    //    m_sResult = "invalid character";
+    if (ls.inString())
+        m_sResult = "invalid string";
+    else if (ls.inCharacter())
+        m_sResult = "invalid character";
 
     return false;
 }
 
 void formater::createIndenting(string &line, line_status& ls)
 {
-    for (int i = 0; i < ls.GetLayerCount(); i++)
+    for (int i = 0; i < ls.GetLayer(); i++)
     {
         line.insert(0, "    ");
     }

@@ -39,82 +39,88 @@
 line_status::line_status(void) :
 current(INDEX_COUNT),
 last(INDEX_COUNT),
-before_last(INDEX_COUNT) {
-    current[MACRO] = 0;
+before_last(INDEX_COUNT)
+{
+    current[INDEX_COUNT] = 0;
     current[STATUS] = CODE;
     last = current;
 }
 
-void line_status::storeLastFlags() {
+void line_status::storeLastFlags()
+{
     before_last = last;
     last = current;
 }
 
-const bool line_status::inCode(void) {
+const bool line_status::inCode(void)
+{
     return (CODE == current[STATUS]);
 }
 
-const bool line_status::inString(void) {
+const bool line_status::inMacro(void)
+{
+    return (MACRO == current[STATUS]);
+}
+
+const bool line_status::inString(void)
+{
     return (STRINGS == current[STATUS]);
 }
 
-const bool line_status::inCharacter(void) {
+const bool line_status::inCharacter(void)
+{
     return (CHARACTER == current[STATUS]);
 }
 
-void line_status::SetActiveCode(void) {
+void line_status::SetActiveCode(void)
+{
     current[STATUS] = CODE;
 }
 
-void line_status::SetActiveMacro(void) {
+void line_status::SetActiveMacro(void)
+{
     current[STATUS] = MACRO;
 }
 
-void line_status::SetActiveCommend(void) {
-    current[STATUS] = COMMENT;
-}
-
-void line_status::SetActiveString(void) {
+void line_status::SetActiveString(void)
+{
     current[STATUS] = STRINGS;
 }
 
-void line_status::SetActiveCharacter(void) {
+void line_status::SetActiveCharacter(void)
+{
     current[STATUS] = CHARACTER;
 }
 
-string line_status::GetHtmlFontTag(unsigned long id) {
+string line_status::GetHtmlFontTag(unsigned long id)
+{
     const string sFontCode = "</FONT><FONT face=\"courier new\" color=\"black\" size=\"-1\">";
-    const string sFontCharacter = "</FONT><FONT face=\"courier new\" color=\"orange\" size=\"-1\">";
-    const string sFontComment = "</FONT><FONT face=\"courier new\" color=\"grey\" size=\"-1\">";
     const string sFontString = "</FONT><FONT face=\"courier new\" color=\"orange\" size=\"-1\">";
-    const string sFontNumber = "</FONT><FONT face=\"courier new\" color=\"lightgrey\" size=\"-1\">";
-    const string g_sFont[] = {sFontComment, sFontString, sFontCharacter, sFontCode, sFontNumber};
-    if (id <= 4)
+    const string sFontCharacter = "</FONT><FONT face=\"courier new\" color=\"orange\" size=\"-1\">";
+    const string sFontMacro = "</FONT><FONT face=\"courier new\" color=\"#04B404\" size=\"-1\">";
+    const string g_sFont[] = {sFontCode, sFontString, sFontCharacter, sFontMacro};
+    if (id <= 3)
         return g_sFont[id];
     else
         return "";
 }
 
-void line_status::insertHtmlFont(index_string& pos, string& s) {
+void line_status::insertHtmlFont(index_string& pos, string& s)
+{
     s.insert(pos, GetHtmlFontTag(current[STATUS]));
     pos += GetHtmlFontTag(current[STATUS]).length();
 }
 
-void line_status::IncrementMacro(void) {
-    current[MACRO]++;
+long line_status::GetLayer(void)
+{
+    return current[INDEX_COUNT];
 }
 
-void line_status::DecrementMacro(void) {
-    current[MACRO]--;
+void line_status::SetLayer(int layer)
+{
+    current[INDEX_COUNT] = layer;
 }
 
-long line_status::GetLayerCount(void) {
-    return current[MACRO];
-}
-
-const bool line_status::inMacro(void) {
-    return (1 <= current[MACRO]);
-}
 
 
 
