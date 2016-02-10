@@ -37,12 +37,30 @@
  */
 
 
-const map_string getReplace()
+const map_string getReplacePrepocessing()
 {
     map_string replace;
 
-    replace["\t"] = " ";
-    replace["  "] = " ";
+    replace[")"] = " ) ";
+    replace["("] = " ( ";
+    replace["="] = " = ";
+    replace[","] = " , ";
+
+
+    return replace;
+}
+
+const map_string getReplacePostprocessing()
+{
+    map_string replace;
+/*
+     replace["%%%1%%%"] = ")";
+     replace["%%%2%%%"] = "(";
+     replace["%%%3%%%"] = "=";
+     replace["%%%4%%%"] = ",";
+     replace[") `"] = ") `";
+  */   
+    
 
     return replace;
 }

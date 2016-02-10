@@ -44,7 +44,8 @@ formater::formater() :
 m_sResult("ok"),
 m_bCreateHtml(true),
 m_commands(getCommand()),
-m_replacePatterns(getReplace()),
+m_replacePatternsPreprocessing(getReplacePrepocessing()),
+m_replacePatternsPostprocessing(getReplacePostprocessing()),
 m_replacePatternsHtml(getReplaceHtml())
 {
 }
@@ -54,8 +55,9 @@ void formater::run(const string& inputFile)
     importLines(inputFile, m_Lines);
 
     m_bCreateHtml = false;
+
     wrapLines("|");
-    wrapLines(",");
+    //  wrapLines(",");
     removeEmptyAll();
     formatAll();
     string outputFileResult = string(inputFile).append(".result");
@@ -64,7 +66,7 @@ void formater::run(const string& inputFile)
 
     m_bCreateHtml = true;
     formatAll();
-    appendLineNumbersToHtmlAll();
+    createHtml();
     string outputFileHtml = string(inputFile).append(".html");
     exportLines(outputFileHtml);
     cout << string("create 'file://").append(outputFileHtml).append("' ").append(m_sResult) << endl;
@@ -80,12 +82,18 @@ void formater::importLines(const string& file, list<string>& m_Lines)
         string line;
         while (getline(fin, line) && (!fin.fail()))
         {
-
             // replace '&' for html file
             if (m_bCreateHtml)
+            {
                 formater_replace::repeated_replace(line, "&", "&amp");
+                //    formater_replace::repeated_replace(line, "=", "&#61;");
+            }
 
             formater::trimRight(line);
+
+            //     line = for_each(m_replacePatternsPreprocessing.begin(), m_replacePatternsPreprocessing.end(), formater_replace(line));
+            //     line = for_each(m_replacePatternsPostprocessing.begin(), m_replacePatternsPostprocessing.end(), formater_replace(line));
+
             m_Lines.push_back(line);
         }
         fin.close();
@@ -105,16 +113,13 @@ void formater::exportLines(const string& file)
     }
 }
 
-void formater::appendLineNumbersToHtmlAll()
+void formater::createHtml()
 {
     long l = 0;
     for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
     {
         basic_stringstream<char> psz2;
-        //  psz2 << line_status::GetHtmlFontTag();
-        //  psz2.fill('0');
-        //  psz2.width(4);
-        //  psz2 << ++l << "&nbsp;&nbsp;";
+        psz2 << line_status::GetHtmlFontTag();
         *iter = psz2.str().append(*iter).append("<br/>");
     }
 
@@ -128,8 +133,31 @@ void formater::appendLineNumbersToHtmlAll()
 void formater::formatAll()
 {
     line_status ls;
+
     for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
     {
+
+        string line = *iter;
+        cout << "start:" << line << endl;
+
+        typedef std::map<std::string, std::string>::iterator it_type;
+        for (it_type iterator = m_replacePatternsPreprocessing.begin(); iterator != m_replacePatternsPreprocessing.end(); iterator++)
+        {
+            string s2 = iterator->first;
+            string s3 = iterator->second;
+            index_string anf = line.find(s2, 0);
+            if ((string::npos != anf))
+            {
+                // replace s2 with s3 in s1
+                string right(line.substr(anf + s2.size(), string::npos));
+                string left(line.substr(0, anf));
+            //    line = left.append(s3).append(right);
+                anf = line.find(s2, anf + 1 + s3.size());
+            }
+            cout << "end  :" << line << endl;
+         }
+        *iter = line;
+
         parseLine(*iter, ls);
         for_each(m_commands.begin(), m_commands.end(), layer_counter(&ls, *iter));
         createIndenting(*iter, ls);
@@ -138,7 +166,7 @@ void formater::formatAll()
     for_each(m_Lines.begin(), m_Lines.end(), formater::trimRight);
 }
 
-bool formater::parseLine(string &line, line_status& ls)
+bool formater::parseLine(string &line, line_status & ls)
 {
     index_string indexStart = 0;
     index_string index = 0;
@@ -147,7 +175,7 @@ bool formater::parseLine(string &line, line_status& ls)
     {
         ls.SetLayer(2);
     }
-    if (line[0] == '|' )
+    if (line[0] == '|')
     {
         ls.SetLayer(1);
     }
@@ -237,16 +265,16 @@ bool formater::parseLine(string &line, line_status& ls)
         }
     }
     while (++index <= line.size());
-
-    if (ls.inString())
-        m_sResult = "invalid string";
-    else if (ls.inCharacter())
-        m_sResult = "invalid character";
-
+    /*
+        if (ls.inString())
+            m_sResult = "invalid string";
+        else if (ls.inCharacter())
+            m_sResult = "invalid character";
+     */
     return false;
 }
 
-void formater::createIndenting(string &line, line_status& ls)
+void formater::createIndenting(string &line, line_status & ls)
 {
     for (int i = 0; i < ls.GetLayer(); i++)
     {
@@ -254,7 +282,7 @@ void formater::createIndenting(string &line, line_status& ls)
     }
 }
 
-void formater::replaceSubstrings(const index_string& begin, index_string& end, string &s)
+void formater::replaceSubstrings(const index_string& begin, index_string& end, string & s)
 {
     if (begin != string::npos && end != string::npos && begin < end)
     {
@@ -264,7 +292,7 @@ void formater::replaceSubstrings(const index_string& begin, index_string& end, s
         if (m_bCreateHtml)
             midNeu = for_each(m_commands.begin(), m_commands.end(), formater_mark_html(mid));
         else
-            midNeu = for_each(m_replacePatterns.begin(), m_replacePatterns.end(), formater_replace(mid));
+            midNeu = for_each(m_replacePatternsPreprocessing.begin(), m_replacePatternsPreprocessing.end(), formater_replace(mid));
 
         s = s.substr(0, begin).append(midNeu).append(s.substr(end + 1, string::npos).c_str());
         end = begin + midNeu.length() - 1;
@@ -355,7 +383,7 @@ void formater::wrapLines(string pattern)
     m_Lines = result;
 }
 
-void formater::trimLeft(string &s)
+void formater::trimLeft(string & s)
 {
     index_string anf = s.find_first_not_of(" \t");
     if (string::npos != anf)
@@ -364,7 +392,7 @@ void formater::trimLeft(string &s)
         s.erase();
 }
 
-void formater::trimRight(string &s)
+void formater::trimRight(string & s)
 {
     index_string anf = s.find_last_not_of(" \t\r");
     if (string::npos != anf)
