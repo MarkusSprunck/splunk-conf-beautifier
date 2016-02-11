@@ -50,15 +50,14 @@ public:
     static bool repeated_replace(string& s1, const string& s2, const string& s3)
     {
         index_string anf = s1.find(s2, 0);
-        cout << " replace '" << s2 << "' with '" + s3 + "' anf=" << anf << endl;
         bool bResult = false;
         while (string::npos != anf)
         {
             // replace s2 with s3 in s1
-            string right(s1.substr(anf + s2.size(), string::npos));
+            string right(s1.substr(anf + s2.length(), string::npos));
             string left(s1.substr(0, anf));
             s1 = left.append(s3).append(right);
-            anf = s1.find(s2, anf + 1+ s3.size());
+            anf = s1.find(s2, anf + s3.length());
             bResult = false;
         }
 

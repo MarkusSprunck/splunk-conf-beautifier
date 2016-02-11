@@ -40,40 +40,35 @@
 const map_string getReplacePrepocessing()
 {
     map_string replace;
-
     replace[")"] = " ) ";
     replace["("] = " ( ";
     replace["="] = " = ";
     replace[","] = " , ";
-
-
     return replace;
 }
 
 const map_string getReplacePostprocessing()
 {
     map_string replace;
-/*
-     replace["%%%1%%%"] = ")";
-     replace["%%%2%%%"] = "(";
-     replace["%%%3%%%"] = "=";
-     replace["%%%4%%%"] = ",";
-     replace[") `"] = ") `";
-  */   
-    
-
+    replace[" ("] = "(";
+    replace[" ="] = "=";
+    replace["= "] = "=";
+    replace[" ,"] = ",";
+    replace["  )"] = " )";
+    replace["(  "] = "( ";
+    replace[") `"] = ")`";
+    replace[",  "] = ", ";
+    replace[")  "] = ") ";
     return replace;
 }
 
 const map_string getReplaceHtml()
 {
     map_string replace;
-
     replace["<"] = "&lt;";
     replace[">"] = "&gt;";
-    replace["   "] = "&nbsp;&nbsp;&nbsp; ";
-    replace["\t"] = "&nbsp;&nbsp;&nbsp; ";
-
+    replace["   "] = "&nbsp;&nbsp;&nbsp;";
+    replace["\t"] = "&nbsp;&nbsp;&nbsp;";
     return replace;
 }
 

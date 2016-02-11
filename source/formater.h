@@ -56,6 +56,7 @@ protected:
 
     // each line
     void formatAll();
+    string replacePattern(map_string pattern, string line, int iterations);
     void removeEmptyAll();
     void wrapLines(string pattern);
     void createHtml();

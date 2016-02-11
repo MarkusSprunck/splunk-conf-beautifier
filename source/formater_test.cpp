@@ -77,7 +77,7 @@ void formater_test::executeTest(const string& name, const string soll)
     // formater - start
     m_bCreateHtml = false;
     wrapLines("|");
- //   wrapLines(",");
+    wrapLines(",");
     removeEmptyAll();
     formatAll();
     // formater - end

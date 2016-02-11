@@ -55,9 +55,8 @@ void formater::run(const string& inputFile)
     importLines(inputFile, m_Lines);
 
     m_bCreateHtml = false;
-
     wrapLines("|");
-    //  wrapLines(",");
+    wrapLines(",");
     removeEmptyAll();
     formatAll();
     string outputFileResult = string(inputFile).append(".result");
@@ -67,6 +66,8 @@ void formater::run(const string& inputFile)
     m_bCreateHtml = true;
     formatAll();
     createHtml();
+
+
     string outputFileHtml = string(inputFile).append(".html");
     exportLines(outputFileHtml);
     cout << string("create 'file://").append(outputFileHtml).append("' ").append(m_sResult) << endl;
@@ -82,18 +83,11 @@ void formater::importLines(const string& file, list<string>& m_Lines)
         string line;
         while (getline(fin, line) && (!fin.fail()))
         {
-            // replace '&' for html file
             if (m_bCreateHtml)
             {
                 formater_replace::repeated_replace(line, "&", "&amp");
-                //    formater_replace::repeated_replace(line, "=", "&#61;");
             }
-
             formater::trimRight(line);
-
-            //     line = for_each(m_replacePatternsPreprocessing.begin(), m_replacePatternsPreprocessing.end(), formater_replace(line));
-            //     line = for_each(m_replacePatternsPostprocessing.begin(), m_replacePatternsPostprocessing.end(), formater_replace(line));
-
             m_Lines.push_back(line);
         }
         fin.close();
@@ -120,7 +114,8 @@ void formater::createHtml()
     {
         basic_stringstream<char> psz2;
         psz2 << line_status::GetHtmlFontTag();
-        *iter = psz2.str().append(*iter).append("<br/>");
+        string line = *iter;
+        *iter = psz2.str().append(line).append("<br/>");
     }
 
     string s = "<P align=\"right\">";
@@ -136,34 +131,39 @@ void formater::formatAll()
 
     for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
     {
-
         string line = *iter;
-        cout << "start:" << line << endl;
+        line = replacePattern(m_replacePatternsPreprocessing, line, 1);
+        parseLine(line, ls);
+        for_each(m_commands.begin(), m_commands.end(), layer_counter(&ls, line));
+        line = replacePattern(m_replacePatternsPostprocessing, line, 5);
+        createIndenting(line, ls);
+        *iter = line;
+        ls.storeLastFlags();
+    }
+    for_each(m_Lines.begin(), m_Lines.end(), formater::trimRight);
+}
 
-        typedef std::map<std::string, std::string>::iterator it_type;
-        for (it_type iterator = m_replacePatternsPreprocessing.begin(); iterator != m_replacePatternsPreprocessing.end(); iterator++)
+string formater::replacePattern(map_string pattern, string s1, int iterations)
+{
+    string line = s1;
+    typedef std::map<std::string, std::string>::iterator it_type;
+    for (it_type iterator = pattern.begin(); iterator != pattern.end(); iterator++)
+    {
+        for (int i = 0; i < iterations; i++)
         {
             string s2 = iterator->first;
             string s3 = iterator->second;
             index_string anf = line.find(s2, 0);
-            if ((string::npos != anf))
+            while (string::npos != anf)
             {
-                // replace s2 with s3 in s1
-                string right(line.substr(anf + s2.size(), string::npos));
+                string right(line.substr(anf + s2.length(), string::npos));
                 string left(line.substr(0, anf));
-            //    line = left.append(s3).append(right);
-                anf = line.find(s2, anf + 1 + s3.size());
+                line = left.append(s3).append(right);
+                anf = line.find(s2, left.length());
             }
-            cout << "end  :" << line << endl;
-         }
-        *iter = line;
-
-        parseLine(*iter, ls);
-        for_each(m_commands.begin(), m_commands.end(), layer_counter(&ls, *iter));
-        createIndenting(*iter, ls);
-        ls.storeLastFlags();
+        }
     }
-    for_each(m_Lines.begin(), m_Lines.end(), formater::trimRight);
+    return line;
 }
 
 bool formater::parseLine(string &line, line_status & ls)
@@ -171,7 +171,7 @@ bool formater::parseLine(string &line, line_status & ls)
     index_string indexStart = 0;
     index_string index = 0;
 
-    if (line[0] == ',')
+    if (line[1] == ',')
     {
         ls.SetLayer(2);
     }
