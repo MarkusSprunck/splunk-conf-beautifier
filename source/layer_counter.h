@@ -60,15 +60,16 @@ public:
     {
         if (string::npos != m_line->find(p1.first))
         {
-            if (INCREMENT == (INCREMENT & p1.second))
+            if (INCREMENT == (INCREMENT & p1.second) && 10 > (*m_line_status).GetLayer())
             {
-                if ((*m_line_status).GetLayer() == 0)
-                {
-                    (*m_line_status).SetLayer(1 + (*m_line_status).GetLayer());
-                }
+                (*m_line_status).SetLayer(1 + (*m_line_status).GetLayer());
             }
-        }
+           
+            if (DECREMENT == (DECREMENT & p1.second) && 1 <= (*m_line_status).GetLayer())
+            {
+                (*m_line_status).SetLayer(1 - (*m_line_status).GetLayer());
+            }
+        }        
     }
 };
-
 

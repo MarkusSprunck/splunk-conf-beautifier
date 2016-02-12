@@ -50,25 +50,24 @@ public:
 
 protected:
 
-    // file input & output
+       // file input & output
     void importLines(const string& file, list<string>& m_Lines);
     void exportLines(const string& file);
 
     // each line
-    void formatAll();
+    void formatPre();
+    void formatPost();
     string replacePattern(map_string pattern, string line, int iterations);
     void removeEmptyAll();
     void wrapLines(string pattern);
     void createHtml();
 
     // single line
-    bool parseLine(string &line, line_status& ls);
+    bool parseLine(string &line, line_status& ls, bool encode);
     void replaceSubstrings(const index_string& begin, index_string& end, string &s);
     static void createIndenting(string &line, line_status& ls);
 
-    // support for string manipulation
-    static void trimRight(string &s);
-    static void trimLeft(string &s);
+    
 
     // succsses information
     string m_sResult;

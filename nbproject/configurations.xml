@@ -5,6 +5,7 @@
       <df name="source">
         <in>formater.cpp</in>
         <in>formater_test.cpp</in>
+        <in>layer_counter.h</in>
         <in>line_status.cpp</in>
         <in>spl2html.cpp</in>
       </df>
@@ -142,6 +143,8 @@
             <pElem>Debug</pElem>
           </incDir>
         </ccTool>
+      </item>
+      <item path="source/layer_counter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/line_status.cpp" ex="false" tool="1" flavor2="0">
         <ccTool>

@@ -42,7 +42,6 @@ const map_string getReplacePrepocessing()
     map_string replace;
     replace[")"] = " ) ";
     replace["("] = " ( ";
-    replace["="] = " = ";
     replace[","] = " , ";
     return replace;
 }
@@ -74,7 +73,7 @@ const map_string getReplaceHtml()
 
 enum eCommand
 {
-    KEYWORD = 1, MARK = 2, INCREMENT = 4
+    KEYWORD = 1, MARK = 2, INCREMENT = 4, DECREMENT = 8
 };
 
 const map_command getCommand()
@@ -82,96 +81,97 @@ const map_command getCommand()
     map_command command;
 
     command["by"] = KEYWORD;
-    command["as"] = KEYWORD | INCREMENT;
+    command["as"] = KEYWORD;
     command["and"] = KEYWORD;
     command["or"] = KEYWORD;
     command["avg"] = KEYWORD;
     command["tostring"] = KEYWORD;
 
     command["index" ] = KEYWORD;
-    command["table" ] = KEYWORD | INCREMENT;
-    command["first" ] = KEYWORD | INCREMENT;
-    command["last" ] = KEYWORD | INCREMENT;
-    command["earliest" ] = KEYWORD | INCREMENT;
-    command["latest" ] = KEYWORD | INCREMENT;
-    command["coalesce" ] = KEYWORD | INCREMENT;
+    command["table" ] = KEYWORD;
+    command["untable" ] = KEYWORD;
+    command["first" ] = KEYWORD;
+    command["last" ] = KEYWORD;
+    command["earliest" ] = KEYWORD;
+    command["latest" ] = KEYWORD;
+    command["coalesce" ] = KEYWORD;
 
     // Streaming Commands | START
-    command["addinfo" ] = KEYWORD | INCREMENT;
-    command["anomalydetection" ] = KEYWORD | INCREMENT;
-    command["append" ] = KEYWORD | INCREMENT;
-    command["arules" ] = KEYWORD | INCREMENT;
-    command["bin" ] = KEYWORD | INCREMENT;
-    command["bucketdir" ] = KEYWORD | INCREMENT;
-    command["cluster" ] = KEYWORD | INCREMENT;
-    command["convert" ] = KEYWORD | INCREMENT;
-    command["dedup" ] = KEYWORD | INCREMENT;
-    command["eval" ] = KEYWORD | INCREMENT;
-    command["extract" ] = KEYWORD | INCREMENT;
-    command["fieldformat" ] = KEYWORD | INCREMENT;
-    command["fields" ] = KEYWORD | INCREMENT;
-    command["fillnull" ] = KEYWORD | INCREMENT;
-    command["head" ] = KEYWORD | INCREMENT;
-    command["highlight" ] = KEYWORD | INCREMENT;
-    command["iconify" ] = KEYWORD | INCREMENT;
-    command["iplocation" ] = KEYWORD | INCREMENT;
-    command["join" ] = KEYWORD | INCREMENT;
-    command["lookup" ] = KEYWORD | INCREMENT;
-    command["makemv" ] = KEYWORD | INCREMENT;
-    command["multikv" ] = KEYWORD | INCREMENT;
-    command["mvexpand" ] = KEYWORD | INCREMENT;
-    command["nomv" ] = KEYWORD | INCREMENT;
-    command["rangemap" ] = KEYWORD | INCREMENT;
-    command["regex" ] = KEYWORD | INCREMENT;
-    command["reltime" ] = KEYWORD | INCREMENT;
-    command["rename" ] = KEYWORD | INCREMENT;
-    command["replace" ] = KEYWORD | INCREMENT;
-    command["rex" ] = KEYWORD | INCREMENT;
-    command["search" ] = KEYWORD;
-    command["spath" ] = KEYWORD | INCREMENT;
-    command["strcat" ] = KEYWORD | INCREMENT;
-    command["streamstats" ] = KEYWORD | INCREMENT;
-    command["tags" ] = KEYWORD | INCREMENT;
-    command["transaction" ] = KEYWORD | INCREMENT;
-    command["typer" ] = KEYWORD | INCREMENT;
-    command["where" ] = KEYWORD | INCREMENT;
-    command["untable" ] = KEYWORD | INCREMENT;
-    command["xmlkv" ] = KEYWORD | INCREMENT;
-    command["xmlunescape" ] = KEYWORD | INCREMENT;
-    command["xpath" ] = KEYWORD | INCREMENT;
-    command["xyseries" ] = KEYWORD | INCREMENT;
+    command["addinfo" ] = KEYWORD;
+    command["anomalydetection" ] = KEYWORD;
+    command["append" ] = KEYWORD;
+    command["arules" ] = KEYWORD;
+    command["bin" ] = KEYWORD;
+    command["bucketdir" ] = KEYWORD;
+    command["cluster" ] = KEYWORD;
+    command["convert" ] = KEYWORD;
+    command["dedup" ] = KEYWORD;
+    command["eval" ] = KEYWORD ;
+    command["extract" ] = KEYWORD;
+    command["fieldformat" ] = KEYWORD;
+    command["fields" ] = KEYWORD ;
+    command["fillnull" ] = KEYWORD;
+    command["head" ] = KEYWORD;
+    command["highlight" ] = KEYWORD;
+    command["iconify" ] = KEYWORD;
+    command["iplocation" ] = KEYWORD;
+    command["join" ] = KEYWORD;
+    command["lookup" ] = KEYWORD;
+    command["makemv" ] = KEYWORD;
+    command["multikv" ] = KEYWORD;
+    command["mvexpand" ] = KEYWORD;
+    command["nomv" ] = KEYWORD;
+    command["rangemap" ] = KEYWORD;
+    command["regex" ] = KEYWORD;
+    command["reltime" ] = KEYWORD;
+    command["rename" ] = KEYWORD;
+    command["replace" ] = KEYWORD;
+    command["rex" ] = KEYWORD;
+    command["search" ] = KEYWORD | INCREMENT;
+    command["spath" ] = KEYWORD;
+    command["strcat" ] = KEYWORD;
+    command["streamstats" ] = KEYWORD;
+    command["tags" ] = KEYWORD;
+    command["transaction" ] = KEYWORD;
+    command["typer" ] = KEYWORD;
+    command["where" ] = KEYWORD;
+    command["untable" ] = KEYWORD;
+    command["xmlkv" ] = KEYWORD;
+    command["xmlunescape" ] = KEYWORD;
+    command["xpath" ] = KEYWORD;
+    command["xyseries" ] = KEYWORD;
     // Streaming Commands | END
 
     // Generating commands | START
-    command["crawl" ] = KEYWORD | INCREMENT;
-    command["datamodel" ] = KEYWORD | INCREMENT;
-    command["dbinspect" ] = KEYWORD | INCREMENT;
-    command["eventcount" ] = KEYWORD | INCREMENT;
-    command["gentimes" ] = KEYWORD | INCREMENT;
-    command["inputcsv" ] = KEYWORD | INCREMENT;
-    command["Inputlookup" ] = KEYWORD | INCREMENT;
-    command["loadjob" ] = KEYWORD | INCREMENT;
-    command["makeresults" ] = KEYWORD | INCREMENT;
-    command["metadata" ] = KEYWORD | INCREMENT;
-    command["multisearch" ] = KEYWORD | INCREMENT;
-    command["pivot" ] = KEYWORD | INCREMENT;
-    command["searchtxn" ] = KEYWORD | INCREMENT;
-    command["set" ] = KEYWORD | INCREMENT;
-    command["tstats" ] = KEYWORD | INCREMENT;
+    command["crawl" ] = KEYWORD;
+    command["datamodel" ] = KEYWORD;
+    command["dbinspect" ] = KEYWORD;
+    command["eventcount" ] = KEYWORD;
+    command["gentimes" ] = KEYWORD;
+    command["inputcsv" ] = KEYWORD;
+    command["Inputlookup" ] = KEYWORD;
+    command["loadjob" ] = KEYWORD;
+    command["makeresults" ] = KEYWORD;
+    command["metadata" ] = KEYWORD;
+    command["multisearch" ] = KEYWORD;
+    command["pivot" ] = KEYWORD;
+    command["searchtxn" ] = KEYWORD;
+    command["set" ] = KEYWORD;
+    command["tstats" ] = KEYWORD;
     // Generating commands | END
 
     // Transforming commands | START
-    command["addtotals" ] = KEYWORD | INCREMENT;
-    command["chart" ] = KEYWORD | INCREMENT;
-    command["cofilter" ] = KEYWORD | INCREMENT;
-    command["contingency" ] = KEYWORD | INCREMENT;
-    command["makecontinuous" ] = KEYWORD | INCREMENT;
-    command["mvcombine" ] = KEYWORD | INCREMENT;
-    command["rare" ] = KEYWORD | INCREMENT;
-    command["stats" ] = KEYWORD | INCREMENT;
-    command["timechart" ] = KEYWORD | INCREMENT;
-    command["top" ] = KEYWORD | INCREMENT;
-    command["xyseries" ] = KEYWORD | INCREMENT;
+    command["addtotals" ] = KEYWORD;
+    command["chart" ] = KEYWORD;
+    command["cofilter" ] = KEYWORD;
+    command["contingency" ] = KEYWORD;
+    command["makecontinuous" ] = KEYWORD;
+    command["mvcombine" ] = KEYWORD;
+    command["rare" ] = KEYWORD;
+    command["stats" ] = KEYWORD | DECREMENT;
+    command["timechart" ] = KEYWORD;
+    command["top" ] = KEYWORD;
+    command["xyseries" ] = KEYWORD;
     // Transforming commands | END
 
     return command;

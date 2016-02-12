@@ -36,9 +36,10 @@
 
 #include "formater.h"
 #include "formater_parameter.h"
-#include "layer_counter.h"
 #include "formater_replace.h"
+#include "layer_counter.h"
 #include "formater_mark_html.h"
+#include "base64.h"
 
 formater::formater() :
 m_sResult("ok"),
@@ -55,22 +56,25 @@ void formater::run(const string& inputFile)
     importLines(inputFile, m_Lines);
 
     m_bCreateHtml = false;
-    wrapLines("|");
-    wrapLines(",");
     removeEmptyAll();
-    formatAll();
+    formatPre();
+    wrapLines("|");
+    formatPost();
     string outputFileResult = string(inputFile).append(".result");
     exportLines(outputFileResult);
     cout << string("create 'file://").append(outputFileResult).append("' ").append(m_sResult) << endl;
 
+    /*
     m_bCreateHtml = true;
-    formatAll();
+    formatPre();
+    formatPost();
     createHtml();
 
 
     string outputFileHtml = string(inputFile).append(".html");
     exportLines(outputFileHtml);
     cout << string("create 'file://").append(outputFileHtml).append("' ").append(m_sResult) << endl;
+     */
 }
 
 void formater::importLines(const string& file, list<string>& m_Lines)
@@ -87,10 +91,11 @@ void formater::importLines(const string& file, list<string>& m_Lines)
             {
                 formater_replace::repeated_replace(line, "&", "&amp");
             }
-            formater::trimRight(line);
             m_Lines.push_back(line);
         }
         fin.close();
+
+        for_each(m_Lines.begin(), m_Lines.end(), trimRight);
     }
 }
 
@@ -103,7 +108,10 @@ void formater::exportLines(const string& file)
         if (fout.fail())
             m_sResult = "file create failed";
         else
+        {
+            for_each(m_Lines.begin(), m_Lines.end(), trimRight);
             copy(m_Lines.begin(), m_Lines.end(), ostream_iterator<string>(fout, "\n"));
+        }
     }
 }
 
@@ -125,22 +133,39 @@ void formater::createHtml()
     m_Lines.push_back(s);
 }
 
-void formater::formatAll()
+void formater::formatPre()
+{
+    line_status ls;
+    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
+    {
+        string line = *iter;
+        parseLine(line, ls, true);
+        line = replacePattern(m_replacePatternsPreprocessing, line, 1);
+        *iter = line;
+        ls.storeLastFlags();
+    }
+
+    for_each(m_Lines.begin(), m_Lines.end(), trimRight);
+}
+
+void formater::formatPost()
 {
     line_status ls;
 
     for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
     {
         string line = *iter;
-        line = replacePattern(m_replacePatternsPreprocessing, line, 1);
-        parseLine(line, ls);
-        for_each(m_commands.begin(), m_commands.end(), layer_counter(&ls, line));
         line = replacePattern(m_replacePatternsPostprocessing, line, 5);
-        createIndenting(line, ls);
+        for_each(m_commands.begin(), m_commands.end(), layer_counter(&ls, line));
+        if (m_Lines.begin() != iter)
+        {
+            createIndenting(line, ls);
+        }
+        parseLine(line, ls, false);
         *iter = line;
         ls.storeLastFlags();
     }
-    for_each(m_Lines.begin(), m_Lines.end(), formater::trimRight);
+    for_each(m_Lines.begin(), m_Lines.end(), trimRight);
 }
 
 string formater::replacePattern(map_string pattern, string s1, int iterations)
@@ -166,111 +191,65 @@ string formater::replacePattern(map_string pattern, string s1, int iterations)
     return line;
 }
 
-bool formater::parseLine(string &line, line_status & ls)
+bool formater::parseLine(string &line, line_status & ls, bool encode)
 {
     index_string indexStart = 0;
     index_string index = 0;
-
-    if (line[1] == ',')
-    {
-        ls.SetLayer(2);
-    }
-    if (line[0] == '|')
-    {
-        ls.SetLayer(1);
-    }
-
-    if (m_bCreateHtml)
-    {
-        line = for_each(m_replacePatternsHtml.begin(), m_replacePatternsHtml.end(), formater_replace(line));
-        ls.insertHtmlFont(index, line);
-    }
 
     do
     {
         if (ls.inCode())
         {
-            if (line[index] == '`')
+            if (line[index] == '"')
             {
-                replaceSubstrings(indexStart, index, line);
-                ls.SetActiveMacro();
-                if (m_bCreateHtml)
-                    ls.insertHtmlFont(index, line);
-            }
-            else if (line[index] == '"')
-            {
-                replaceSubstrings(indexStart, index, line);
+                indexStart = index;
                 ls.SetActiveString();
-                if (m_bCreateHtml)
-                    ls.insertHtmlFont(index, line);
-            }
-            else if (line[index] == '\'')
-            {
-                replaceSubstrings(indexStart, index, line);
-                ls.SetActiveCharacter();
-                if (m_bCreateHtml)
-                    ls.insertHtmlFont(index, line);
-            }
-            else if (index == (line.length() - 1))
-            {
-                replaceSubstrings(indexStart, index, line);
-                ls.SetActiveCode();
-                indexStart = index;
-            }
-
-            continue;
-        }
-
-        if (ls.inMacro())
-        {
-            if (line[index] == '`')
-            {
-                ls.SetActiveCode();
-                if (m_bCreateHtml)
-                {
-                    ls.insertHtmlFont(++index, line);
-                    index--;
-                }
-                indexStart = index;
             }
         }
-
-        if (ls.inString())
+        else
+            if (ls.inString())
         {
-            if ((index > 1) && (line[index] == '"'))
+            if (line[index] == '"')
             {
-                ls.SetActiveCode();
-                if (m_bCreateHtml)
+                if (encode)
                 {
-                    ls.insertHtmlFont(++index, line);
-                    index--;
+                    // cout << "line_org:" << line << endl;
+                    int indexStart1 = indexStart + 1;
+                    int string_length = (index - indexStart - 1);
+                    string sub_string2 = line.substr(indexStart1, string_length);
+                    //   cout << "string : '" << sub_string2 << "'" << endl;
+                    string encoded2 = base64_encode(sub_string2);
+                    // cout << "encoded: '" << encoded2 << "'" << endl;
+                    line = line.replace(indexStart1, string_length, encoded2);
+                    index -= sub_string2.length();
+                    index += encoded2.length();
+                    //  cout << "line_new:" << line << endl << endl;
                 }
-                indexStart = index;
-            }
-        }
-
-        if (ls.inCharacter())
-        {
-            if ((line[index] == '\''))
-            {
-                ls.SetActiveCode();
-                if (m_bCreateHtml)
+                else
                 {
-                    ls.insertHtmlFont(++index, line);
-                    index--;
+                    //   cout << "line_org:" << line << endl;
+                    int indexStart1 = indexStart + 1;
+                    int string_length = (index - indexStart - 1);
+                    string sub_string = line.substr(indexStart1, string_length);
+                    //  cout << "string:" << sub_string << endl;
+                    string decoded = base64_decode(sub_string);
+                    // cout << "decoded  :" << decoded << endl;
+                    line = line.replace(indexStart1, string_length, decoded);
+                    index -= sub_string.length();
+                    index += decoded.length();
+                    //  cout << "line_new:" << line << endl << endl;
                 }
-                indexStart = index;
+                ls.SetActiveCode();
             }
-
         }
     }
     while (++index <= line.size());
-    /*
-        if (ls.inString())
-            m_sResult = "invalid string";
-        else if (ls.inCharacter())
-            m_sResult = "invalid character";
-     */
+
+    if (ls.inString())
+        m_sResult = "invalid string";
+    else if (ls.inCharacter())
+        m_sResult = "invalid character";
+
     return false;
 }
 
@@ -383,22 +362,7 @@ void formater::wrapLines(string pattern)
     m_Lines = result;
 }
 
-void formater::trimLeft(string & s)
-{
-    index_string anf = s.find_first_not_of(" \t");
-    if (string::npos != anf)
-        s = s.substr(anf);
-    else
-        s.erase();
-}
 
-void formater::trimRight(string & s)
-{
-    index_string anf = s.find_last_not_of(" \t\r");
-    if (string::npos != anf)
-        s = s.substr(0, anf + 1);
-    else
-        s.erase();
-}
+
 
 

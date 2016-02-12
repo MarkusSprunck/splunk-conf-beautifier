@@ -76,10 +76,10 @@ void formater_test::executeTest(const string& name, const string soll)
 
     // formater - start
     m_bCreateHtml = false;
-    wrapLines("|");
-    wrapLines(",");
     removeEmptyAll();
-    formatAll();
+    formatPre();
+    wrapLines("|");
+    formatPost();
     // formater - end
 
     if (0 != m_sResult.compare(soll))
