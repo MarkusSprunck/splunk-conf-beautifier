@@ -37,7 +37,7 @@
 
 #include "std_typedef.h"
 
-static const string g_sVersion = "spl2html v0.1";
+static const string g_sVersion = "spl2html v0.2";
 
 class line_status;
 
@@ -50,9 +50,9 @@ public:
 
 protected:
 
-       // file input & output
-    void importLines(const string& file, list<string>& m_Lines);
-    void exportLines(const string& file);
+    // file input & output
+    void importAllLines(const string& file, list<string>& m_Lines);
+    void exportAllLines(const string& file);
 
     // each line
     void formatPre();
@@ -60,14 +60,12 @@ protected:
     string replacePattern(map_string pattern, string line, int iterations);
     void removeEmptyAll();
     void wrapLines(string pattern);
-    void createHtml();
+    void createHtmlDocument();
 
     // single line
     bool parseLine(string &line, line_status& ls, bool encode);
     void replaceSubstrings(const index_string& begin, index_string& end, string &s);
     void createIndenting(string &line, line_status& ls);
-
-    
 
     // succsses information
     string m_sResult;
@@ -83,4 +81,5 @@ protected:
 
     // string replace map
     map<string, string> m_replacePatternsPreprocessing, m_replacePatternsPostprocessing, m_replacePatternsHtml;
+
 };

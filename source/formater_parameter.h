@@ -43,6 +43,7 @@ const map_string getReplacePrepocessing()
     replace[")"] = " ) ";
     replace["("] = " ( ";
     replace[","] = " , ";
+    replace["="] = " = ";
     return replace;
 }
 
@@ -50,8 +51,8 @@ const map_string getReplacePostprocessing()
 {
     map_string replace;
     replace[" ("] = "(";
-    replace[" ="] = "=";
-    replace["= "] = "=";
+    replace["  ="] = " =";
+    replace["=  "] = "= ";
     replace[" ,"] = ",";
     replace["  )"] = " )";
     replace["(  "] = "( ";
@@ -95,6 +96,8 @@ const map_command getCommand()
     command["earliest" ] = KEYWORD;
     command["latest" ] = KEYWORD;
     command["coalesce" ] = KEYWORD;
+    command["sourcetype" ] = KEYWORD;
+    command["source" ] = KEYWORD;
 
     // Streaming Commands | START
     command["addinfo" ] = KEYWORD;
@@ -106,10 +109,10 @@ const map_command getCommand()
     command["cluster" ] = KEYWORD;
     command["convert" ] = KEYWORD;
     command["dedup" ] = KEYWORD;
-    command["eval" ] = KEYWORD ;
+    command["eval" ] = KEYWORD;
     command["extract" ] = KEYWORD;
     command["fieldformat" ] = KEYWORD;
-    command["fields" ] = KEYWORD ;
+    command["fields" ] = KEYWORD;
     command["fillnull" ] = KEYWORD;
     command["head" ] = KEYWORD;
     command["highlight" ] = KEYWORD;

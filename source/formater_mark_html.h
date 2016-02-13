@@ -36,7 +36,7 @@
  */
 
 
-#include "base64.h"
+#include "string_utils.h"
 
 class formater_mark_html {
    static const string sFontCode;
@@ -50,7 +50,7 @@ public:
    
    // The function call to process the next element
    void operator () (const pair_command& p1) {
-      string value = p1.first;
+      string value = p1.first + " ";
       long command = p1.second;
       index_string anf = line.find(value);
       while (string::npos!=anf) {
@@ -87,6 +87,6 @@ public:
    }
 };
 
-const string formater_mark_html::sFontCode = "</FONT>\n<FONT face=\'courier new\' color=\'black\'>";
-const string formater_mark_html::sFontKeyword = "</FONT>\n<FONT face=\'courier new\' color=\'blue\'>";
-const string formater_mark_html::sFontMarked = "</FONT>\n<FONT face=\'courier new\' color=\'grey\'>";
+const string formater_mark_html::sFontCode = "</font>\n<font color=\'black\'>";
+const string formater_mark_html::sFontKeyword = "</font>\n<font color=\'blue\'>";
+const string formater_mark_html::sFontMarked = "</font>\n<font color=\'grey\'>";

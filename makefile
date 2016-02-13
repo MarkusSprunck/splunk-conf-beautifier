@@ -1,7 +1,7 @@
 
-spl2html.exe : build/spl2html.o build/formater.o build/formater_test.o  build/line_status.o build/base64.o
+spl2html.exe : build/spl2html.o build/formater.o build/formater_test.o  build/line_status.o build/string_utils.o
 
-	g++ -g -o spl2html build/spl2html.o build/formater.o  build/formater_test.o build/line_status.o  build/base64.o -lstdc++ 
+	g++ -g -o spl2html build/spl2html.o build/formater.o  build/formater_test.o build/line_status.o  build/string_utils.o -lstdc++ 
 
 build/formater.o : source/formater.cpp
 	g++ -g  -std=c++11  -c source/formater.cpp -o build/formater.o
@@ -15,10 +15,10 @@ build/spl2html.o : source/spl2html.cpp
 build/line_status.o : source/line_status.cpp
 	g++ -g -std=c++11 -c source/line_status.cpp -o build/line_status.o
 	
-build/base64.o : source/base64.cpp
-	g++ -g -std=c++11 -c source/base64.cpp -o build/base64.o
+build/string_utils.o : source/string_utils.cpp
+	g++ -g -std=c++11 -c source/string_utils.cpp -o build/string_utils.o
 	
 all : spl2html.exe
      
 clean :
-	-rm spl2html.exe build/spl2html.o build/formater.o build/formater_test.o build/line_status.o build/base64.o
+	-rm spl2html.exe build/spl2html.o build/formater.o build/formater_test.o build/line_status.o build/string_utils.o

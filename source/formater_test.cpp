@@ -38,6 +38,7 @@
 #include "formater.h"
 #include "formater_test.h"
 #include "line_compare.h"
+#include "string_utils.h"
 
 formater_test::formater_test(void)
 {
@@ -64,13 +65,15 @@ void formater_test::executeTest(const string& name, const string soll)
 
     string quelle1 = name;
     quelle1.append(".txt");
-    importLines(quelle1, m_Lines);
+    importAllLines(quelle1, m_Lines);
 
     string quelle2 = name;
     quelle2.append("-expected.txt");
     if (0 == soll.compare("ok"))
     {
-        importLines(quelle2, m_LinesSoll);
+        importAllLines(quelle2, m_LinesSoll);
+        for_each(m_LinesSoll.begin(), m_LinesSoll.end(), trimRight);
+
     }
     cout << "run " << quelle1.c_str();
 

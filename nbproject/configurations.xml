@@ -3,12 +3,12 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
       <df name="source">
-        <in>base64.cpp</in>
         <in>formater.cpp</in>
         <in>formater_test.cpp</in>
         <in>layer_counter.h</in>
         <in>line_status.cpp</in>
         <in>spl2html.cpp</in>
+        <in>string_utils.cpp</in>
       </df>
       <df name="test">
         <in>long.txt</in>
@@ -117,20 +117,6 @@
           <preBuildCommand></preBuildCommand>
         </preBuild>
       </makefileType>
-      <item path="source/base64.cpp" ex="false" tool="1" flavor2="0">
-        <ccTool>
-          <incDir>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
-            <pElem>Debug</pElem>
-          </incDir>
-        </ccTool>
-      </item>
       <item path="source/formater.cpp" ex="false" tool="1" flavor2="0">
         <ccTool>
           <incDir>
@@ -176,6 +162,20 @@
         </ccTool>
       </item>
       <item path="source/spl2html.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool>
+          <incDir>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
+            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
+            <pElem>Debug</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/string_utils.cpp" ex="false" tool="1" flavor2="0">
         <ccTool>
           <incDir>
             <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>

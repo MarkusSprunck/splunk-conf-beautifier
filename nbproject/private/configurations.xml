@@ -5,8 +5,6 @@
       <df name="build">
       </df>
       <df name="source">
-        <in>base64.cpp</in>
-        <in>base64.h</in>
         <in>formater.cpp</in>
         <in>formater.h</in>
         <in>formater_mark_html.h</in>
@@ -20,6 +18,8 @@
         <in>line_status.h</in>
         <in>spl2html.cpp</in>
         <in>std_typedef.h</in>
+        <in>string_utils.cpp</in>
+        <in>string_utils.h</in>
       </df>
       <df name="test">
         <in>long.txt</in>

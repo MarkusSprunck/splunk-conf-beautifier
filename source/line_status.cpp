@@ -36,7 +36,7 @@
 
 
 #include "line_status.h"
-#include "base64.h"
+#include "string_utils.h"
 
 line_status::line_status(void) :
 current(INDEX_COUNT),
@@ -96,10 +96,10 @@ void line_status::SetActiveCharacter(void)
 
 string line_status::GetHtmlFontTag(unsigned long id)
 {
-    const string sFontCode = "</FONT>\n<FONT face=\'courier new\' color=\'black\'>";
-    const string sFontString = "</FONT>\n<FONT face=\'courier new\' color=\'orange\'>";
-    const string sFontCharacter = "</FONT>\n<FONT face=\'courier new\' color=\'orange\'>";
-    const string sFontMacro = "</FONT>\n<FONT face=\'courier new\' color=\'#04B404\'>";
+    const string sFontCode = "</font>\n<font color=\'black\'>";
+    const string sFontString = "</font>\n<font color=\'orange\'>";
+    const string sFontCharacter = "</font>\n<font color=\'orange\'>";
+    const string sFontMacro = "</font>\n<font color=\'#04B404\'>";
     const string g_sFont[] = {sFontCode, sFontString, sFontCharacter, sFontMacro};
     if (id <= 3)
         return g_sFont[id];
