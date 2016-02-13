@@ -65,7 +65,6 @@ void formater::run(const string& inputFile)
     cout << string("create 'file://").append(outputFileResult).append("' ").append(m_sResult) << endl;
 
 
-    // importLines(inputFile, m_Lines);
     m_bCreateHtml = true;
     removeEmptyAll();
     formatPre();
@@ -161,9 +160,9 @@ void formater::formatPost()
         {
             line = for_each(m_commands.begin(), m_commands.end(), formater_mark_html(line));
         }
-    
+
         parseLine(line, ls, false);
-    
+
         line = replacePattern(m_replacePatternsPostprocessing, line, 5);
         if (m_Lines.begin() != iter)
         {
@@ -274,7 +273,7 @@ void formater::createIndenting(string &line, line_status & ls)
 {
     for (int i = 0; i < ls.GetLayer(); i++)
     {
-        line.insert(0, "    ");
+        line.insert(0, m_bCreateHtml ? "&nbsp;&nbsp;&nbsp;" : "    ");
     }
 }
 
