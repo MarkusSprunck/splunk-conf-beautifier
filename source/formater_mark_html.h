@@ -88,5 +88,5 @@ public:
 };
 
 const string formater_mark_html::sFontCode = "</FONT>\n<FONT face=\'courier new\' color=\'black\'>";
-const string formater_mark_html::sFontKeyword = "</FONT>\n<FONT face=\'ourier new\' color=\'blue\'>";
+const string formater_mark_html::sFontKeyword = "</FONT>\n<FONT face=\'courier new\' color=\'blue\'>";
 const string formater_mark_html::sFontMarked = "</FONT>\n<FONT face=\'courier new\' color=\'grey\'>";

@@ -81,7 +81,9 @@ void formater::importLines(const string& file, list<string>& m_Lines)
 {
     fstream fin(file.c_str(), ios_base::in);
     if (fin.fail())
+    {
         m_sResult = "file open failed";
+    }
     else
     {
         string line;
@@ -104,9 +106,10 @@ void formater::exportLines(const string& file)
     if (0 == m_sResult.compare("ok"))
     {
         fstream fout(file.c_str(), ios_base::out | ios_base::trunc);
-
         if (fout.fail())
+        {
             m_sResult = "file create failed";
+        }
         else
         {
             for_each(m_Lines.begin(), m_Lines.end(), trimRight);
@@ -117,15 +120,11 @@ void formater::exportLines(const string& file)
 
 void formater::createHtml()
 {
-
-
-    long l = 0;
     for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
     {
         basic_stringstream<char> psz2;
         *iter = psz2.str().append(*iter).append("</br>");
     }
-
     m_Lines.push_front("<style TYPE='text/css'> <!-- --> body { line-height: 1.1; } </style>");
 
     string s = "<P align=\"right\">";
@@ -146,24 +145,30 @@ void formater::formatPre()
         *iter = line;
         ls.storeLastFlags();
     }
-
     for_each(m_Lines.begin(), m_Lines.end(), trimRight);
 }
 
 void formater::formatPost()
 {
     line_status ls;
-
     for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
     {
         string line = *iter;
-        line = replacePattern(m_replacePatternsPostprocessing, line, 5);
+
         for_each(m_commands.begin(), m_commands.end(), layer_counter(&ls, line));
+
+        if (m_bCreateHtml)
+        {
+            line = for_each(m_commands.begin(), m_commands.end(), formater_mark_html(line));
+        }
+    
+        parseLine(line, ls, false);
+    
+        line = replacePattern(m_replacePatternsPostprocessing, line, 5);
         if (m_Lines.begin() != iter)
         {
             createIndenting(line, ls);
         }
-        parseLine(line, ls, false);
         *iter = line;
         ls.storeLastFlags();
     }
@@ -198,13 +203,9 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
     index_string indexStart = 0;
     index_string index = 0;
 
-    if (m_bCreateHtml)
+    if (m_bCreateHtml && !encode)
     {
-        if (!encode)
-        {
-            line = for_each(m_replacePatternsHtml.begin(), m_replacePatternsHtml.end(), formater_replace(line));
-            ls.insertHtmlFont(index, line);
-        }
+        ls.insertHtmlFont(index, line);
     }
 
     do
@@ -227,31 +228,23 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
             {
                 if (encode)
                 {
-                    // cout << "line_org:" << line << endl;
                     int indexStart1 = indexStart + 1;
                     int string_length = (index - indexStart - 1);
                     string sub_string2 = line.substr(indexStart1, string_length);
-                    //   cout << "string : '" << sub_string2 << "'" << endl;
                     string encoded2 = base64_encode(sub_string2);
-                    // cout << "encoded: '" << encoded2 << "'" << endl;
                     line = line.replace(indexStart1, string_length, encoded2);
                     index -= sub_string2.length();
                     index += encoded2.length();
-                    //  cout << "line_new:" << line << endl << endl;
                 }
                 else
                 {
-                    //   cout << "line_org:" << line << endl;
                     int indexStart1 = indexStart + 1;
                     int string_length = (index - indexStart - 1);
                     string sub_string = line.substr(indexStart1, string_length);
-                    //  cout << "string:" << sub_string << endl;
                     string decoded = base64_decode(sub_string);
-                    // cout << "decoded  :" << decoded << endl;
                     line = line.replace(indexStart1, string_length, decoded);
                     index -= sub_string.length();
                     index += decoded.length();
-                    //  cout << "line_new:" << line << endl << endl;
                 }
 
                 ls.SetActiveCode();
@@ -265,11 +258,14 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
     }
     while (++index <= line.size());
 
-
     if (ls.inString())
+    {
         m_sResult = "invalid string";
+    }
     else if (ls.inCharacter())
+    {
         m_sResult = "invalid character";
+    }
 
     return false;
 }

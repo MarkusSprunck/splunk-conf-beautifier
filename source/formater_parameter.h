@@ -66,7 +66,7 @@ const map_string getReplaceHtml()
     map_string replace;
     replace["<"] = "&lt;";
     replace[">"] = "&gt;";
-    replace["   "] = "&nbsp;&nbsp;&nbsp;";
+    replace[" "] = "&nbsp;";
     replace["\t"] = "&nbsp;&nbsp;&nbsp;";
     return replace;
 }

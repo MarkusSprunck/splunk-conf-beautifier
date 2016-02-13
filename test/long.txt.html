@@ -1,64 +1,84 @@
 <style TYPE='text/css'> <!-- --> body { line-height: 1.1; } </style>
 </FONT>
-<FONT face='courier new' color='black'>sourcetype=CI_* BULK_KEY=$args.BULK_KEY$ ABC &lt;=5 &lt;br&gt;</br>
+<FONT face='courier new' color='black'>sourcetype=CI_* BULK_KEY=$args.BULK_KEY$ ABC <=5 <br></br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_TRX_NUMBER=coalesce( BULK_TRX_NUMBER, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_TRX_NUMBER=coalesce( BULK_TRX_NUMBER, </FONT>
 <FONT face='courier new' color='orange'>"12,3'4|5"</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_CONTROL_SUM=coalesce( BULK_CONTROL_SUM, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_CONTROL_SUM=coalesce( BULK_CONTROL_SUM, </FONT>
 <FONT face='courier new' color='orange'>"678 eval 901"</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_NAME=coalesce( BULK_NAME, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_NAME=coalesce( BULK_NAME, </FONT>
 <FONT face='courier new' color='orange'>"n.a."</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_NAME_ORIGINAL=coalesce( BULK_NAME_ORIGINAL, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_NAME_ORIGINAL=coalesce( BULK_NAME_ORIGINAL, </FONT>
 <FONT face='courier new' color='orange'>"n.a. search "</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval SEPA_MESSAGE_TYPE=coalesce( SEPA_MESSAGE_TYPE, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> SEPA_MESSAGE_TYPE=coalesce( SEPA_MESSAGE_TYPE, </FONT>
 <FONT face='courier new' color='orange'>"n.a."</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval FILE_TRX_NUMBER=coalesce( FILE_TRX_NUMBER, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> FILE_TRX_NUMBER=coalesce( FILE_TRX_NUMBER, </FONT>
 <FONT face='courier new' color='orange'>"n.a."</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval FILE_NUMBER=coalesce( FILE_NUMBER, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> FILE_NUMBER=coalesce( FILE_NUMBER, </FONT>
 <FONT face='courier new' color='orange'>"n.a."</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_CONTROL_SUM_XPE=coalesce( BULK_CONTROL_SUM_XPE, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_CONTROL_SUM_XPE=coalesce( BULK_CONTROL_SUM_XPE, </FONT>
 <FONT face='courier new' color='orange'>"0"</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_TRX_NUMBER_XPE=coalesce( BULK_TRX_NUMBER_XPE, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_TRX_NUMBER_XPE=coalesce( BULK_TRX_NUMBER_XPE, </FONT>
 <FONT face='courier new' color='orange'>"0"</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval CUSTOMER_IBAN=coalesce( DEBTOR_IBAN, CREDITOR_IBAN, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> CUSTOMER_IBAN=coalesce( DEBTOR_IBAN, CREDITOR_IBAN, </FONT>
 <FONT face='courier new' color='orange'>"diverse"</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
@@ -68,7 +88,9 @@
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_CONTROL_SUM=thousanders_BULK_CONTROL_SUM</br>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_CONTROL_SUM=thousanders_BULK_CONTROL_SUM</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
@@ -76,7 +98,9 @@
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_CONTROL_SUM_XPE=thousanders_BULK_CONTROL_SUM_XPE</br>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_CONTROL_SUM_XPE=thousanders_BULK_CONTROL_SUM_XPE</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
@@ -84,7 +108,9 @@
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_TRX_NUMBER=thousanders_BULK_TRX_NUMBER</br>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_TRX_NUMBER=thousanders_BULK_TRX_NUMBER</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
@@ -92,7 +118,9 @@
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval BULK_TRX_NUMBER_XPE=thousanders_BULK_TRX_NUMBER_XPE</br>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> BULK_TRX_NUMBER_XPE=thousanders_BULK_TRX_NUMBER_XPE</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
@@ -100,63 +128,143 @@
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval FILE_TRX_NUMBER=thousanders_FILE_TRX_NUMBER</br>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> FILE_TRX_NUMBER=thousanders_FILE_TRX_NUMBER</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| eval XPE_ORIGIN=coalesce( XPE_ORIGIN, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>eval</FONT>
+<FONT face='courier new' color='black'> XPE_ORIGIN=coalesce( XPE_ORIGIN, </FONT>
 <FONT face='courier new' color='orange'>"n.a."</FONT>
 <FONT face='courier new' color='black'> )</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| stats latest( CUSTOMER_IBAN ) as </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>stats</FONT>
+<FONT face='courier new' color='black'> </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>( CUSTOMER_IBAN ) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"01. Customer IBAN"</FONT>
-<FONT face='courier new' color='black'>, latest(BULK_EXECUTION_DATE) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(BULK_EXECUTION_DATE) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"02. Requested Date"</FONT>
-<FONT face='courier new' color='black'>, latest(BULK_NAME_ORIGINAL) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(BULK_NAME_ORIGINAL) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"03. Bulk Id"</FONT>
-<FONT face='courier new' color='black'>, latest(BULK_CONTROL_SUM) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(BULK_CONTROL_SUM) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"04. Customer Bulk Amount"</FONT>
-<FONT face='courier new' color='black'>, latest(BULK_CONTROL_SUM_XPE) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(BULK_CONTROL_SUM_XPE) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"05. Calculated Bulk Amount"</FONT>
-<FONT face='courier new' color='black'>, latest(BULK_TRX_NUMBER) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(BULK_TRX_NUMBER) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"06. Customer Bulk Trx"</FONT>
-<FONT face='courier new' color='black'>, latest(BULK_TRX_NUMBER_XPE) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(BULK_TRX_NUMBER_XPE) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"07. Calculated Bulk Trx"</FONT>
-<FONT face='courier new' color='black'>, latest(MONITORINGPOINT) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(MONITORINGPOINT) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"08. Last Status"</FONT>
-<FONT face='courier new' color='black'>, latest(TIMESTAMP) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(TIMESTAMP) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"09. Status Time"</FONT>
-<FONT face='courier new' color='black'>, latest(SERVICE_TYPE) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(SERVICE_TYPE) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"10. Service"</FONT>
-<FONT face='courier new' color='black'>, latest(SEPA_MESSAGE_TYPE) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(SEPA_MESSAGE_TYPE) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"11. SEPA Message Type"</FONT>
-<FONT face='courier new' color='black'>, latest(FILE_NAME_ORIGINAL) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(FILE_NAME_ORIGINAL) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"12. File Id"</FONT>
-<FONT face='courier new' color='black'>, latest(FILE_TRX_NUMBER) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(FILE_TRX_NUMBER) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"13. File Trx"</FONT>
-<FONT face='courier new' color='black'>, latest(FILE_CREATION_DATE) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(FILE_CREATION_DATE) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"14. File Creation Date"</FONT>
-<FONT face='courier new' color='black'>, latest(XPE_ORIGIN) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(XPE_ORIGIN) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"15. Origin"</FONT>
-<FONT face='courier new' color='black'>, latest(FILE_NUMBER) as </FONT>
+<FONT face='courier new' color='black'>, </FONT>
+<FONT face='courier new' color='blue'>latest</FONT>
+<FONT face='courier new' color='black'>(FILE_NUMBER) </FONT>
+<FONT face='courier new' color='blue'>as</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"16. XPE File Number"</FONT>
-<FONT face='courier new' color='black'> by BULK_KEY</br>
+<FONT face='courier new' color='black'> </FONT>
+<FONT face='courier new' color='blue'>by</FONT>
+<FONT face='courier new' color='black'> BULK_KEY</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| fields - BULK_KEY</br>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>fields</FONT>
+<FONT face='courier new' color='black'> - BULK_KEY</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| untable _time, </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>untable</FONT>
+<FONT face='courier new' color='black'> _time, </FONT>
 <FONT face='courier new' color='orange'>"Field name"</FONT>
-<FONT face='courier new' color='black'>  table, Content</br>
+<FONT face='courier new' color='black'>  </FONT>
+<FONT face='courier new' color='blue'>table</FONT>
+<FONT face='courier new' color='black'>, Content</br>
 </FONT>
 <FONT face='courier new' color='black'></br>
 </FONT>
-<FONT face='courier new' color='black'>| table </FONT>
+<FONT face='courier new' color='black'>| </FONT>
+<FONT face='courier new' color='blue'>table</FONT>
+<FONT face='courier new' color='black'> </FONT>
 <FONT face='courier new' color='orange'>"Field table name"</FONT>
 <FONT face='courier new' color='black'>, Content</br>
 <P align="right"><FONT>spl2html v0.1<br/>by Markus Sprunck

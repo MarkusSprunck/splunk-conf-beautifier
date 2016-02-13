@@ -65,7 +65,7 @@ protected:
     // single line
     bool parseLine(string &line, line_status& ls, bool encode);
     void replaceSubstrings(const index_string& begin, index_string& end, string &s);
-    static void createIndenting(string &line, line_status& ls);
+    void createIndenting(string &line, line_status& ls);
 
     
 
