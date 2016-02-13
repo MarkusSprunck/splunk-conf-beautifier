@@ -35,6 +35,9 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+#include "base64.h"
+
 class formater_mark_html {
    static const string sFontCode;
    static const string sFontKeyword;
@@ -84,6 +87,6 @@ public:
    }
 };
 
-const string formater_mark_html::sFontCode = "</FONT><FONT face=\"courier new\" color=\"black\" size=\"-1\">";
-const string formater_mark_html::sFontKeyword = "</FONT><FONT face=\"courier new\" color=\"mediumslateblue\" size=\"-1\">";
-const string formater_mark_html::sFontMarked = "</FONT><FONT face=\"courier new\" color=\"darkred\" size=\"-1\">";
+const string formater_mark_html::sFontCode = "</FONT>\n<FONT face=\'courier new\' color=\'black\'>";
+const string formater_mark_html::sFontKeyword = "</FONT>\n<FONT face=\'ourier new\' color=\'blue\'>";
+const string formater_mark_html::sFontMarked = "</FONT>\n<FONT face=\'courier new\' color=\'grey\'>";

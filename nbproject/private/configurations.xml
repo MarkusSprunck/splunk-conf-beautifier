@@ -5,6 +5,7 @@
       <df name="build">
       </df>
       <df name="source">
+        <in>base64.cpp</in>
         <in>base64.h</in>
         <in>formater.cpp</in>
         <in>formater.h</in>

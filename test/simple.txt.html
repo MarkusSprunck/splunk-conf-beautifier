@@ -1,0 +1,34 @@
+<style TYPE='text/css'> <!-- --> body { line-height: 1.1; } </style>
+</FONT>
+<FONT face='courier new' color='black'>search source=mytabl1 mycolumn=value</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp;</br>
+</FONT>
+<FONT face='courier new' color='black'>| stats avg( mycolumn ) by mycolumn</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp;</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp; | search TST123=value</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp; | fields mycolumn, avg( mycolumn )</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp; | eval test=</FONT>
+<FONT face='courier new' color='orange'>"abc"</FONT>
+<FONT face='courier new' color='black'>.</FONT>
+<FONT face='courier new' color='orange'>"xyz"</FONT>
+<FONT face='courier new' color='black'>.'ghf'.</FONT>
+<FONT face='courier new' color='orange'>"'hij'"</FONT>
+<FONT face='courier new' color='black'>.'hhh'</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | search source=mytabl1 mycolumn=value</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br>
+</FONT>
+<FONT face='courier new' color='black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | table ABC</br>
+<P align="right"><FONT>spl2html v0.1<br/>by Markus Sprunck

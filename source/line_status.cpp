@@ -34,7 +34,9 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #include "line_status.h"
+#include "base64.h"
 
 line_status::line_status(void) :
 current(INDEX_COUNT),
@@ -94,15 +96,15 @@ void line_status::SetActiveCharacter(void)
 
 string line_status::GetHtmlFontTag(unsigned long id)
 {
-    const string sFontCode = "</FONT><FONT face=\"courier new\" color=\"black\" size=\"-1\">";
-    const string sFontString = "</FONT><FONT face=\"courier new\" color=\"orange\" size=\"-1\">";
-    const string sFontCharacter = "</FONT><FONT face=\"courier new\" color=\"orange\" size=\"-1\">";
-    const string sFontMacro = "</FONT><FONT face=\"courier new\" color=\"#04B404\" size=\"-1\">";
+    const string sFontCode = "</FONT>\n<FONT face=\'courier new\' color=\'black\'>";
+    const string sFontString = "</FONT>\n<FONT face=\'courier new\' color=\'orange\'>";
+    const string sFontCharacter = "</FONT>\n<FONT face=\'courier new\' color=\'orange\'>";
+    const string sFontMacro = "</FONT>\n<FONT face=\'courier new\' color=\'#04B404\'>";
     const string g_sFont[] = {sFontCode, sFontString, sFontCharacter, sFontMacro};
     if (id <= 3)
         return g_sFont[id];
     else
-        return "";
+        return "<FONT>";
 }
 
 void line_status::insertHtmlFont(index_string& pos, string& s)

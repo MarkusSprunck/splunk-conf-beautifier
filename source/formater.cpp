@@ -64,17 +64,17 @@ void formater::run(const string& inputFile)
     exportLines(outputFileResult);
     cout << string("create 'file://").append(outputFileResult).append("' ").append(m_sResult) << endl;
 
-    /*
+
+    // importLines(inputFile, m_Lines);
     m_bCreateHtml = true;
+    removeEmptyAll();
     formatPre();
+    wrapLines("|");
     formatPost();
     createHtml();
-
-
     string outputFileHtml = string(inputFile).append(".html");
     exportLines(outputFileHtml);
     cout << string("create 'file://").append(outputFileHtml).append("' ").append(m_sResult) << endl;
-     */
 }
 
 void formater::importLines(const string& file, list<string>& m_Lines)
@@ -117,19 +117,21 @@ void formater::exportLines(const string& file)
 
 void formater::createHtml()
 {
+
+
     long l = 0;
     for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
     {
         basic_stringstream<char> psz2;
-        psz2 << line_status::GetHtmlFontTag();
-        string line = *iter;
-        *iter = psz2.str().append(line).append("<br/>");
+        *iter = psz2.str().append(*iter).append("</br>");
     }
+
+    m_Lines.push_front("<style TYPE='text/css'> <!-- --> body { line-height: 1.1; } </style>");
 
     string s = "<P align=\"right\">";
     s.append(line_status::GetHtmlFontTag());
     s.append(g_sVersion);
-    s.append("<br/>by Markus Sprunck<br/>");
+    s.append("<br/>by Markus Sprunck");
     m_Lines.push_back(s);
 }
 
@@ -196,18 +198,30 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
     index_string indexStart = 0;
     index_string index = 0;
 
+    if (m_bCreateHtml)
+    {
+        if (!encode)
+        {
+            line = for_each(m_replacePatternsHtml.begin(), m_replacePatternsHtml.end(), formater_replace(line));
+            ls.insertHtmlFont(index, line);
+        }
+    }
+
     do
     {
         if (ls.inCode())
         {
             if (line[index] == '"')
             {
-                indexStart = index;
                 ls.SetActiveString();
+                if (m_bCreateHtml && !encode)
+                {
+                    ls.insertHtmlFont(index, line);
+                }
+                indexStart = index;
             }
         }
-        else
-            if (ls.inString())
+        else if (ls.inString())
         {
             if (line[index] == '"')
             {
@@ -239,11 +253,18 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
                     index += decoded.length();
                     //  cout << "line_new:" << line << endl << endl;
                 }
+
                 ls.SetActiveCode();
+                if (m_bCreateHtml && !encode)
+                {
+                    ls.insertHtmlFont(++index, line);
+                }
+                indexStart = index;
             }
         }
     }
     while (++index <= line.size());
+
 
     if (ls.inString())
         m_sResult = "invalid string";

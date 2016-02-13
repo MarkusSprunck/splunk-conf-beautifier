@@ -1,4 +1,4 @@
-sourcetype=CI_* BULK_KEY=$args.BULK_KEY$
+sourcetype=CI_* BULK_KEY=$args.BULK_KEY$ ABC <=5 <br>
 | eval BULK_TRX_NUMBER=coalesce( BULK_TRX_NUMBER, "12,3'4|5" )
 | eval BULK_CONTROL_SUM=coalesce(BULK_CONTROL_SUM, "678 eval 901")
 | eval BULK_NAME=coalesce(BULK_NAME, "n.a.")
