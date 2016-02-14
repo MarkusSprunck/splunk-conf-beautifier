@@ -18,15 +18,14 @@
 
 class string_util_test : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(string_util_test);
-
     CPPUNIT_TEST(test_trimLeft_simple);
     CPPUNIT_TEST(test_trimLeft_not_trim_right);
     CPPUNIT_TEST(test_trimLeft_empty_string);
-
     CPPUNIT_TEST(test_trimRight_simple);
     CPPUNIT_TEST(test_trimRight_not_trim_left);
     CPPUNIT_TEST(test_trimRight_empty_string);
-
+    CPPUNIT_TEST(test_encode);
+    CPPUNIT_TEST(test_decode);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -44,6 +43,8 @@ private:
     void test_trimRight_not_trim_left();
     void test_trimRight_empty_string();
 
+    void test_encode();
+    void test_decode();
 };
 
 #endif /* STRING_UTIL_TEST_H */

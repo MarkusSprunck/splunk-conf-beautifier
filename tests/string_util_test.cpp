@@ -103,4 +103,28 @@ void string_util_test::test_trimRight_empty_string() {
     CPPUNIT_ASSERT_EQUAL(expected, value);
 }
 
+void string_util_test::test_encode() {
+    // given
+    string value = "1234567890AaBbCc ,.-!";
+    string expected = "MTIzNDU2Nzg5MEFhQmJDYyAsLi0h";
+
+    // when 
+    string result = base64_encode(value);
+    // cout << "'" << result << "'" << endl;
+
+    // then
+    CPPUNIT_ASSERT_EQUAL(expected, result);
+}
+
+void string_util_test::test_decode() {
+    // given
+    string value = "MTIzNDU2Nzg5MEFhQmJDYyAsLi0h";
+    string expected = "1234567890AaBbCc ,.-!";
+
+    // when 
+    string result = base64_decode(value);
+
+    // then
+    CPPUNIT_ASSERT_EQUAL(expected, result);
+}
 
