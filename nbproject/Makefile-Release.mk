@@ -71,11 +71,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html_old.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html_old.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html_old ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/src/formater.o: src/formater.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -203,7 +203,7 @@ ${OBJECTDIR}/src/string_utils_nomain.o: ${OBJECTDIR}/src/string_utils.o src/stri
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html_old.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html.exe
 
 # Subprojects
 .clean-subprojects:

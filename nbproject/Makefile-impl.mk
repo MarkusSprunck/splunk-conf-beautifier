@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=spl2html_old
+PROJECTNAME=spl2html
 
 # Active Configuration
 DEFAULTCONF=Debug
