@@ -48,7 +48,6 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../../../Tools/cygwin64/usr/include</Elem>
     <Elem>data</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
@@ -61,42 +60,10 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <developmentMode>0</developmentMode>
           <standard>8</standard>
-          <incDir>
-            <pElem>../../../Tools/cygwin64/usr/include</pElem>
-          </incDir>
         </ccTool>
       </compileType>
-      <item path="data/long-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/run-help.bat" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/run-html.bat" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/run-tests.bat" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -160,6 +127,7 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -168,36 +136,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="data/long-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/run-help.bat" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/run-html.bat" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/run-tests.bat" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>

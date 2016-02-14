@@ -15,6 +15,9 @@
         </gdb_interceptlist>
         <gdb_options>
           <DebugOptions>
+            <option name="gdb_init_file" value=""/>
+            <option name="debug_command" value="&quot;${OUTPUT_PATH}&quot;  -h simple.txt"/>
+            <option name="debug_dir" value="C:\Projects\cpp\spl2html_old\data"/>
           </DebugOptions>
         </gdb_options>
         <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
@@ -26,9 +29,10 @@
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" "arg 1" "arg 2" "arg 3" "arg 4"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"  -h simple.txt</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" "arg 1" "arg 2" "arg 3" "arg 4"</runcommand>
-        <rundir></rundir>
+        <runcommand>"${OUTPUT_PATH}"  -h simple.txt</runcommand>
+        <rundir>C:\Projects\cpp\spl2html_old\data</rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>

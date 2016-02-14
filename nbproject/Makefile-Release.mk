@@ -80,27 +80,27 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html_old.exe: ${OBJECTFILES}
 ${OBJECTDIR}/src/formater.o: src/formater.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/formater.o src/formater.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/formater.o src/formater.cpp
 
 ${OBJECTDIR}/src/formater_test.o: src/formater_test.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/formater_test.o src/formater_test.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/formater_test.o src/formater_test.cpp
 
 ${OBJECTDIR}/src/line_status.o: src/line_status.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/line_status.o src/line_status.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/line_status.o src/line_status.cpp
 
 ${OBJECTDIR}/src/spl2html.o: src/spl2html.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/spl2html.o src/spl2html.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/spl2html.o src/spl2html.cpp
 
 ${OBJECTDIR}/src/string_utils.o: src/string_utils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/string_utils.o src/string_utils.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/string_utils.o src/string_utils.cpp
 
 # Subprojects
 .build-subprojects:
@@ -117,13 +117,13 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestrunner.o ${TESTDIR}/tests/strin
 ${TESTDIR}/tests/newtestrunner.o: tests/newtestrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newtestrunner.o tests/newtestrunner.cpp
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newtestrunner.o tests/newtestrunner.cpp
 
 
 ${TESTDIR}/tests/string_util_test.o: tests/string_util_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/string_util_test.o tests/string_util_test.cpp
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/string_util_test.o tests/string_util_test.cpp
 
 
 ${OBJECTDIR}/src/formater_nomain.o: ${OBJECTDIR}/src/formater.o src/formater.cpp 
@@ -134,7 +134,7 @@ ${OBJECTDIR}/src/formater_nomain.o: ${OBJECTDIR}/src/formater.o src/formater.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/formater_nomain.o src/formater.cpp;\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/formater_nomain.o src/formater.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/formater.o ${OBJECTDIR}/src/formater_nomain.o;\
 	fi
@@ -147,7 +147,7 @@ ${OBJECTDIR}/src/formater_test_nomain.o: ${OBJECTDIR}/src/formater_test.o src/fo
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/formater_test_nomain.o src/formater_test.cpp;\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/formater_test_nomain.o src/formater_test.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/formater_test.o ${OBJECTDIR}/src/formater_test_nomain.o;\
 	fi
@@ -160,7 +160,7 @@ ${OBJECTDIR}/src/line_status_nomain.o: ${OBJECTDIR}/src/line_status.o src/line_s
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/line_status_nomain.o src/line_status.cpp;\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/line_status_nomain.o src/line_status.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/line_status.o ${OBJECTDIR}/src/line_status_nomain.o;\
 	fi
@@ -173,7 +173,7 @@ ${OBJECTDIR}/src/spl2html_nomain.o: ${OBJECTDIR}/src/spl2html.o src/spl2html.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/spl2html_nomain.o src/spl2html.cpp;\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/spl2html_nomain.o src/spl2html.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/spl2html.o ${OBJECTDIR}/src/spl2html_nomain.o;\
 	fi
@@ -186,7 +186,7 @@ ${OBJECTDIR}/src/string_utils_nomain.o: ${OBJECTDIR}/src/string_utils.o src/stri
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/string_utils_nomain.o src/string_utils.cpp;\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/string_utils_nomain.o src/string_utils.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/string_utils.o ${OBJECTDIR}/src/string_utils_nomain.o;\
 	fi
