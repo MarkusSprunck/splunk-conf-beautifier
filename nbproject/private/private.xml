@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <code-assistance-data xmlns="http://www.netbeans.org/ns/make-project-private/1">
-        <code-model-enabled>true</code-model-enabled>
-    </code-assistance-data>
     <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
-        <activeConfTypeElem>0</activeConfTypeElem>
+        <activeConfTypeElem>1</activeConfTypeElem>
         <activeConfIndexElem>0</activeConfIndexElem>
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Projects/cpp/spl2html/test/long.txt.result</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/formater.cpp</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/long.txt</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/formater_replace.h</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/simple-expected.txt</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/long-expected.txt</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/layer_counter.h</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/line_status.cpp</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/toString.txt</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/run-html.bat</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/toString.txt.result</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/simple.txt</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/formater_parameter.h</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/base64.h</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/formater_test.cpp</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/simple.txt.result</file>
-            <file>file:/C:/Projects/cpp/spl2html/test/toString-expected.txt</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/spl2html.cpp</file>
-            <file>file:/C:/Projects/cpp/spl2html/source/formater.h</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

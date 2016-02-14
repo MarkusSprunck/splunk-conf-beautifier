@@ -1,195 +1,250 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df root="." name="0">
-      <df name="source">
-        <in>formater.cpp</in>
-        <in>formater_test.cpp</in>
-        <in>layer_counter.h</in>
-        <in>line_status.cpp</in>
-        <in>spl2html.cpp</in>
-        <in>string_utils.cpp</in>
-      </df>
-      <df name="test">
-        <in>long.txt</in>
-      </df>
-    </df>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>src/formater.h</itemPath>
+      <itemPath>src/formater_mark_html.h</itemPath>
+      <itemPath>src/formater_parameter.h</itemPath>
+      <itemPath>src/formater_replace.h</itemPath>
+      <itemPath>src/formater_test.h</itemPath>
+      <itemPath>src/layer_counter.h</itemPath>
+      <itemPath>src/line_compare.h</itemPath>
+      <itemPath>src/line_status.h</itemPath>
+      <itemPath>src/std_typedef.h</itemPath>
+      <itemPath>src/string_utils.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/formater.cpp</itemPath>
+      <itemPath>src/formater_test.cpp</itemPath>
+      <itemPath>src/line_status.cpp</itemPath>
+      <itemPath>src/spl2html.cpp</itemPath>
+      <itemPath>src/string_utils.cpp</itemPath>
+    </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
                    projectFiles="false"
-                   kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>nbproject/private/launcher.properties</itemPath>
-      <itemPath>makefile</itemPath>
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="String Utils Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/newtestrunner.cpp</itemPath>
+        <itemPath>tests/string_util_test.cpp</itemPath>
+        <itemPath>tests/string_util_test.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
   </logicalFolder>
-  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
-    <Elem>.</Elem>
+    <Elem>../../../Tools/cygwin64/usr/include</Elem>
+    <Elem>data</Elem>
   </sourceRootList>
-  <projectmakefile>makefile</projectmakefile>
+  <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Default" type="0">
+    <conf name="Debug" type="1">
       <toolsSet>
         <compilerSet>default</compilerSet>
-        <dependencyChecking>false</dependencyChecking>
+        <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
-      <codeAssistance>
-      </codeAssistance>
-      <makefileType>
-        <makeTool>
-          <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>${MAKE} -f makefile</buildCommand>
-          <cleanCommand>${MAKE} -f makefile clean</cleanCommand>
-          <executablePath>spl2html.exe</executablePath>
-          <ccTool>
-            <incDir>
-              <pElem>source</pElem>
-            </incDir>
-            <preprocessorList>
-              <Elem>_X86_=1</Elem>
-              <Elem>__CYGWIN32__=1</Elem>
-              <Elem>__DBL_DENORM_MIN__=((double)4.94065645841246544177e-324L)</Elem>
-              <Elem>__DBL_EPSILON__=((double)2.22044604925031308085e-16L)</Elem>
-              <Elem>__DBL_MAX__=((double)1.79769313486231570815e+308L)</Elem>
-              <Elem>__DBL_MIN__=((double)2.22507385850720138309e-308L)</Elem>
-              <Elem>__FLT_EVAL_METHOD__=2</Elem>
-              <Elem>__GNUC_MINOR__=5</Elem>
-              <Elem>__GNUC_PATCHLEVEL__=3</Elem>
-              <Elem>__INT64_C(c)=c ## LL</Elem>
-              <Elem>__INT64_MAX__=9223372036854775807LL</Elem>
-              <Elem>__INT64_TYPE__=long long int</Elem>
-              <Elem>__INTMAX_C(c)=c ## LL</Elem>
-              <Elem>__INTMAX_MAX__=9223372036854775807LL</Elem>
-              <Elem>__INTMAX_TYPE__=long long int</Elem>
-              <Elem>__INTPTR_MAX__=2147483647</Elem>
-              <Elem>__INTPTR_TYPE__=int</Elem>
-              <Elem>__INT_FAST16_MAX__=2147483647</Elem>
-              <Elem>__INT_FAST16_TYPE__=int</Elem>
-              <Elem>__INT_FAST32_MAX__=2147483647</Elem>
-              <Elem>__INT_FAST32_TYPE__=int</Elem>
-              <Elem>__INT_FAST64_MAX__=9223372036854775807LL</Elem>
-              <Elem>__INT_FAST64_TYPE__=long long int</Elem>
-              <Elem>__INT_LEAST64_MAX__=9223372036854775807LL</Elem>
-              <Elem>__INT_LEAST64_TYPE__=long long int</Elem>
-              <Elem>__LONG_MAX__=2147483647L</Elem>
-              <Elem>__PTRDIFF_MAX__=2147483647</Elem>
-              <Elem>__PTRDIFF_TYPE__=int</Elem>
-              <Elem>__REGISTER_PREFIX__=</Elem>
-              <Elem>__SIZEOF_LONG_DOUBLE__=12</Elem>
-              <Elem>__SIZEOF_LONG__=4</Elem>
-              <Elem>__SIZEOF_POINTER__=4</Elem>
-              <Elem>__SIZEOF_PTRDIFF_T__=4</Elem>
-              <Elem>__SIZEOF_SIZE_T__=4</Elem>
-              <Elem>__SIZE_MAX__=4294967295U</Elem>
-              <Elem>__SIZE_TYPE__=unsigned int</Elem>
-              <Elem>__UINT64_C(c)=c ## ULL</Elem>
-              <Elem>__UINT64_MAX__=18446744073709551615ULL</Elem>
-              <Elem>__UINT64_TYPE__=long long unsigned int</Elem>
-              <Elem>__UINTMAX_C(c)=c ## ULL</Elem>
-              <Elem>__UINTMAX_MAX__=18446744073709551615ULL</Elem>
-              <Elem>__UINTMAX_TYPE__=long long unsigned int</Elem>
-              <Elem>__UINTPTR_MAX__=4294967295U</Elem>
-              <Elem>__UINTPTR_TYPE__=unsigned int</Elem>
-              <Elem>__UINT_FAST16_MAX__=4294967295U</Elem>
-              <Elem>__UINT_FAST16_TYPE__=unsigned int</Elem>
-              <Elem>__UINT_FAST32_MAX__=4294967295U</Elem>
-              <Elem>__UINT_FAST32_TYPE__=unsigned int</Elem>
-              <Elem>__UINT_FAST64_MAX__=18446744073709551615ULL</Elem>
-              <Elem>__UINT_FAST64_TYPE__=long long unsigned int</Elem>
-              <Elem>__UINT_LEAST64_MAX__=18446744073709551615ULL</Elem>
-              <Elem>__UINT_LEAST64_TYPE__=long long unsigned int</Elem>
-              <Elem>__USER_LABEL_PREFIX__=_</Elem>
-              <Elem>__VERSION__="4.5.3"</Elem>
-              <Elem>__cplusplus=1</Elem>
-              <Elem>__i386=1</Elem>
-              <Elem>__i386__=1</Elem>
-              <Elem>__i686=1</Elem>
-              <Elem>__i686__=1</Elem>
-              <Elem>__pentiumpro=1</Elem>
-              <Elem>__pentiumpro__=1</Elem>
-              <Elem>i386=1</Elem>
-            </preprocessorList>
-          </ccTool>
-        </makeTool>
-        <preBuild>
-          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
-          <preBuildCommand></preBuildCommand>
-        </preBuild>
-      </makefileType>
-      <item path="source/formater.cpp" ex="false" tool="1" flavor2="0">
+      <compileType>
         <ccTool>
+          <standard>8</standard>
           <incDir>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
-            <pElem>Debug</pElem>
+            <pElem>../../../Tools/cygwin64/usr/include</pElem>
           </incDir>
         </ccTool>
+      </compileType>
+      <item path="data/long-expected.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/formater_test.cpp" ex="false" tool="1" flavor2="0">
+      <item path="data/long.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/long.txt.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/long.txt.result" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/run-help.bat" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/run-html.bat" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/run-tests.bat" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple.txt.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple.txt.result" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString.txt.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString.txt.result" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
         <ccTool>
-          <incDir>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
-            <pElem>Debug</pElem>
-          </incDir>
+          <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="src/formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="source/layer_counter.h" ex="false" tool="3" flavor2="0">
+      <item path="src/formater.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/line_status.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/formater_mark_html.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/formater_parameter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/formater_replace.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/formater_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/formater_test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/layer_counter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/line_compare.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/line_status.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/spl2html.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/string_util_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/string_util_test.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
         <ccTool>
-          <incDir>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
-            <pElem>Debug</pElem>
-          </incDir>
+          <developmentMode>5</developmentMode>
         </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="data/long-expected.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/spl2html.cpp" ex="false" tool="1" flavor2="0">
+      <item path="data/long.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/long.txt.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/long.txt.result" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/run-help.bat" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/run-html.bat" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/run-tests.bat" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple.txt.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple.txt.result" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString.txt.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString.txt.result" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
         <ccTool>
-          <incDir>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
-            <pElem>Debug</pElem>
-          </incDir>
+          <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="src/formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="source/string_utils.cpp" ex="false" tool="1" flavor2="0">
-        <ccTool>
-          <incDir>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/i686-pc-cygwin/bits</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/ext</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/debug</pElem>
-            <pElem>../../../Tools/cygwin64/lib/gcc/i686-pc-cygwin/4.5.3/include/c++/backward</pElem>
-            <pElem>Debug</pElem>
-          </incDir>
-        </ccTool>
+      <item path="src/formater.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="test/long.txt" ex="false" tool="3" flavor2="0">
+      <item path="src/formater_mark_html.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/formater_parameter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/formater_replace.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/formater_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/formater_test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/layer_counter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/line_compare.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/spl2html.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/string_util_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/string_util_test.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

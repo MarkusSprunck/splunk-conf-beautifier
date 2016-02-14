@@ -1,62 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="97">
-  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df root="." name="0">
-      <df name="build">
-      </df>
-      <df name="source">
-        <in>formater.cpp</in>
-        <in>formater.h</in>
-        <in>formater_mark_html.h</in>
-        <in>formater_parameter.h</in>
-        <in>formater_replace.h</in>
-        <in>formater_test.cpp</in>
-        <in>formater_test.h</in>
-        <in>layer_counter.h</in>
-        <in>line_compare.h</in>
-        <in>line_status.cpp</in>
-        <in>line_status.h</in>
-        <in>spl2html.cpp</in>
-        <in>std_typedef.h</in>
-        <in>string_utils.cpp</in>
-        <in>string_utils.h</in>
-      </df>
-      <df name="test">
-        <in>long.txt</in>
-      </df>
-    </df>
-  </logicalFolder>
-  <projectmakefile>makefile</projectmakefile>
+  <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Default" type="0">
+    <conf name="Debug" type="1">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <platform>3</platform>
       </toolsSet>
-      <compile>
-        <compiledirpicklist>
-          <compiledirpicklistitem>.</compiledirpicklistitem>
-          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
-        </compiledirpicklist>
-        <compiledir>${AUTO_FOLDER}</compiledir>
-        <compilecommandpicklist>
-          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
-          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
-        </compilecommandpicklist>
-        <compilecommand>${AUTO_COMPILE}</compilecommand>
-      </compile>
       <dbx_gdbdebugger version="1">
         <gdb_pathmaps>
         </gdb_pathmaps>
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
-        <gdb_signals>
-        </gdb_signals>
         <gdb_options>
           <DebugOptions>
-            <option name="debug_command" value="&quot;${OUTPUT_PATH}&quot; -h long.txt"/>
-            <option name="debug_dir" value="C:\Projects\cpp\spl2html\test"/>
           </DebugOptions>
         </gdb_options>
         <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
@@ -66,14 +24,45 @@
       </nativedebugger>
       <runprofile version="9">
         <runcommandpicklist>
-          <runcommandpicklistitem>-h simple.txt</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" -f simple.txt</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" -h simple.txt</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" -h long.txt</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "arg 1" "arg 2" "arg 3" "arg 4"</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" -h long.txt</runcommand>
-        <rundir>C:\Projects\cpp\spl2html\test</rundir>
+        <runcommand>"${OUTPUT_PATH}" "arg 1" "arg 2" "arg 3" "arg 4"</runcommand>
+        <rundir></rundir>
+        <buildfirst>true</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>3</platform>
+      </toolsSet>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "arg 1" "arg 2" "arg 3" "arg 4"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}" "arg 1" "arg 2" "arg 3" "arg 4"</runcommand>
+        <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
