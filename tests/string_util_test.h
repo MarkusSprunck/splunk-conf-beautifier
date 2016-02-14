@@ -21,9 +21,11 @@ class string_util_test : public CPPUNIT_NS::TestFixture {
 
     CPPUNIT_TEST(test_trimLeft_simple);
     CPPUNIT_TEST(test_trimLeft_not_trim_right);
+    CPPUNIT_TEST(test_trimLeft_empty_string);
 
     CPPUNIT_TEST(test_trimRight_simple);
     CPPUNIT_TEST(test_trimRight_not_trim_left);
+    CPPUNIT_TEST(test_trimRight_empty_string);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -36,9 +38,11 @@ public:
 private:
     void test_trimLeft_simple();
     void test_trimLeft_not_trim_right();
+    void test_trimLeft_empty_string();
 
     void test_trimRight_simple();
     void test_trimRight_not_trim_left();
+    void test_trimRight_empty_string();
 
 };
 

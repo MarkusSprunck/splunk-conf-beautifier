@@ -55,6 +55,18 @@ void string_util_test::test_trimLeft_not_trim_right() {
     CPPUNIT_ASSERT_EQUAL(expected, value);
 }
 
+void string_util_test::test_trimLeft_empty_string() {
+    // given
+    string value = "";
+    string expected = "";
+
+    // when 
+    trimLeft(value);
+
+    // then
+    CPPUNIT_ASSERT_EQUAL(expected, value);
+}
+
 void string_util_test::test_trimRight_simple() {
     // given
     string value = "abc ";
@@ -71,6 +83,18 @@ void string_util_test::test_trimRight_not_trim_left() {
     // given
     string value = "  abc  ";
     string expected = "  abc";
+
+    // when 
+    trimRight(value);
+
+    // then
+    CPPUNIT_ASSERT_EQUAL(expected, value);
+}
+
+void string_util_test::test_trimRight_empty_string() {
+    // given
+    string value = "";
+    string expected = "";
 
     // when 
     trimRight(value);
