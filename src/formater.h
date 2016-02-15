@@ -84,6 +84,11 @@ protected:
     bool parseLine(string &line, line_status& ls, bool encode);
     void replaceSubstrings(const index_string& begin, index_string& end, string &s);
     void createIndenting(string &line, line_status& ls);
+    
+    // helper
+    static string GetHtmlFontTag(unsigned long id);
+    void insertHtmlFont(index_string& pos, string& s, line_status& ls);
+
 
     // succsses information
     string m_sResult;

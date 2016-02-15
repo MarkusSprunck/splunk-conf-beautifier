@@ -40,89 +40,59 @@
 
 line_status::line_status(void) :
 current(INDEX_COUNT),
-last(INDEX_COUNT),
-before_last(INDEX_COUNT)
-{
+last(INDEX_COUNT) {
     current[INDEX_COUNT] = 0;
     current[STATUS] = CODE;
     last = current;
 }
 
-void line_status::storeLastFlags()
-{
-    before_last = last;
+void line_status::storeLastFlags() {
     last = current;
 }
 
-const bool line_status::inCode(void)
-{
+const bool line_status::inCode(void) {
     return (CODE == current[STATUS]);
 }
 
-const bool line_status::inMacro(void)
-{
+const bool line_status::inMacro(void) {
     return (MACRO == current[STATUS]);
 }
 
-const bool line_status::inString(void)
-{
+const bool line_status::inString(void) {
     return (STRINGS == current[STATUS]);
 }
 
-const bool line_status::inCharacter(void)
-{
+const bool line_status::inCharacter(void) {
     return (CHARACTER == current[STATUS]);
 }
 
-void line_status::SetActiveCode(void)
-{
+void line_status::SetActiveCode(void) {
     current[STATUS] = CODE;
 }
 
-void line_status::SetActiveMacro(void)
-{
+void line_status::SetActiveMacro(void) {
     current[STATUS] = MACRO;
 }
 
-void line_status::SetActiveString(void)
-{
+void line_status::SetActiveString(void) {
     current[STATUS] = STRINGS;
 }
 
-void line_status::SetActiveCharacter(void)
-{
+void line_status::SetActiveCharacter(void) {
     current[STATUS] = CHARACTER;
 }
 
-string line_status::GetHtmlFontTag(unsigned long id)
-{
-    const string sFontCode = "</font>\n<font color=\'black\'>";
-    const string sFontString = "</font>\n<font color=\'orange\'>";
-    const string sFontCharacter = "</font>\n<font color=\'orange\'>";
-    const string sFontMacro = "</font>\n<font color=\'#04B404\'>";
-    const string g_sFont[] = {sFontCode, sFontString, sFontCharacter, sFontMacro};
-    if (id <= 3)
-        return g_sFont[id];
-    else
-        return "<FONT>";
-}
-
-void line_status::insertHtmlFont(index_string& pos, string& s)
-{
-    s.insert(pos, GetHtmlFontTag(current[STATUS]));
-    pos += GetHtmlFontTag(current[STATUS]).length();
-}
-
-long line_status::GetLayer(void)
-{
+long line_status::GetLayer(void) {
     return current[INDEX_COUNT];
 }
 
-void line_status::SetLayer(int layer)
-{
+void line_status::SetLayer(int layer) {
     current[INDEX_COUNT] = layer;
 }
 
+long line_status::GetCurrentStatus() {
+    return current[STATUS];
+}
 
 
 

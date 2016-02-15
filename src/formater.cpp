@@ -40,6 +40,7 @@
 #include "layer_counter.h"
 #include "formater_mark_html.h"
 #include "string_utils.h"
+#include "line_status.h"
 
 formater::formater() :
 m_sResult("ok"),
@@ -195,7 +196,7 @@ void formater::formatPost()
 string formater::replacePattern(map_string pattern, string s1, int iterations)
 {
     string line = s1;
-    typedef std::map<std::string, std::string>::iterator it_type;
+    typedef map<string, string>::iterator it_type;
     for (it_type iterator = pattern.begin(); iterator != pattern.end(); iterator++)
     {
         for (int i = 0; i < iterations; i++)
@@ -222,7 +223,7 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
 
     if (m_bCreateHtml && !encode)
     {
-        ls.insertHtmlFont(index, line);
+        insertHtmlFont(index, line, ls);
     }
 
     do
@@ -234,7 +235,7 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
                 ls.SetActiveString();
                 if (m_bCreateHtml && !encode)
                 {
-                    ls.insertHtmlFont(index, line);
+                    insertHtmlFont(index, line,ls);
                 }
                 indexStart = index;
             }
@@ -267,7 +268,7 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
                 ls.SetActiveCode();
                 if (m_bCreateHtml && !encode)
                 {
-                    ls.insertHtmlFont(++index, line);
+                    insertHtmlFont(++index, line, ls);
                 }
                 indexStart = index;
             }
@@ -395,6 +396,26 @@ void formater::wrapLines(string pattern)
     }
 
     m_Lines = result;
+}
+
+
+string formater::GetHtmlFontTag(unsigned long id)
+{
+    const string sFontCode = "</font>\n<font color=\'black\'>";
+    const string sFontString = "</font>\n<font color=\'orange\'>";
+    const string sFontCharacter = "</font>\n<font color=\'orange\'>";
+    const string sFontMacro = "</font>\n<font color=\'#04B404\'>";
+    const string g_sFont[] = {sFontCode, sFontString, sFontCharacter, sFontMacro};
+    if (id <= 3)
+        return g_sFont[id];
+    else
+        return "<FONT>";
+}
+
+void formater::insertHtmlFont(index_string& pos, string& s, line_status& ls)
+{
+    s.insert(pos, GetHtmlFontTag(ls.GetCurrentStatus()));
+    pos += GetHtmlFontTag(ls.GetCurrentStatus()).length();
 }
 
 

@@ -38,16 +38,19 @@
 #include "std_typedef.h"
 
 class line_status {
+public:
 
     enum eStatusValue {
         CODE, STRINGS, CHARACTER, MACRO, NONE
     };
 
+protected:
+
     enum eFlagIndex {
         STATUS, INDEX_COUNT
     };
 
-    vector<long> current, last, before_last;
+    vector<long> current, last;
 
 public:
     line_status();
@@ -58,16 +61,15 @@ public:
     const bool inMacro(void);
     const bool inString(void);
     const bool inCharacter(void);
-   
+
     void SetActiveCode(void);
     void SetActiveMacro(void);
     void SetActiveString(void);
     void SetActiveCharacter(void);
 
-    static string GetHtmlFontTag(unsigned long id = line_status::NONE);
-    void insertHtmlFont(index_string& pos, string& s);
-
     long GetLayer(void);
     void SetLayer(int layer);
+
+    long GetCurrentStatus();
 };
 
