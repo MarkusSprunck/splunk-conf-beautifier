@@ -45,8 +45,6 @@
 
 #include "../src/string_utils.h"
 
-
-
 CPPUNIT_TEST_SUITE_REGISTRATION(string_util_test);
 
 string_util_test::string_util_test() {

@@ -10,9 +10,9 @@
       <itemPath>src/formater_replace.h</itemPath>
       <itemPath>src/formater_test.h</itemPath>
       <itemPath>src/layer_counter.h</itemPath>
-      <itemPath>src/line_compare.h</itemPath>
       <itemPath>src/line_status.h</itemPath>
       <itemPath>src/std_typedef.h</itemPath>
+      <itemPath>src/string_compare.h</itemPath>
       <itemPath>src/string_utils.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -42,6 +42,8 @@
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/newtestrunner.cpp</itemPath>
+        <itemPath>tests/string_compare_test.cpp</itemPath>
+        <itemPath>tests/string_compare_test.h</itemPath>
         <itemPath>tests/string_util_test.cpp</itemPath>
         <itemPath>tests/string_util_test.h</itemPath>
       </logicalFolder>
@@ -94,8 +96,6 @@
       </item>
       <item path="src/layer_counter.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/line_compare.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/line_status.h" ex="false" tool="3" flavor2="0">
@@ -104,11 +104,17 @@
       </item>
       <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/string_compare.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/string_compare_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/string_compare_test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/string_util_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -166,19 +172,23 @@
       </item>
       <item path="src/layer_counter.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/line_compare.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/spl2html.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/string_compare.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/string_compare_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/string_compare_test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/string_util_test.cpp" ex="false" tool="1" flavor2="0">
       </item>

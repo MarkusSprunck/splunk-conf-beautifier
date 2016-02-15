@@ -37,11 +37,10 @@
 #include <time.h>
 #include "formater.h"
 #include "formater_test.h"
-#include "line_compare.h"
+#include "string_compare.h"
 #include "string_utils.h"
 
-formater_test::formater_test(void)
-{
+formater_test::formater_test(void) {
     m_numberOk = m_number = m_time = 0;
 
     cout << endl;
@@ -55,8 +54,7 @@ formater_test::formater_test(void)
     cout << m_time << " clocks" << endl;
 }
 
-void formater_test::executeTest(const string& name, const string soll)
-{
+void formater_test::executeTest(const string& name, const string soll) {
     clock_t start = clock();
     m_number++;
     m_sResult = "ok";
@@ -69,8 +67,7 @@ void formater_test::executeTest(const string& name, const string soll)
 
     string quelle2 = name;
     quelle2.append("-expected.txt");
-    if (0 == soll.compare("ok"))
-    {
+    if (0 == soll.compare("ok")) {
         importAllLines(quelle2, m_LinesSoll);
         for_each(m_LinesSoll.begin(), m_LinesSoll.end(), trimRight);
 
@@ -87,31 +84,25 @@ void formater_test::executeTest(const string& name, const string soll)
 
     if (0 != m_sResult.compare(soll))
         cout << " error: " << m_sResult << endl;
-    else
-    {
-        bool m_sResult = true;
-        if (0 == soll.compare("ok"))
-        {
-            if (m_LinesSoll.size() <= m_Lines.size())
-            {
-                m_sResult = equal(m_LinesSoll.begin(), m_LinesSoll.end(), m_Lines.begin(), line_compare());
-                if (!m_sResult)
+    else {
+        bool result = true;
+        if (0 == soll.compare("ok")) {
+            if (m_LinesSoll.size() <= m_Lines.size()) {
+                result = equal(m_LinesSoll.begin(), m_LinesSoll.end(), m_Lines.begin(), string_compare(true));
+                if (!result)
                     cout << endl << "[soll|ist]";
-            }
-            else
-            {
-                m_sResult = equal(m_Lines.begin(), m_Lines.end(), m_LinesSoll.begin(), line_compare());
-                if (!m_sResult)
-                {
+            } else {
+                result = equal(m_Lines.begin(), m_Lines.end(), m_LinesSoll.begin(), string_compare(true));
+                if (!result) {
                     cout << endl << "[ist|soll]";
                 }
             }
         }
-        if (m_sResult)
+        if (result)
             m_numberOk++;
 
         clock_t mytime = clock() - start;
         m_time += mytime;
-        cout << ((m_sResult) ? " suceeded, " : " failed, ") << mytime << " clock(s)" << endl;
+        cout << ((result) ? " suceeded, " : " failed, ") << mytime << " clock(s)" << endl;
     }
 };

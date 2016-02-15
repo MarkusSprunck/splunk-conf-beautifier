@@ -51,6 +51,7 @@ TESTFILES= \
 # Test Object Files
 TESTOBJECTFILES= \
 	${TESTDIR}/tests/newtestrunner.o \
+	${TESTDIR}/tests/string_compare_test.o \
 	${TESTDIR}/tests/string_util_test.o
 
 # C Compiler Flags
@@ -109,7 +110,7 @@ ${OBJECTDIR}/src/string_utils.o: src/string_utils.cpp
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestrunner.o ${TESTDIR}/tests/string_util_test.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestrunner.o ${TESTDIR}/tests/string_compare_test.o ${TESTDIR}/tests/string_util_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
@@ -118,6 +119,12 @@ ${TESTDIR}/tests/newtestrunner.o: tests/newtestrunner.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newtestrunner.o tests/newtestrunner.cpp
+
+
+${TESTDIR}/tests/string_compare_test.o: tests/string_compare_test.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/string_compare_test.o tests/string_compare_test.cpp
 
 
 ${TESTDIR}/tests/string_util_test.o: tests/string_util_test.cpp 

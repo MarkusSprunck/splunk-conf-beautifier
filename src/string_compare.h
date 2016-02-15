@@ -1,4 +1,5 @@
 #pragma once
+
 /**
  * Copyright (C) 2016, Markus Sprunck
  *
@@ -36,22 +37,27 @@
  */
 
 
-class line_compare {
+class string_compare {
     long count;
+    bool trace;
 
 public:
 
-    line_compare() : count(0) {
+    string_compare(bool trace = false) : count(0), trace(trace) {
     }
 
     // The function call to process the next element
 
     bool operator()(const string& s1, const string& s2) {
-        count++;        
+        count++;
         if (0 != s1.compare(s2)) {
-            cout << endl << "line(" << count << "):";
-            cout << endl << "\t[" << s1.size() << "]" << '\"' << s1.c_str() << '\"';
-            cout << endl << "\t[" << s2.size() << "]" << '\"' << s2.c_str() << '\"';
+            if (trace) {
+                cout << endl << "element number " << count << " is different:";
+                cout << endl << "\tfirst  [length=" << s1.size() << "] " << '\"' << s1.c_str() << '\"';
+                cout << endl << "\tsecond [length=" << s2.size() << "] " << '\"' << s2.c_str() << '\"';
+                cout << endl << endl;
+                cout.flush();
+            }
             return false;
         }
         return true;
