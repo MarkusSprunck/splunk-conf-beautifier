@@ -48,12 +48,10 @@ m_bCreateHtml(true),
 m_commands(getCommand()),
 m_replacePatternsPreprocessing(getReplacePrepocessing()),
 m_replacePatternsPostprocessing(getReplacePostprocessing()),
-m_replacePatternsHtml(getReplaceHtml())
-{
+m_replacePatternsHtml(getReplaceHtml()) {
 }
 
-void formater::run(const string& inputFile)
-{
+void formater::run(const string& inputFile) {
     // import all lines
     importAllLines(inputFile, m_Lines);
     for_each(m_Lines.begin(), m_Lines.end(), trimLeft);
@@ -64,6 +62,7 @@ void formater::run(const string& inputFile)
     removeEmptyAll();
     formatPre();
     wrapLines("|");
+    wrapLines(",");
     formatPost();
     string outputFileResult = string(inputFile).append(".result");
     exportAllLines(outputFileResult);
@@ -81,20 +80,14 @@ void formater::run(const string& inputFile)
     cout << string("create 'file://").append(outputFileHtml).append("' ").append(m_sResult) << endl;
 }
 
-void formater::importAllLines(const string& file, list<string>& m_Lines)
-{
+void formater::importAllLines(const string& file, list<string>& m_Lines) {
     fstream fin(file.c_str(), ios_base::in);
-    if (fin.fail())
-    {
+    if (fin.fail()) {
         m_sResult = "file open failed";
-    }
-    else
-    {
+    } else {
         string line;
-        while (getline(fin, line) && (!fin.fail()))
-        {
-            if (m_bCreateHtml)
-            {
+        while (getline(fin, line) && (!fin.fail())) {
+            if (m_bCreateHtml) {
                 formater_replace::repeated_replace(line, "&", "&amp");
             }
             m_Lines.push_back(line);
@@ -103,46 +96,37 @@ void formater::importAllLines(const string& file, list<string>& m_Lines)
     }
 }
 
-void formater::exportAllLines(const string& file)
-{
-    if (0 == m_sResult.compare("ok"))
-    {
+void formater::exportAllLines(const string& file) {
+    if (0 == m_sResult.compare("ok")) {
         fstream fout(file.c_str(), ios_base::out | ios_base::trunc);
-        if (fout.fail())
-        {
+        if (fout.fail()) {
             m_sResult = "file create failed";
-        }
-        else
-        {
+        } else {
             for_each(m_Lines.begin(), m_Lines.end(), trimRight);
             copy(m_Lines.begin(), m_Lines.end(), ostream_iterator<string>(fout, "\n"));
         }
     }
 }
 
-void formater::createHtmlDocument()
-{
+void formater::createHtmlDocument() {
     // add line breaks at the end of each line
-    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
-    {
+    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++) {
         basic_stringstream<char> psz2;
-        *iter = psz2.str().append(*iter).append("</br>");
+        *iter = psz2.str().append(*iter).append("</p>");
     }
 
     // add css styles at the top of the document
     string css_settings;
     css_settings.append("<style TYPE='text/css'> <!-- ")
-            .append("body { line-height: 1.1; } ")
-            .append("body { font-family: 'courier new'; line-height: 90%; } ")
+            .append("p { line-height: 100%; } ")
+            .append("body { font-family: 'courier new'; line-height: 100%; } ")
             .append("--> </style>");
     m_Lines.push_front(css_settings.c_str());
 }
 
-void formater::formatPre()
-{
+void formater::formatPre() {
     line_status ls;
-    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
-    {
+    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++) {
         // encode strings with base64 to avoid formating
         parseLine(*iter, ls, true);
 
@@ -155,19 +139,16 @@ void formater::formatPre()
     for_each(m_Lines.begin(), m_Lines.end(), trimRight);
 }
 
-void formater::formatPost()
-{
+void formater::formatPost() {
     line_status ls;
-    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
-    {
+    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++) {
         string line = *iter;
 
         // calcualte layer based on commands
         for_each(m_commands.begin(), m_commands.end(), layer_counter(&ls, line));
 
         // set special color for commands 
-        if (m_bCreateHtml)
-        {
+        if (m_bCreateHtml) {
             line = for_each(m_commands.begin(), m_commands.end(), formater_mark_html(line));
         }
 
@@ -178,8 +159,7 @@ void formater::formatPost()
         line = replacePattern(m_replacePatternsPostprocessing, line, 5);
 
         // create indenting (but not for first line)
-        if (m_Lines.begin() != iter)
-        {
+        if (m_Lines.begin() != iter) {
             createIndenting(line, ls);
         }
 
@@ -193,19 +173,15 @@ void formater::formatPost()
     for_each(m_Lines.begin(), m_Lines.end(), trimRight);
 }
 
-string formater::replacePattern(map_string pattern, string s1, int iterations)
-{
+string formater::replacePattern(map_string pattern, string s1, int iterations) {
     string line = s1;
     typedef map<string, string>::iterator it_type;
-    for (it_type iterator = pattern.begin(); iterator != pattern.end(); iterator++)
-    {
-        for (int i = 0; i < iterations; i++)
-        {
+    for (it_type iterator = pattern.begin(); iterator != pattern.end(); iterator++) {
+        for (int i = 0; i < iterations; i++) {
             string s2 = iterator->first;
             string s3 = iterator->second;
             index_string anf = line.find(s2, 0);
-            while (string::npos != anf)
-            {
+            while (string::npos != anf) {
                 string right(line.substr(anf + s2.length(), string::npos));
                 string left(line.substr(0, anf));
                 line = left.append(s3).append(right);
@@ -216,36 +192,32 @@ string formater::replacePattern(map_string pattern, string s1, int iterations)
     return line;
 }
 
-bool formater::parseLine(string &line, line_status & ls, bool encode)
-{
+bool formater::parseLine(string &line, line_status & ls, bool encode) {
     index_string indexStart = 0;
     index_string index = 0;
-
-    if (m_bCreateHtml && !encode)
-    {
+    
+    if (m_bCreateHtml && !encode) {
         insertHtmlFont(index, line, ls);
     }
 
-    do
-    {
-        if (ls.inCode())
-        {
-            if (line[index] == '"')
-            {
+    do {
+        if (ls.inCode()) {
+            if (line[index] == '"') {
                 ls.SetActiveString();
-                if (m_bCreateHtml && !encode)
-                {
-                    insertHtmlFont(index, line,ls);
+                if (m_bCreateHtml && !encode) {
+                    insertHtmlFont(index, line, ls);
+                }
+                indexStart = index;
+            } else if (line[index] == '`') {
+                ls.SetActiveMacro();
+                if (m_bCreateHtml && !encode) {
+                    insertHtmlFont(index, line, ls);
                 }
                 indexStart = index;
             }
-        }
-        else if (ls.inString())
-        {
-            if (line[index] == '"')
-            {
-                if (encode)
-                {
+        } else if (ls.inString()) {
+            if (line[index] == '"') {
+                if (encode) {
                     int indexStart1 = indexStart + 1;
                     int string_length = (index - indexStart - 1);
                     string sub_string2 = line.substr(indexStart1, string_length);
@@ -253,9 +225,7 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
                     line = line.replace(indexStart1, string_length, encoded2);
                     index -= sub_string2.length();
                     index += encoded2.length();
-                }
-                else
-                {
+                } else {
                     int indexStart1 = indexStart + 1;
                     int string_length = (index - indexStart - 1);
                     string sub_string = line.substr(indexStart1, string_length);
@@ -266,49 +236,65 @@ bool formater::parseLine(string &line, line_status & ls, bool encode)
                 }
 
                 ls.SetActiveCode();
-                if (m_bCreateHtml && !encode)
-                {
+                if (m_bCreateHtml && !encode) {
+                    insertHtmlFont(++index, line, ls);
+                }
+                indexStart = index;
+            }
+        } else if (ls.inMacro()) {
+            if (line[index] == '`') {
+                if (encode) {
+                    int indexStart1 = indexStart + 1;
+                    int string_length = (index - indexStart - 1);
+                    string sub_string2 = line.substr(indexStart1, string_length);
+                    string encoded2 = base64_encode(sub_string2);
+                    line = line.replace(indexStart1, string_length, encoded2);
+                    index -= sub_string2.length();
+                    index += encoded2.length();
+                } else {
+                    int indexStart1 = indexStart + 1;
+                    int string_length = (index - indexStart - 1);
+                    string sub_string = line.substr(indexStart1, string_length);
+                    string decoded = base64_decode(sub_string);
+                    line = line.replace(indexStart1, string_length, decoded);
+                    index -= sub_string.length();
+                    index += decoded.length();
+                }
+
+                ls.SetActiveCode();
+                if (m_bCreateHtml && !encode) {
                     insertHtmlFont(++index, line, ls);
                 }
                 indexStart = index;
             }
         }
-    }
-    while (++index <= line.size());
-
-    if (ls.inString())
-    {
+    } while (++index <= line.size());
+   
+    if (ls.inString()) {
         m_sResult = "invalid string";
-    }
-    else if (ls.inCharacter())
-    {
+    } else if (ls.inCharacter()) {
         m_sResult = "invalid character";
     }
 
     return false;
 }
 
-void formater::createIndenting(string &line, line_status & ls)
-{
-    for (int i = 0; i < ls.GetLayer(); i++)
-    {
+void formater::createIndenting(string &line, line_status & ls) {
+    
+    for (int i = 0; i < ls.GetLayerTotal(); i++) {
         line.insert(0, m_bCreateHtml ? "&nbsp;&nbsp;&nbsp;" : "    ");
     }
+    
 }
 
-void formater::replaceSubstrings(const index_string& begin, index_string& end, string & s)
-{
-    if (begin != string::npos && end != string::npos && begin < end)
-    {
+void formater::replaceSubstrings(const index_string& begin, index_string& end, string & s) {
+    if (begin != string::npos && end != string::npos && begin < end) {
         string midNeu;
         string mid = s.substr(begin, end - begin + 1).c_str();
 
-        if (m_bCreateHtml)
-        {
+        if (m_bCreateHtml) {
             midNeu = for_each(m_commands.begin(), m_commands.end(), formater_mark_html(mid));
-        }
-        else
-        {
+        } else {
             midNeu = for_each(m_replacePatternsPreprocessing.begin(), m_replacePatternsPreprocessing.end(), formater_replace(mid));
         }
         s = s.substr(0, begin).append(midNeu).append(s.substr(end + 1, string::npos).c_str());
@@ -316,59 +302,46 @@ void formater::replaceSubstrings(const index_string& begin, index_string& end, s
     }
 }
 
-void formater::removeEmptyAll()
-{
+void formater::removeEmptyAll() {
     bool bLineEmpty = false;
     bool bLineRemoved = false;
     bool bIsNotFirstLine = false;
 
-    do
-    {
+    do {
         bLineRemoved = false;
         string line;
-        for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
-        {
+        for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++) {
             line = *iter;
             bLineEmpty = (string::npos == line.find_last_not_of(" "));
             bIsNotFirstLine = (iter != m_Lines.begin());
 
-            if (!bIsNotFirstLine && bLineEmpty)
-            {
+            if (!bIsNotFirstLine && bLineEmpty) {
                 // Leerzeile in der ersten Zeile öffnen
                 iter = m_Lines.erase(iter);
                 line = *iter;
                 bLineRemoved = true;
             }
         }
-    }
-    while (bLineRemoved);
+    } while (bLineRemoved);
 }
 
-void formater::wrapLines(string pattern)
-{
+void formater::wrapLines(string pattern) {
     list<string> result;
 
-    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++)
-    {
+    for (list <string>::iterator iter = m_Lines.begin(); iter != m_Lines.end(); iter++) {
         string line = *iter;
-        if (pattern.size() <= line.size())
-        {
+        if (pattern.size() <= line.size()) {
             bool isFirstTimeProcessed = false;
             bool isNewLineNeeded = false;
-            do
-            {
+            do {
                 index_string last = 0;
                 index_string anf = line.find(pattern);
-                if (anf != string::npos)
-                {
-                    if (!isFirstTimeProcessed)
-                    {
+                if (anf != string::npos) {
+                    if (!isFirstTimeProcessed) {
                         string lineAnfang = line.substr(0, anf);
                         result.push_back(lineAnfang);
                         isFirstTimeProcessed = true;
-                    }
-                    else
-                    {
+                    } else {
                         string startLine = pattern + line.substr(last, anf);
                         last = anf;
                         result.push_back(startLine);
@@ -376,31 +349,23 @@ void formater::wrapLines(string pattern)
 
                     line = line.substr(anf + pattern.size(), line.size());
                     isNewLineNeeded = true;
-                }
-                else
-                {
-                    if (!isFirstTimeProcessed)
-                    {
+                } else {
+                    if (!isFirstTimeProcessed) {
                         result.push_back(line);
-                    }
-                    else
-                    {
+                    } else {
                         result.push_back(pattern + line);
                     }
                     isNewLineNeeded = false;
                     isFirstTimeProcessed = true;
                 }
-            }
-            while (isNewLineNeeded);
+            } while (isNewLineNeeded);
         }
     }
 
     m_Lines = result;
 }
 
-
-string formater::GetHtmlFontTag(unsigned long id)
-{
+string formater::GetHtmlFontTag(unsigned long id) {
     const string sFontCode = "</font>\n<font color=\'black\'>";
     const string sFontString = "</font>\n<font color=\'orange\'>";
     const string sFontCharacter = "</font>\n<font color=\'orange\'>";
@@ -412,8 +377,7 @@ string formater::GetHtmlFontTag(unsigned long id)
         return "<FONT>";
 }
 
-void formater::insertHtmlFont(index_string& pos, string& s, line_status& ls)
-{
+void formater::insertHtmlFont(index_string& pos, string& s, line_status& ls) {
     s.insert(pos, GetHtmlFontTag(ls.GetCurrentStatus()));
     pos += GetHtmlFontTag(ls.GetCurrentStatus()).length();
 }

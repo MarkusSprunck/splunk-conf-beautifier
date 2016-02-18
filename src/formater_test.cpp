@@ -79,6 +79,7 @@ void formater_test::executeTest(const string& name, const string soll) {
     removeEmptyAll();
     formatPre();
     wrapLines("|");
+    wrapLines(",");
     formatPost();
     // formater - end
 

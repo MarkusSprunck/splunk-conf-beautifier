@@ -60,6 +60,12 @@ public:
     {
         if (string::npos != m_line->find(p1.first))
         {
+            
+            if (INCREMENTONCE == (INCREMENTONCE & p1.second) && 10 > (*m_line_status).GetLayer())
+            {
+                (*m_line_status).SetOnce(1 + (*m_line_status).GetOnce());
+            }           
+             
             if (INCREMENT == (INCREMENT & p1.second) && 10 > (*m_line_status).GetLayer())
             {
                 (*m_line_status).SetLayer(1 + (*m_line_status).GetLayer());

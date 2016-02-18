@@ -37,8 +37,7 @@
  */
 
 
-const map_string getReplacePrepocessing()
-{
+const map_string getReplacePrepocessing() {
     map_string replace;
     replace[")"] = " ) ";
     replace["("] = " ( ";
@@ -47,8 +46,7 @@ const map_string getReplacePrepocessing()
     return replace;
 }
 
-const map_string getReplacePostprocessing()
-{
+const map_string getReplacePostprocessing() {
     map_string replace;
     replace[" ("] = "(";
     replace["  ="] = " =";
@@ -62,8 +60,7 @@ const map_string getReplacePostprocessing()
     return replace;
 }
 
-const map_string getReplaceHtml()
-{
+const map_string getReplaceHtml() {
     map_string replace;
     replace["<"] = "&lt;";
     replace[">"] = "&gt;";
@@ -72,15 +69,15 @@ const map_string getReplaceHtml()
     return replace;
 }
 
-enum eCommand
-{
-    KEYWORD = 1, MARK = 2, INCREMENT = 4, DECREMENT = 8
+enum eCommand {
+    KEYWORD = 1, MARK = 2, INCREMENT = 4, DECREMENT = 8, INCREMENTONCE = 16
 };
 
-const map_command getCommand()
-{
+const map_command getCommand() {
     map_command command;
 
+    command[","] = MARK | INCREMENTONCE;  
+    
     command["by"] = KEYWORD;
     command["as"] = KEYWORD;
     command["and"] = KEYWORD;

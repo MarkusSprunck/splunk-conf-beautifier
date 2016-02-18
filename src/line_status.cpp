@@ -40,7 +40,10 @@
 
 line_status::line_status(void) :
 current(INDEX_COUNT),
-last(INDEX_COUNT) {
+last(INDEX_COUNT),
+once(INDEX_COUNT) {
+   
+
     current[INDEX_COUNT] = 0;
     current[STATUS] = CODE;
     last = current;
@@ -48,6 +51,7 @@ last(INDEX_COUNT) {
 
 void line_status::storeLastFlags() {
     last = current;
+    once[INDEX_COUNT] = 0;
 }
 
 const bool line_status::inCode(void) {
@@ -86,12 +90,24 @@ long line_status::GetLayer(void) {
     return current[INDEX_COUNT];
 }
 
+long line_status::GetLayerTotal(void) {
+    return current[INDEX_COUNT] + once[INDEX_COUNT];
+}
+
 void line_status::SetLayer(int layer) {
     current[INDEX_COUNT] = layer;
 }
 
 long line_status::GetCurrentStatus() {
     return current[STATUS];
+}
+
+long line_status::GetOnce(void) {
+    return once[INDEX_COUNT];
+}
+
+void line_status::SetOnce(int layer) {
+    once[INDEX_COUNT] = layer;
 }
 
 

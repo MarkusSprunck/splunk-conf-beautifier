@@ -50,7 +50,7 @@ protected:
         STATUS, INDEX_COUNT
     };
 
-    vector<long> current, last;
+    vector<long> current, last, once;
 
 public:
     line_status();
@@ -68,7 +68,11 @@ public:
     void SetActiveCharacter(void);
 
     long GetLayer(void);
+    long GetLayerTotal(void);
     void SetLayer(int layer);
+
+    long GetOnce(void);
+    void SetOnce(int layer);
 
     long GetCurrentStatus();
 };
