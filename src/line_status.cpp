@@ -40,18 +40,11 @@
 
 line_status::line_status(void) :
 current(INDEX_COUNT),
-last(INDEX_COUNT),
 once(INDEX_COUNT) {
-   
-
     current[INDEX_COUNT] = 0;
     current[STATUS] = CODE;
-    last = current;
-}
-
-void line_status::storeLastFlags() {
-    last = current;
     once[INDEX_COUNT] = 0;
+    once[STATUS] = CODE;
 }
 
 const bool line_status::inCode(void) {
@@ -66,10 +59,6 @@ const bool line_status::inString(void) {
     return (STRINGS == current[STATUS]);
 }
 
-const bool line_status::inCharacter(void) {
-    return (CHARACTER == current[STATUS]);
-}
-
 void line_status::SetActiveCode(void) {
     current[STATUS] = CODE;
 }
@@ -80,10 +69,6 @@ void line_status::SetActiveMacro(void) {
 
 void line_status::SetActiveString(void) {
     current[STATUS] = STRINGS;
-}
-
-void line_status::SetActiveCharacter(void) {
-    current[STATUS] = CHARACTER;
 }
 
 long line_status::GetLayer(void) {
@@ -109,6 +94,7 @@ long line_status::GetOnce(void) {
 void line_status::SetOnce(int layer) {
     once[INDEX_COUNT] = layer;
 }
+
 
 
 

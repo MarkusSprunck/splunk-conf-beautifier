@@ -41,7 +41,7 @@ class line_status {
 public:
 
     enum eStatusValue {
-        CODE, STRINGS, CHARACTER, MACRO, NONE
+        CODE, STRINGS, MACRO
     };
 
 protected:
@@ -50,22 +50,18 @@ protected:
         STATUS, INDEX_COUNT
     };
 
-    vector<long> current, last, once;
+    vector<long> current, once;
 
 public:
     line_status();
 
-    void storeLastFlags(void);
-
     const bool inCode(void);
     const bool inMacro(void);
     const bool inString(void);
-    const bool inCharacter(void);
 
     void SetActiveCode(void);
     void SetActiveMacro(void);
     void SetActiveString(void);
-    void SetActiveCharacter(void);
 
     long GetLayer(void);
     long GetLayerTotal(void);

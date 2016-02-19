@@ -50,9 +50,10 @@ TESTFILES= \
 
 # Test Object Files
 TESTOBJECTFILES= \
-	${TESTDIR}/tests/newtestrunner.o \
+	${TESTDIR}/tests/line_status_test.o \
 	${TESTDIR}/tests/string_compare_test.o \
-	${TESTDIR}/tests/string_util_test.o
+	${TESTDIR}/tests/string_util_test.o \
+	${TESTDIR}/tests/test_runner.o
 
 # C Compiler Flags
 CFLAGS=
@@ -110,15 +111,15 @@ ${OBJECTDIR}/src/string_utils.o: src/string_utils.cpp
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestrunner.o ${TESTDIR}/tests/string_compare_test.o ${TESTDIR}/tests/string_util_test.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/line_status_test.o ${TESTDIR}/tests/string_compare_test.o ${TESTDIR}/tests/string_util_test.o ${TESTDIR}/tests/test_runner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
 
-${TESTDIR}/tests/newtestrunner.o: tests/newtestrunner.cpp 
+${TESTDIR}/tests/line_status_test.o: tests/line_status_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -std=c++14 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newtestrunner.o tests/newtestrunner.cpp
+	$(COMPILE.cc) -std=c++14 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/line_status_test.o tests/line_status_test.cpp
 
 
 ${TESTDIR}/tests/string_compare_test.o: tests/string_compare_test.cpp 
@@ -131,6 +132,12 @@ ${TESTDIR}/tests/string_util_test.o: tests/string_util_test.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -std=c++14 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/string_util_test.o tests/string_util_test.cpp
+
+
+${TESTDIR}/tests/test_runner.o: tests/test_runner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -std=c++14 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_runner.o tests/test_runner.cpp
 
 
 ${OBJECTDIR}/src/formater_nomain.o: ${OBJECTDIR}/src/formater.o src/formater.cpp 

@@ -41,11 +41,13 @@
                      displayName="String Utils Test"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>tests/newtestrunner.cpp</itemPath>
+        <itemPath>tests/line_status_test.cpp</itemPath>
+        <itemPath>tests/line_status_test.h</itemPath>
         <itemPath>tests/string_compare_test.cpp</itemPath>
         <itemPath>tests/string_compare_test.h</itemPath>
         <itemPath>tests/string_util_test.cpp</itemPath>
         <itemPath>tests/string_util_test.h</itemPath>
+        <itemPath>tests/test_runner.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>
@@ -111,7 +113,9 @@
       </item>
       <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/line_status_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/line_status_test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/string_compare_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -120,6 +124,8 @@
       <item path="tests/string_util_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/string_util_test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/test_runner.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -185,7 +191,9 @@
       </item>
       <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/line_status_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/line_status_test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/string_compare_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -194,6 +202,8 @@
       <item path="tests/string_util_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/string_util_test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/test_runner.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

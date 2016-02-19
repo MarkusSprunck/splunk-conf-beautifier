@@ -132,9 +132,6 @@ void formater::formatPre() {
 
         // replace pattern
         *iter = replacePattern(m_replacePatternsPreprocessing, *iter, 1);
-
-        // store current state for next line
-        ls.storeLastFlags();
     }
     for_each(m_Lines.begin(), m_Lines.end(), trimRight);
 }
@@ -166,8 +163,8 @@ void formater::formatPost() {
         // store current line
         *iter = line;
 
-        // store current state for next line
-        ls.storeLastFlags();
+        // reset state for next line
+        ls.SetOnce(0);
     }
 
     for_each(m_Lines.begin(), m_Lines.end(), trimRight);
@@ -195,7 +192,7 @@ string formater::replacePattern(map_string pattern, string s1, int iterations) {
 bool formater::parseLine(string &line, line_status & ls, bool encode) {
     index_string indexStart = 0;
     index_string index = 0;
-    
+
     if (m_bCreateHtml && !encode) {
         insertHtmlFont(index, line, ls);
     }
@@ -269,22 +266,20 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
             }
         }
     } while (++index <= line.size());
-   
+
     if (ls.inString()) {
         m_sResult = "invalid string";
-    } else if (ls.inCharacter()) {
-        m_sResult = "invalid character";
     }
 
     return false;
 }
 
 void formater::createIndenting(string &line, line_status & ls) {
-    
+
     for (int i = 0; i < ls.GetLayerTotal(); i++) {
         line.insert(0, m_bCreateHtml ? "&nbsp;&nbsp;&nbsp;" : "    ");
     }
-    
+
 }
 
 void formater::replaceSubstrings(const index_string& begin, index_string& end, string & s) {
