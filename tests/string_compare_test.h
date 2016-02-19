@@ -44,20 +44,7 @@
 #ifndef STRING_COMPARE_TEST_H
 #define STRING_COMPARE_TEST_H
 
-#include <map>
-#include <list>
-#include <queue>
-#include <string>
-#include <iostream>
-#include <iterator> 
-#include <ostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <vector>
-
-using namespace std;
-
+#include "../src/std_typedef.h"
 #include <cppunit/extensions/HelperMacros.h>
 
 class string_compare_test : public CPPUNIT_NS::TestFixture {
