@@ -34,24 +34,48 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <time.h>
-#include "formater.h"
-#include "formater_test.h"
-#include "string_compare.h"
-#include "string_utils.h"
+/* 
+ * File:   formater_test.cpp
+ * Author: Markus
+ * 
+ * Created on 19. Februar 2016, 19:05
+ */
 
-formater_test::formater_test(void) {
+
+#include "formater_test.h"
+#include <time.h>
+#include "../src/formater.h"
+#include "../src/string_compare.h"
+#include "../src/string_utils.h"
+
+
+CPPUNIT_TEST_SUITE_REGISTRATION(formater_test);
+
+formater_test::formater_test() {
+}
+
+formater_test::~formater_test() {
+}
+
+void formater_test::setUp() {
+}
+
+void formater_test::tearDown() {
+}
+
+void formater_test::testMethod() {
+
     m_numberOk = m_number = m_time = 0;
 
-    cout << endl;
-    executeTest("long", "ok");
-    executeTest("toString", "ok");
-    executeTest("simple", "ok");
+    executeTest("./data/long", "ok");
+    executeTest("./data/toString", "ok");
+    executeTest("./data/simple", "ok");
 
-    cout << endl;
-    cout << m_numberOk << " succeeded, ";
+    cout << "   " << m_numberOk << " succeeded, ";
     cout << m_number - m_numberOk << " failed, ";
     cout << m_time << " clocks" << endl;
+
+    CPPUNIT_ASSERT(m_number == m_numberOk);
 }
 
 void formater_test::executeTest(const string& name, const string soll) {
@@ -72,7 +96,7 @@ void formater_test::executeTest(const string& name, const string soll) {
         for_each(m_LinesSoll.begin(), m_LinesSoll.end(), trimRight);
 
     }
-    cout << "run " << quelle1.c_str();
+    cout << "   run " << quelle1.c_str();
 
     // formater - start
     m_bCreateHtml = false;
@@ -91,11 +115,11 @@ void formater_test::executeTest(const string& name, const string soll) {
             if (m_LinesSoll.size() <= m_Lines.size()) {
                 result = equal(m_LinesSoll.begin(), m_LinesSoll.end(), m_Lines.begin(), string_compare(true));
                 if (!result)
-                    cout << endl << "[soll|ist]";
+                    cout << endl << "[expected|actual]";
             } else {
                 result = equal(m_Lines.begin(), m_Lines.end(), m_LinesSoll.begin(), string_compare(true));
                 if (!result) {
-                    cout << endl << "[ist|soll]";
+                    cout << endl << "[expected|actual]";
                 }
             }
         }
@@ -107,3 +131,4 @@ void formater_test::executeTest(const string& name, const string soll) {
         cout << ((result) ? " suceeded, " : " failed, ") << mytime << " clock(s)" << endl;
     }
 };
+

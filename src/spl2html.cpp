@@ -34,14 +34,11 @@
 
 
 #include "formater.h"
-#include "formater_test.h"
 
 int main(int argc, char* argv[])
 {
    //	parse command line
-   if (2==argc && 0==string("-t").compare(argv[1]))
-      formater_test t;
-   else if ((3==argc) && (0==string("-h").compare(argv[1]))) {
+  if ((3==argc) && (0==string("-h").compare(argv[1]))) {
       formater f;
       f.run(argv[2]);       
    }

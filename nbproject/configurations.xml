@@ -8,7 +8,6 @@
       <itemPath>src/formater_mark_html.h</itemPath>
       <itemPath>src/formater_parameter.h</itemPath>
       <itemPath>src/formater_replace.h</itemPath>
-      <itemPath>src/formater_test.h</itemPath>
       <itemPath>src/layer_counter.h</itemPath>
       <itemPath>src/line_status.h</itemPath>
       <itemPath>src/std_typedef.h</itemPath>
@@ -23,7 +22,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>src/formater.cpp</itemPath>
-      <itemPath>src/formater_test.cpp</itemPath>
       <itemPath>src/line_status.cpp</itemPath>
       <itemPath>src/spl2html.cpp</itemPath>
       <itemPath>src/string_utils.cpp</itemPath>
@@ -41,6 +39,8 @@
                      displayName="String Utils Test"
                      projectFiles="true"
                      kind="TEST">
+        <itemPath>tests/formater_test.cpp</itemPath>
+        <itemPath>tests/formater_test.h</itemPath>
         <itemPath>tests/line_status_test.cpp</itemPath>
         <itemPath>tests/line_status_test.h</itemPath>
         <itemPath>tests/string_compare_test.cpp</itemPath>
@@ -93,10 +93,6 @@
       </item>
       <item path="src/formater_replace.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/formater_test.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/formater_test.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/layer_counter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
@@ -112,6 +108,10 @@
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/formater_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/formater_test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/line_status_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -173,10 +173,6 @@
       </item>
       <item path="src/formater_replace.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/formater_test.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/formater_test.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/layer_counter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
@@ -190,6 +186,10 @@
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/formater_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/formater_test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/line_status_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
