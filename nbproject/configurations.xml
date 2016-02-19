@@ -11,7 +11,7 @@
       <itemPath>src/layer_counter.h</itemPath>
       <itemPath>src/line_status.h</itemPath>
       <itemPath>src/std_typedef.h</itemPath>
-      <itemPath>src/string_compare.h</itemPath>
+      <itemPath>tests/string_compare.h</itemPath>
       <itemPath>src/string_utils.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -50,6 +50,7 @@
         <itemPath>tests/test_runner.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
+    <itemPath>data/subsearch.txt</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>data</Elem>
@@ -69,6 +70,8 @@
           <commandlineTool>g++</commandlineTool>
         </ccTool>
       </compileType>
+      <item path="data/subsearch.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -103,8 +106,6 @@
       </item>
       <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/string_compare.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
@@ -116,6 +117,8 @@
       <item path="tests/line_status_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/line_status_test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/string_compare.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/string_compare_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -149,6 +152,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="data/subsearch.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -181,8 +186,6 @@
       </item>
       <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/string_compare.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
@@ -194,6 +197,8 @@
       <item path="tests/line_status_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/line_status_test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/string_compare.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/string_compare_test.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -52,15 +52,15 @@ m_replacePatternsHtml(getReplaceHtml()) {
 }
 
 void formater::run(const string& inputFile) {
-    // import all lines
+    // create text file
+    m_bCreateHtml = false;
     importAllLines(inputFile, m_Lines);
     for_each(m_Lines.begin(), m_Lines.end(), trimLeft);
     for_each(m_Lines.begin(), m_Lines.end(), trimRight);
-
-    // create text file
-    m_bCreateHtml = false;
     removeEmptyAll();
     formatPre();
+    wrapLines("[");
+    wrapLines("]");
     wrapLines("|");
     wrapLines(",");
     formatPost();
@@ -70,9 +70,17 @@ void formater::run(const string& inputFile) {
 
     // create html file
     m_bCreateHtml = true;
+
+    // import all lines
+    importAllLines(inputFile, m_Lines);
+    for_each(m_Lines.begin(), m_Lines.end(), trimLeft);
+    for_each(m_Lines.begin(), m_Lines.end(), trimRight);
     removeEmptyAll();
     formatPre();
+    wrapLines("[");
+    wrapLines("]");
     wrapLines("|");
+    wrapLines(",");
     formatPost();
     createHtmlDocument();
     string outputFileHtml = string(inputFile).append(".html");
@@ -85,10 +93,13 @@ void formater::importAllLines(const string& file, list<string>& m_Lines) {
     if (fin.fail()) {
         m_sResult = "file open failed";
     } else {
+        m_Lines.clear();
         string line;
         while (getline(fin, line) && (!fin.fail())) {
             if (m_bCreateHtml) {
                 formater_replace::repeated_replace(line, "&", "&amp");
+                formater_replace::repeated_replace(line, "<", "&lt");
+                formater_replace::repeated_replace(line, ">", "&gt");
             }
             m_Lines.push_back(line);
         }

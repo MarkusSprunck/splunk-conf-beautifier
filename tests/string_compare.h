@@ -53,8 +53,8 @@ public:
         if (0 != s1.compare(s2)) {
             if (trace) {
                 cout << endl << "element number " << count << " is different:";
-                cout << endl << "\tfirst  [length=" << s1.size() << "] " << '\"' << s1.c_str() << '\"';
-                cout << endl << "\tsecond [length=" << s2.size() << "] " << '\"' << s2.c_str() << '\"';
+                cout << endl << "\texpected [length=" << s1.size() << "] " << '\"' << s1.c_str() << '\"';
+                cout << endl << "\tactual   [length=" << s2.size() << "] " << '\"' << s2.c_str() << '\"';
                 cout << endl << endl;
                 cout.flush();
             }

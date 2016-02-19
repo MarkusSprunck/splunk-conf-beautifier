@@ -43,9 +43,9 @@
 
 
 #include "formater_test.h"
+#include "string_compare.h"
 #include <time.h>
 #include "../src/formater.h"
-#include "../src/string_compare.h"
 #include "../src/string_utils.h"
 
 
@@ -67,6 +67,7 @@ void formater_test::testMethod() {
 
     m_numberOk = m_number = m_time = 0;
 
+    executeTest("./data/subsearch", "ok");
     executeTest("./data/long", "ok");
     executeTest("./data/toString", "ok");
     executeTest("./data/simple", "ok");
@@ -102,6 +103,8 @@ void formater_test::executeTest(const string& name, const string soll) {
     m_bCreateHtml = false;
     removeEmptyAll();
     formatPre();
+    wrapLines("[");
+    wrapLines("]");
     wrapLines("|");
     wrapLines(",");
     formatPost();

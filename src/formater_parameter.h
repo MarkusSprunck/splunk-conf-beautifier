@@ -70,14 +70,17 @@ const map_string getReplaceHtml() {
 }
 
 enum eCommand {
-    KEYWORD = 1, MARK = 2, INCREMENT = 4, DECREMENT = 8, INCREMENTONCE = 16
+    KEYWORD = 1, MARK = 2, INCREMENT = 4, DECREMENT = 8, INCREMENTONCE = 16, DOUBLE_INCREMENTONCE = 32
 };
 
 const map_command getCommand() {
     map_command command;
 
-    command[","] = MARK | INCREMENTONCE;  
-    
+    command["|"] = MARK | INCREMENTONCE;
+    command[","] = MARK | DOUBLE_INCREMENTONCE;
+    command["["] = MARK | INCREMENT;
+    command["]"] = MARK | INCREMENTONCE | DECREMENT;
+
     command["by"] = KEYWORD;
     command["as"] = KEYWORD;
     command["and"] = KEYWORD;
@@ -127,7 +130,7 @@ const map_command getCommand() {
     command["rename" ] = KEYWORD;
     command["replace" ] = KEYWORD;
     command["rex" ] = KEYWORD;
-    command["search" ] = KEYWORD | INCREMENT;
+    command["search" ] = KEYWORD;
     command["spath" ] = KEYWORD;
     command["strcat" ] = KEYWORD;
     command["streamstats" ] = KEYWORD;
@@ -168,7 +171,7 @@ const map_command getCommand() {
     command["makecontinuous" ] = KEYWORD;
     command["mvcombine" ] = KEYWORD;
     command["rare" ] = KEYWORD;
-    command["stats" ] = KEYWORD | DECREMENT;
+    command["stats" ] = KEYWORD ;
     command["timechart" ] = KEYWORD;
     command["top" ] = KEYWORD;
     command["xyseries" ] = KEYWORD;
