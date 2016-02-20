@@ -50,6 +50,8 @@
         <itemPath>tests/test_runner.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
+    <itemPath>data/join-expected.txt</itemPath>
+    <itemPath>data/join.txt</itemPath>
     <itemPath>data/subsearch.txt</itemPath>
   </logicalFolder>
   <sourceRootList>
@@ -70,6 +72,10 @@
           <commandlineTool>g++</commandlineTool>
         </ccTool>
       </compileType>
+      <item path="data/join-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/join.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="data/subsearch.txt" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
@@ -152,6 +158,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="data/join-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/join.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="data/subsearch.txt" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">

@@ -49,11 +49,11 @@ const map_string getReplacePrepocessing() {
 const map_string getReplacePostprocessing() {
     map_string replace;
     replace[" ("] = "(";
-    replace["  ="] = " =";
-    replace["=  "] = "= ";
+    replace[" ="] = "=";
+    replace["= "] = "=";
     replace[" ,"] = ",";
-    replace["  )"] = " )";
-    replace["(  "] = "( ";
+    replace[" )"] = ")";
+    replace["( "] = "(";
     replace[") `"] = ")`";
     replace[",  "] = ", ";
     replace[")  "] = ") ";
