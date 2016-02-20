@@ -5,5 +5,6 @@ rm *.txt.result
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h long.txt
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h subsearch.txt
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h join.txt
+..\dist\Debug\Cygwin-Windows\spl2html.exe -h eval-if.txt
 
 

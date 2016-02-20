@@ -12,6 +12,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>data</sourceRootElem>
+                <sourceRootElem>build</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

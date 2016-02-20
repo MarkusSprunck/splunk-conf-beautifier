@@ -5,7 +5,7 @@
 <font color='black'>=CI_* BULK_KEY=$args.BULK_KEY$ ABC &lt=5</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_TRX_NUMBER=</font>
@@ -13,197 +13,197 @@
 <font color='black'>(BULK_TRX_NUMBER</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'> </font>
 <font color='orange'>"12,3'4|5"</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_CONTROL_SUM=coalesce(BULK_CONTROL_SUM</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"678 eval 901"</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_NAME=coalesce(BULK_NAME</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"n.a."</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_NAME_ORIGINAL=coalesce(BULK_NAME_ORIGINAL</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"n.a. search "</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>SEPA_MESSAGE_TYPE=coalesce(SEPA_MESSAGE_TYPE</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"n.a."</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>FILE_TRX_NUMBER=coalesce(FILE_TRX_NUMBER</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"n.a."</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>FILE_NUMBER=coalesce(FILE_NUMBER</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"n.a."</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_CONTROL_SUM_XPE=coalesce(BULK_CONTROL_SUM_XPE</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"0"</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_TRX_NUMBER_XPE=coalesce(BULK_TRX_NUMBER_XPE</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"0"</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>CUSTOMER_IBAN=coalesce(DEBTOR_IBAN</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>CREDITOR_IBAN</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"diverse"</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='orange'>`to_string_commas_locale($args.ACTIVE_LOCALE$, BULK_CONTROL_SUM)`</font>
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_CONTROL_SUM=thousanders_BULK_CONTROL_SUM</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='orange'>`to_string_commas_locale($args.ACTIVE_LOCALE$, BULK_CONTROL_SUM_XPE)`</font>
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_CONTROL_SUM_XPE=thousanders_BULK_CONTROL_SUM_XPE</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='orange'>`to_string_commas_locale($args.ACTIVE_LOCALE$, BULK_TRX_NUMBER)`</font>
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_TRX_NUMBER=thousanders_BULK_TRX_NUMBER</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='orange'>`to_string_commas_locale($args.ACTIVE_LOCALE$, BULK_TRX_NUMBER_XPE)`</font>
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>BULK_TRX_NUMBER_XPE=thousanders_BULK_TRX_NUMBER_XPE</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='orange'>`to_string_commas_locale($args.ACTIVE_LOCALE$, FILE_TRX_NUMBER)`</font>
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>FILE_TRX_NUMBER=thousanders_FILE_TRX_NUMBER</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>eval </font>
 <font color='black'>XPE_ORIGIN=coalesce(XPE_ORIGIN</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"n.a."</font>
 <font color='black'>)</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>stats </font>
 <font color='black'>latest(CUSTOMER_IBAN) </font>
@@ -213,7 +213,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(BULK_EXECUTION_DATE) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -221,7 +221,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(BULK_NAME_ORIGINAL) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -229,7 +229,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(BULK_CONTROL_SUM) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -237,7 +237,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(BULK_CONTROL_SUM_XPE) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -245,7 +245,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(BULK_TRX_NUMBER) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -253,7 +253,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(BULK_TRX_NUMBER_XPE) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -261,7 +261,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(MONITORINGPOINT) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -269,7 +269,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(TIMESTAMP) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -277,7 +277,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(SERVICE_TYPE) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -285,7 +285,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(SEPA_MESSAGE_TYPE) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -293,7 +293,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(FILE_NAME_ORIGINAL) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -301,7 +301,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(FILE_TRX_NUMBER) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -309,7 +309,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(FILE_CREATION_DATE) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -317,7 +317,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(XPE_ORIGIN) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -325,7 +325,7 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>latest(FILE_NUMBER) </font>
 <font color='blue'>as </font>
 <font color='black'></font>
@@ -335,25 +335,25 @@
 <font color='black'>BULK_KEY</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>fields </font>
 <font color='black'>- BULK_KEY</p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>untable </font>
 <font color='black'>_time</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'></font>
 <font color='orange'>"Field name"</font>
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>| </font>
+<font color='black'>| </font>
 <font color='black'></font>
 <font color='blue'>table </font>
 <font color='black'></font>
@@ -361,5 +361,5 @@
 <font color='black'></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 <font color='black'></font>
-<font color='red'>, </font>
+<font color='black'>, </font>
 <font color='black'>Content</p>

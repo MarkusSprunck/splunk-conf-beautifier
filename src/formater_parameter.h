@@ -81,6 +81,7 @@ const map_command getCommand() {
     command["["] = MARK | INCREMENT;
     command["]"] = MARK | INCREMENTONCE | DECREMENT;
 
+    command["if"] = KEYWORD;
     command["by"] = KEYWORD;
     command["as"] = KEYWORD;
     command["and"] = KEYWORD;
@@ -171,7 +172,7 @@ const map_command getCommand() {
     command["makecontinuous" ] = KEYWORD;
     command["mvcombine" ] = KEYWORD;
     command["rare" ] = KEYWORD;
-    command["stats" ] = KEYWORD ;
+    command["stats" ] = KEYWORD;
     command["timechart" ] = KEYWORD;
     command["top" ] = KEYWORD;
     command["xyseries" ] = KEYWORD;

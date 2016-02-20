@@ -67,6 +67,7 @@ void formater_test::testMethod() {
 
     m_numberOk = m_number = m_time = 0;
 
+    executeTest("./data/eval-if", "ok");
     executeTest("./data/join", "ok");
     executeTest("./data/subsearch", "ok");
     executeTest("./data/long", "ok");
