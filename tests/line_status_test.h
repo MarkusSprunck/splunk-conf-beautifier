@@ -18,11 +18,13 @@
 #include <cppunit/extensions/HelperMacros.h>
 
 class line_status_test : public CPPUNIT_NS::TestFixture {
+    
     CPPUNIT_TEST_SUITE(line_status_test);
     CPPUNIT_TEST(test_default_values);
     CPPUNIT_TEST(test_set_simple_values);
     CPPUNIT_TEST(test_set_active_macro);
-    CPPUNIT_TEST(test_set_active_string);
+    CPPUNIT_TEST(test_set_active_double_quote_string);
+    CPPUNIT_TEST(test_set_active_single_quote_string);    
     CPPUNIT_TEST(test_set_active_code);
     CPPUNIT_TEST_SUITE_END();
 
@@ -36,10 +38,9 @@ private:
     void test_default_values();
     void test_set_simple_values();
     void test_set_active_macro();
-    void test_set_active_string();
-    void test_set_active_code();
-      
-    
+    void test_set_active_double_quote_string();
+   void test_set_active_single_quote_string();
+    void test_set_active_code();   
     
 };
 

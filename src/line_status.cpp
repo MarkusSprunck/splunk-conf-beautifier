@@ -39,68 +39,68 @@
 #include "string_utils.h"
 
 line_status::line_status(void) :
-current(INDEX_COUNT),
-once(INDEX_COUNT) {
-    current[INDEX_COUNT] = 0;
-    current[STATUS] = CODE;
-    once[INDEX_COUNT] = 0;
-    once[STATUS] = CODE;
+status_current(INDEX_COUNT),
+status_once(INDEX_COUNT) {
+    status_current[INDEX_COUNT] = 0;
+    status_current[STATUS] = IN_CODE;
+    status_once[INDEX_COUNT] = 0;
+    status_once[STATUS] = IN_CODE;
 }
 
 const bool line_status::inCode(void) {
-    return (CODE == current[STATUS]);
+    return (IN_CODE == status_current[STATUS]);
 }
 
 const bool line_status::inMacro(void) {
-    return (MACRO == current[STATUS]);
+    return (IN_MACRO == status_current[STATUS]);
 }
 
-const bool line_status::inString(void) {
-    return (STRINGS == current[STATUS]);
+const bool line_status::inDoubleQuoteString(void) {
+    return (IN_DOUBLE_QUOTE == status_current[STATUS]);
 }
 
-const bool line_status::inCharacterString(void) {
-    return (CHARACTER == current[STATUS]);
+const bool line_status::inSingleQuoteString(void) {
+    return (IN_SINGLE_QUOTE == status_current[STATUS]);
 }
 
 void line_status::SetActiveCode(void) {
-    current[STATUS] = CODE;
+    status_current[STATUS] = IN_CODE;
 }
 
 void line_status::SetActiveMacro(void) {
-    current[STATUS] = MACRO;
+    status_current[STATUS] = IN_MACRO;
 }
 
-void line_status::SetActiveString(void) {
-    current[STATUS] = STRINGS;
+void line_status::SetActiveDoubleQuoteString(void) {
+    status_current[STATUS] = IN_DOUBLE_QUOTE;
 }
 
-void line_status::SetActiveCharacterString(void) {
-    current[STATUS] = CHARACTER;
+void line_status::SetActiveSingleQuoteString(void) {
+    status_current[STATUS] = IN_SINGLE_QUOTE;
 }
 
-long line_status::GetLayer(void) {
-    return current[INDEX_COUNT];
+long line_status::GetLayerCount(void) {
+    return status_current[INDEX_COUNT];
 }
 
-long line_status::GetLayerTotal(void) {
-    return current[INDEX_COUNT] + once[INDEX_COUNT];
+long line_status::GetLayerCountTotal(void) {
+    return status_current[INDEX_COUNT] + status_once[INDEX_COUNT];
 }
 
-void line_status::SetLayer(int layer) {
-    current[INDEX_COUNT] = layer;
+void line_status::SetLayerCount(int layer) {
+    status_current[INDEX_COUNT] = layer;
 }
 
-long line_status::GetCurrentStatus() {
-    return current[STATUS];
+long line_status::GetStatus() {
+    return status_current[STATUS];
 }
 
-long line_status::GetOnce(void) {
-    return once[INDEX_COUNT];
+long line_status::GetLayerCountOnce(void) {
+    return status_once[INDEX_COUNT];
 }
 
-void line_status::SetOnce(int layer) {
-    once[INDEX_COUNT] = layer;
+void line_status::SetLayerCountOnce(int layer) {
+    status_once[INDEX_COUNT] = layer;
 }
 
 

@@ -35,32 +35,13 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <map>
-#include <list>
-#include <queue>
-#include <string>
-#include <iostream>
-#include <iterator> 
-#include <ostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <vector>
+#include "std_typedef.h"
 
-using namespace std;
-
-typedef map<string, long> map_command;
-typedef pair<string, long> pair_command;
-typedef map<string, string> map_string;
-typedef pair<string, string> pair_string;
-typedef string::size_type index_string;
-
-static const string g_sVersion = "spl2html v0.2";
+static const string g_sVersion = "spl2html v0.3";
 
 class line_status;
 
-class formater
-{
+class formater {
 public:
     explicit formater();
 
@@ -84,25 +65,24 @@ protected:
     bool parseLine(string &line, line_status& ls, bool encode);
     void replaceSubstrings(const index_string& begin, index_string& end, string &s);
     void createIndenting(string &line, line_status& ls);
-    
+
     // helper
     static string GetHtmlFontTag(unsigned long id);
     void insertHtmlFont(index_string& pos, string& s, line_status& ls);
 
-
     // succsses information
-    string m_sResult;
+    string result;
 
     // create a html file
-    bool m_bCreateHtml;
+    bool createHtml;
 
     // file content
-    list<string> m_Lines;
+    list<string> lines;
 
     // commands for each 'string pattern'
-    map<string, long> m_commands;
+    map<string, long> spl_keywords;
 
     // string replace map
-    map<string, string> m_replacePatternsPreprocessing, m_replacePatternsPostprocessing, m_replacePatternsHtml;
+    map<string, string> replacePatternPreprocessing, replacePatternPostprocessing, replacePatternHtml;
 
 };

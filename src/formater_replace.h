@@ -37,22 +37,18 @@
 
 #include "std_typedef.h"
 
-class formater_replace
-{
-    string str;
+class formater_replace {
+    string line;
 
 public:
 
-    explicit formater_replace(const string& s) : str(s)
-    {
+    explicit formater_replace(const string& s) : line(s) {
     }
 
-    static bool repeated_replace(string& s1, const string& s2, const string& s3)
-    {
+    static bool repeated_replace(string& s1, const string& s2, const string& s3) {
         index_string anf = s1.find(s2, 0);
         bool bResult = false;
-        while (string::npos != anf)
-        {
+        while (string::npos != anf) {
             // replace s2 with s3 in s1
             string right(s1.substr(anf + s2.length(), string::npos));
             string left(s1.substr(0, anf));
@@ -66,15 +62,13 @@ public:
 
     // The function call to process the next element
 
-    void operator()(const pair_string& p1)
-    {
-        for (; repeated_replace(str, p1.first, p1.second););
+    void operator()(const pair_string& p1) {
+        for (; repeated_replace(line, p1.first, p1.second););
     }
 
     // The function call to get the return value
 
-    operator string()
-    {
-        return str;
+    operator string() {
+        return line;
     }
 };

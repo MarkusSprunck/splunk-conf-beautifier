@@ -40,8 +40,8 @@
 class line_status {
 public:
 
-    enum eStatusValue {
-        CODE, STRINGS, MACRO, CHARACTER
+    enum eStatus {
+        IN_CODE, IN_MACRO, IN_SINGLE_QUOTE, IN_DOUBLE_QUOTE
     };
 
 protected:
@@ -50,28 +50,29 @@ protected:
         STATUS, INDEX_COUNT
     };
 
-    vector<long> current, once;
+    vector<long> status_current, status_once;
 
 public:
     line_status();
 
     const bool inCode(void);
     const bool inMacro(void);
-    const bool inString(void);
-    const bool inCharacterString(void);
+    const bool inDoubleQuoteString(void);
+    const bool inSingleQuoteString(void);
+
+    long GetStatus();
 
     void SetActiveCode(void);
     void SetActiveMacro(void);
-    void SetActiveString(void);
-    void SetActiveCharacterString(void);
+    void SetActiveDoubleQuoteString(void);
+    void SetActiveSingleQuoteString(void);
 
-    long GetLayer(void);
-    long GetLayerTotal(void);
-    void SetLayer(int layer);
+    long GetLayerCount(void); // count valid for all lines
+    long GetLayerCountOnce(void); // count valid for the current line 
+    long GetLayerCountTotal(void); // sum of all counts
 
-    long GetOnce(void);
-    void SetOnce(int layer);
+    void SetLayerCount(int layer);
+    void SetLayerCountOnce(int layer);
 
-    long GetCurrentStatus();
 };
 

@@ -35,58 +35,68 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 #include "string_utils.h"
 
 class formater_mark_html {
-   static const string sFontCode;
-   static const string sFontKeyword;
-   static const string sFontMarked;
-   string line;
-   
+    string line;
+
 public:
-   formater_mark_html(const string& s): line(s) {
-   }
-   
-   // The function call to process the next element
-   void operator () (const pair_command& p1) {
-      string value = p1.first + " ";
-      long command = p1.second;
-      index_string anf = line.find(value);
-      while (string::npos!=anf) {
-         size_t length = 0;
-         string start = "";
-         if (0<anf){
-            start = line.substr(anf-1, 1);
-         }
-         
-         string temp(" }{*+-,:<>\t&");
-         if (string::npos==start.find_first_not_of(temp)) {
-            string right = line.substr(anf+value.size(), string::npos);
-            line = line.substr(0, anf);
-            if (KEYWORD==(command & KEYWORD)) {
-               length = sFontKeyword.length() + sFontCode.length();
-               line.append(sFontKeyword).append(value).append(sFontCode);
+    static const string FONT_CODE;
+    static const string FONT_KEYWORD;
+    static const string FONT_MARKED;
+    static const string FONT_SINGLE_QUOTE;
+    static const string FONT_DOUBLE_QUOTE;
+    static const string FONT_MACRO;
+
+    formater_mark_html(const string& s) : line(s) {
+    }
+
+    // The function call to process the next element
+
+    void operator()(const pair_command& p1) {
+        string value = p1.first + " ";
+        long command = p1.second;
+        index_string anf = line.find(value);
+        while (string::npos != anf) {
+            size_t length = 0;
+            string start = "";
+            if (0 < anf) {
+                start = line.substr(anf - 1, 1);
             }
-            else if (MARK==(command & MARK)) {
-               length = sFontMarked.length() + sFontCode.length();
-               line.append(sFontMarked).append(value).append(sFontCode);
+
+            string temp(" }{*+-,:<>\t&");
+            if (string::npos == start.find_first_not_of(temp)) {
+                string right = line.substr(anf + value.size(), string::npos);
+                line = line.substr(0, anf);
+                if (KEYWORD == (command & KEYWORD)) {
+                    length = FONT_KEYWORD.length() + FONT_CODE.length();
+                    line.append(FONT_KEYWORD).append(value).append(FONT_CODE);
+                } else if (MARK == (command & MARK)) {
+                    length = FONT_MARKED.length() + FONT_CODE.length();
+                    line.append(FONT_MARKED).append(value).append(FONT_CODE);
+                } else {
+                    line.append(value);
+                }
+                line.append(right);
             }
-            else {
-               line.append(value);
-            }
-            line.append(right);
-         }
-         anf = line.find(value, anf + value.length() +length);
-      }
-   }
-   
-   // The function call to get the return value
-   operator string () {
-      return line;
-   }
+            anf = line.find(value, anf + value.length() + length);
+        }
+    }
+
+    // The function call to get the return value
+
+    operator string() {
+        return line;
+    }
 };
 
-const string formater_mark_html::sFontCode = "</font>\n<font color=black>";
-const string formater_mark_html::sFontKeyword = "</font>\n<font color=blue>";
-const string formater_mark_html::sFontMarked = "</font>\n<font color=black>";
+const string formater_mark_html::FONT_CODE = "</font><font color=black>";
+const string formater_mark_html::FONT_KEYWORD = "</font><font color=blue>";
+const string formater_mark_html::FONT_MARKED = "</font><font color=black>";
+const string formater_mark_html::FONT_SINGLE_QUOTE = "</font><font color=gold>";
+const string formater_mark_html::FONT_DOUBLE_QUOTE = "</font><font color=orange>";
+const string formater_mark_html::FONT_MACRO = "</font><font color=#04B404>";
+
+
+
+

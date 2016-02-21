@@ -41,38 +41,34 @@
 #include "std_typedef.h"
 #include "line_status.h"
 
-using namespace std;
-
-class layer_counter {
-    line_status* m_line_status;
-    const string* m_line;
+class layer_counter {    
+    line_status* ls;    
+    const string* line;
 
 public:
 
-    layer_counter(line_status* line_status, const string& line) : m_line_status(line_status), m_line(&line) {
+    layer_counter(line_status* line_status, const string& line) : ls(line_status), line(&line) {
     }
 
     // The function call to process the next element
 
     void operator()(const pair_command& p1) {
-        if (string::npos != m_line->find(p1.first)) {
-            if (INCREMENTONCE == (INCREMENTONCE & p1.second) && 20 > (*m_line_status).GetLayer()) {
-                (*m_line_status).SetOnce((*m_line_status).GetOnce() + 1);
-            } 
-            
-            if (DOUBLE_INCREMENTONCE == (DOUBLE_INCREMENTONCE & p1.second) && 20 > (*m_line_status).GetLayer()) {
-                (*m_line_status).SetOnce((*m_line_status).GetOnce() + 2);
-            }      
-            
-            if (INCREMENT == (INCREMENT & p1.second) && 10 > (*m_line_status).GetLayer()) {
-                (*m_line_status).SetLayer((*m_line_status).GetLayer() + 1);
-            } 
-            
-            if (DECREMENT == (DECREMENT & p1.second) && 1 <= (*m_line_status).GetLayer()) {
-                (*m_line_status).SetLayer((*m_line_status).GetLayer() - 1);
+        if (string::npos != line->find(p1.first)) {
+            if (INCREMENTONCE == (INCREMENTONCE & p1.second) && 20 > (*ls).GetLayerCount()) {
+                (*ls).SetLayerCountOnce((*ls).GetLayerCountOnce() + 1);
             }
-            
-            
+
+            if (DOUBLE_INCREMENTONCE == (DOUBLE_INCREMENTONCE & p1.second) && 20 > (*ls).GetLayerCount()) {
+                (*ls).SetLayerCountOnce((*ls).GetLayerCountOnce() + 2);
+            }
+
+            if (INCREMENT == (INCREMENT & p1.second) && 10 > (*ls).GetLayerCount()) {
+                (*ls).SetLayerCount((*ls).GetLayerCount() + 1);
+            }
+
+            if (DECREMENT == (DECREMENT & p1.second) && 1 <= (*ls).GetLayerCount()) {
+                (*ls).SetLayerCount((*ls).GetLayerCount() - 1);
+            }
         }
     }
 };

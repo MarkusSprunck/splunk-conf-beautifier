@@ -35,10 +35,10 @@ void line_status_test::test_default_values() {
     line_status ls;
 
     // then
-    CPPUNIT_ASSERT(ls.GetOnce() == 0);
-    CPPUNIT_ASSERT(ls.GetLayer() == 0);
-    CPPUNIT_ASSERT(ls.GetLayerTotal() == 0);
-    CPPUNIT_ASSERT(ls.GetCurrentStatus() == line_status::eStatusValue::CODE);
+    CPPUNIT_ASSERT(ls.GetLayerCountOnce() == 0);
+    CPPUNIT_ASSERT(ls.GetLayerCount() == 0);
+    CPPUNIT_ASSERT(ls.GetLayerCountTotal() == 0);
+    CPPUNIT_ASSERT(ls.GetStatus() == line_status::eStatus::IN_CODE);
 }
 
 void line_status_test::test_set_simple_values() {
@@ -46,15 +46,15 @@ void line_status_test::test_set_simple_values() {
     line_status ls;
 
     // when
-    ls.SetOnce(2);
-    ls.SetLayer(3);
+    ls.SetLayerCountOnce(2);
+    ls.SetLayerCount(3);
     ls.SetActiveMacro();
 
     // then
-    CPPUNIT_ASSERT(ls.GetOnce() == 2);
-    CPPUNIT_ASSERT(ls.GetLayer() == 3);
-    CPPUNIT_ASSERT(ls.GetLayerTotal() == 5);
-    CPPUNIT_ASSERT(ls.GetCurrentStatus() == line_status::eStatusValue::MACRO);
+    CPPUNIT_ASSERT(ls.GetLayerCountOnce() == 2);
+    CPPUNIT_ASSERT(ls.GetLayerCount() == 3);
+    CPPUNIT_ASSERT(ls.GetLayerCountTotal() == 5);
+    CPPUNIT_ASSERT(ls.GetStatus() == line_status::eStatus::IN_MACRO);
 }
 
 void line_status_test::test_set_active_macro() {
@@ -65,7 +65,7 @@ void line_status_test::test_set_active_macro() {
     ls.SetActiveMacro();
 
     // then
-    CPPUNIT_ASSERT(ls.GetCurrentStatus() == line_status::eStatusValue::MACRO);
+    CPPUNIT_ASSERT(ls.GetStatus() == line_status::eStatus::IN_MACRO);
 }
 
 void line_status_test::test_set_active_code() {
@@ -77,19 +77,31 @@ void line_status_test::test_set_active_code() {
     ls.SetActiveCode();
 
     // then
-    CPPUNIT_ASSERT(ls.GetCurrentStatus() == line_status::eStatusValue::CODE);
+    CPPUNIT_ASSERT(ls.GetStatus() == line_status::eStatus::IN_CODE);
 }
 
-
-void line_status_test::test_set_active_string() {
+void line_status_test::test_set_active_double_quote_string() {
     // given
     line_status ls;
 
     // when
-    ls.SetActiveString();
+    ls.SetActiveDoubleQuoteString();
 
     // then
-    CPPUNIT_ASSERT(ls.GetCurrentStatus() == line_status::eStatusValue::STRINGS);
+    CPPUNIT_ASSERT(ls.GetStatus() == line_status::eStatus::IN_DOUBLE_QUOTE);
 }
+
+void line_status_test::test_set_active_single_quote_string() {
+    // given
+    line_status ls;
+
+    // when
+    ls.SetActiveSingleQuoteString();
+
+    // then
+    CPPUNIT_ASSERT(ls.GetStatus() == line_status::eStatus::IN_SINGLE_QUOTE);
+}
+
+
 
 

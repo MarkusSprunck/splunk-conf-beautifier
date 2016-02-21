@@ -86,13 +86,13 @@ void formater_test::testMethod() {
 void formater_test::executeTest(const string& name, const string soll) {
     clock_t start = clock();
     m_number++;
-    m_sResult = "ok";
+    result = "ok";
     m_LinesSoll.clear();
-    m_Lines.clear();
+    lines.clear();
 
     string quelle1 = name;
     quelle1.append(".txt");
-    importAllLines(quelle1, m_Lines);
+    importAllLines(quelle1, lines);
 
     string quelle2 = name;
     quelle2.append("-expected.txt");
@@ -104,7 +104,7 @@ void formater_test::executeTest(const string& name, const string soll) {
     cout << "   run " << quelle1.c_str();
 
     // formater - start
-    m_bCreateHtml = false;
+    createHtml = false;
     removeEmptyAll();
     formatPre();
     wrapLines("[");
@@ -114,17 +114,17 @@ void formater_test::executeTest(const string& name, const string soll) {
     formatPost();
     // formater - end
 
-    if (0 != m_sResult.compare(soll))
-        cout << " error: " << m_sResult << endl;
+    if (0 != result.compare(soll))
+        cout << " error: " << result << endl;
     else {
         bool result = true;
         if (0 == soll.compare("ok")) {
-            if (m_LinesSoll.size() <= m_Lines.size()) {
-                result = equal(m_LinesSoll.begin(), m_LinesSoll.end(), m_Lines.begin(), string_compare(true));
+            if (m_LinesSoll.size() <= lines.size()) {
+                result = equal(m_LinesSoll.begin(), m_LinesSoll.end(), lines.begin(), string_compare(true));
                 if (!result)
                     cout << endl << "[expected|actual]";
             } else {
-                result = equal(m_Lines.begin(), m_Lines.end(), m_LinesSoll.begin(), string_compare(true));
+                result = equal(lines.begin(), lines.end(), m_LinesSoll.begin(), string_compare(true));
                 if (!result) {
                     cout << endl << "[expected|actual]";
                 }
