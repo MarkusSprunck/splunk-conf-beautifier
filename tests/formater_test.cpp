@@ -74,6 +74,7 @@ void formater_test::testMethod() {
     executeTest("./data/toString", "ok");
     executeTest("./data/simple", "ok");
     executeTest("./data/strings", "ok");
+    executeTest("./data/strings-single-quote", "ok");
 
     cout << "   " << m_numberOk << " succeeded, ";
     cout << m_number - m_numberOk << " failed, ";

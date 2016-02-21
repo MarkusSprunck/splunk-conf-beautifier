@@ -87,6 +87,6 @@ public:
    }
 };
 
-const string formater_mark_html::sFontCode = "</font>\n<font color=\'black\'>";
-const string formater_mark_html::sFontKeyword = "</font>\n<font color=\'blue\'>";
-const string formater_mark_html::sFontMarked = "</font>\n<font color=\'black\'>";
+const string formater_mark_html::sFontCode = "</font>\n<font color=black>";
+const string formater_mark_html::sFontKeyword = "</font>\n<font color=blue>";
+const string formater_mark_html::sFontMarked = "</font>\n<font color=black>";

@@ -7,5 +7,6 @@ rm *.txt.result
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h join.txt
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h eval-if.txt
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h strings.txt
+..\dist\Debug\Cygwin-Windows\spl2html.exe -h strings-single-quote.txt
 
 

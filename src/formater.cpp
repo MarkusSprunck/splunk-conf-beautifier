@@ -215,7 +215,13 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
                 if (m_bCreateHtml && !encode) {
                     insertHtmlFont(index, line, ls);
                 }
-                indexStart = index;
+                indexStart = index; 
+            } else if (line[index] == '\'') {
+                ls.SetActiveCharacterString();
+                if (m_bCreateHtml && !encode) {
+                    insertHtmlFont(index, line, ls);
+                }
+                indexStart = index; 
             } else if (line[index] == '`') {
                 ls.SetActiveMacro();
                 if (m_bCreateHtml && !encode) {
@@ -223,8 +229,9 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
                 }
                 indexStart = index;
             }
-        } else if (ls.inString()) {
-            if (line[index] == '"' && index > 1 && line[index-1] != '\\') {
+        } else if (ls.inString() || ls.inCharacterString()) {
+            if ((ls.inString() && line[index] == '"' && index > 1 && line[index - 1] != '\\') ||
+                    (ls.inCharacterString() && line[index] == '\'' && index > 1 && line[index - 1] != '\\')) {
                 if (encode) {
                     int indexStart1 = indexStart + 1;
                     int string_length = (index - indexStart - 1);
@@ -372,10 +379,10 @@ void formater::wrapLines(string pattern) {
 }
 
 string formater::GetHtmlFontTag(unsigned long id) {
-    const string sFontCode = "</font>\n<font color=\'black\'>";
-    const string sFontString = "</font>\n<font color=\'orange\'>";
-    const string sFontCharacter = "</font>\n<font color=\'orange\'>";
-    const string sFontMacro = "</font>\n<font color=\'#04B404\'>";
+    const string sFontCode = "</font>\n<font color=black>";
+    const string sFontString = "</font>\n<font color=orange>";
+    const string sFontCharacter = "</font>\n<font color=orange>";
+    const string sFontMacro = "</font>\n<font color=#04B404>";
     const string g_sFont[] = {sFontCode, sFontString, sFontCharacter, sFontMacro};
     if (id <= 3)
         return g_sFont[id];

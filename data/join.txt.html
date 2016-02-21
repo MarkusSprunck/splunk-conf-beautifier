@@ -1,49 +1,49 @@
 <style TYPE='text/css'> <!-- p { line-height: 100%; } body { font-family: 'courier new'; line-height: 100%; } --> </style>
 </font>
-<font color='black'></font>
-<font color='blue'>index </font>
-<font color='black'>=</font>
-<font color='orange'>"_internal"</font>
-<font color='black'></p>
+<font color=black></font>
+<font color=blue>index </font>
+<font color=black>=</font>
+<font color=orange>"_internal"</font>
+<font color=black></p>
 &nbsp;&nbsp;&nbsp;</font>
-<font color='black'></font>
-<font color='black'>| </font>
-<font color='black'></font>
-<font color='blue'>stats </font>
-<font color='black'>sum(kb) </font>
-<font color='blue'>as </font>
-<font color='black'>kb </font>
-<font color='blue'>by </font>
-<font color='black'>splunk_server</p>
+<font color=black></font>
+<font color=black>| </font>
+<font color=black></font>
+<font color=blue>stats </font>
+<font color=black>sum(kb) </font>
+<font color=blue>as </font>
+<font color=black>kb </font>
+<font color=blue>by </font>
+<font color=black>splunk_server</p>
 &nbsp;&nbsp;&nbsp;</font>
-<font color='black'></font>
-<font color='black'>| </font>
-<font color='black'></font>
-<font color='blue'>join </font>
-<font color='black'>type=</font>
-<font color='orange'>"outer"</font>
-<font color='black'> splunk_server</p>
+<font color=black></font>
+<font color=black>| </font>
+<font color=black></font>
+<font color=blue>join </font>
+<font color=black>type=</font>
+<font color=orange>"outer"</font>
+<font color=black> splunk_server</p>
 &nbsp;&nbsp;&nbsp;</font>
-<font color='black'></font>
-<font color='black'>[ </font>
-<font color='black'></font>
-<font color='blue'>search </font>
-<font color='black'></font>
-<font color='blue'>index </font>
-<font color='black'>=</font>
-<font color='orange'>"_internal"</font>
-<font color='black'> source=</font>
-<font color='orange'>"*metrics.log"</font>
-<font color='black'> group=queue name=parsingqueue</p>
+<font color=black></font>
+<font color=black>[ </font>
+<font color=black></font>
+<font color=blue>search </font>
+<font color=black></font>
+<font color=blue>index </font>
+<font color=black>=</font>
+<font color=orange>"_internal"</font>
+<font color=black> source=</font>
+<font color=orange>"*metrics.log"</font>
+<font color=black> group=queue name=parsingqueue</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
-<font color='black'></font>
-<font color='black'>| </font>
-<font color='black'></font>
-<font color='blue'>chart </font>
-<font color='black'>perc95(current_size_kb) </font>
-<font color='blue'>as </font>
-<font color='black'>p95sz </font>
-<font color='blue'>by </font>
-<font color='black'>splunk_server</p>
+<font color=black></font>
+<font color=black>| </font>
+<font color=black></font>
+<font color=blue>chart </font>
+<font color=black>perc95(current_size_kb) </font>
+<font color=blue>as </font>
+<font color=black>p95sz </font>
+<font color=blue>by </font>
+<font color=black>splunk_server</p>
 &nbsp;&nbsp;&nbsp;</font>
-<font color='black'>]</p>
+<font color=black>]</p>

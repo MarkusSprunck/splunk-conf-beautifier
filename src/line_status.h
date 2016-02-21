@@ -41,7 +41,7 @@ class line_status {
 public:
 
     enum eStatusValue {
-        CODE, STRINGS, MACRO
+        CODE, STRINGS, MACRO, CHARACTER
     };
 
 protected:
@@ -58,10 +58,12 @@ public:
     const bool inCode(void);
     const bool inMacro(void);
     const bool inString(void);
+    const bool inCharacterString(void);
 
     void SetActiveCode(void);
     void SetActiveMacro(void);
     void SetActiveString(void);
+    void SetActiveCharacterString(void);
 
     long GetLayer(void);
     long GetLayerTotal(void);

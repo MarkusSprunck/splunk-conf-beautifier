@@ -59,6 +59,10 @@ const bool line_status::inString(void) {
     return (STRINGS == current[STATUS]);
 }
 
+const bool line_status::inCharacterString(void) {
+    return (CHARACTER == current[STATUS]);
+}
+
 void line_status::SetActiveCode(void) {
     current[STATUS] = CODE;
 }
@@ -69,6 +73,10 @@ void line_status::SetActiveMacro(void) {
 
 void line_status::SetActiveString(void) {
     current[STATUS] = STRINGS;
+}
+
+void line_status::SetActiveCharacterString(void) {
+    current[STATUS] = CHARACTER;
 }
 
 long line_status::GetLayer(void) {

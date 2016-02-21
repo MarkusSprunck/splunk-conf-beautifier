@@ -1,40 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="data" displayName="data" projectFiles="true">
-      <logicalFolder name="data" displayName="data" projectFiles="true">
-        <itemPath>data/strings-expected.txt</itemPath>
-        <itemPath>data/strings.txt.html</itemPath>
-        <itemPath>data/strings.txt.result</itemPath>
-      </logicalFolder>
-      <itemPath>data/eval-if-expected.txt</itemPath>
-      <itemPath>data/eval-if.txt</itemPath>
-      <itemPath>data/eval-if.txt.html</itemPath>
-      <itemPath>data/eval-if.txt.result</itemPath>
-      <itemPath>data/join-expected.txt</itemPath>
-      <itemPath>data/join.txt</itemPath>
-      <itemPath>data/join.txt.html</itemPath>
-      <itemPath>data/join.txt.result</itemPath>
-      <itemPath>data/long-expected.txt</itemPath>
-      <itemPath>data/long.txt</itemPath>
-      <itemPath>data/long.txt.html</itemPath>
-      <itemPath>data/long.txt.result</itemPath>
-      <itemPath>data/run.bat</itemPath>
-      <itemPath>data/simple-expected.txt</itemPath>
-      <itemPath>data/simple.txt</itemPath>
-      <itemPath>data/simple.txt.html</itemPath>
-      <itemPath>data/simple.txt.result</itemPath>
-      <itemPath>data/spl2html.exe.stackdump</itemPath>
-      <itemPath>data/strings.txt</itemPath>
-      <itemPath>data/subsearch-expected.txt</itemPath>
-      <itemPath>data/subsearch.txt</itemPath>
-      <itemPath>data/subsearch.txt.html</itemPath>
-      <itemPath>data/subsearch.txt.result</itemPath>
-      <itemPath>data/toString-expected.txt</itemPath>
-      <itemPath>data/toString.txt</itemPath>
-      <itemPath>data/toString.txt.html</itemPath>
-      <itemPath>data/toString.txt.result</itemPath>
-    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
@@ -102,68 +68,9 @@
           <developmentMode>0</developmentMode>
           <standard>11</standard>
           <commandlineTool>g++</commandlineTool>
+          <useLinkerLibraries>false</useLinkerLibraries>
         </ccTool>
       </compileType>
-      <item path="data/eval-if-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/eval-if.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/eval-if.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/eval-if.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/join-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/join.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/join.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/join.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/run.bat" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/spl2html.exe.stackdump" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/strings-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/strings.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/strings.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/strings.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/subsearch-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/subsearch.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/subsearch.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/subsearch.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -244,66 +151,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="data/eval-if-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/eval-if.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/eval-if.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/eval-if.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/join-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/join.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/join.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/join.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/long.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/run.bat" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/simple.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/spl2html.exe.stackdump" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/strings-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/strings.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/strings.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/strings.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/subsearch-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/subsearch.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/subsearch.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/subsearch.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString-expected.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt.html" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="data/toString.txt.result" ex="false" tool="3" flavor2="0">
-      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
