@@ -224,7 +224,7 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
                 indexStart = index;
             }
         } else if (ls.inString()) {
-            if (line[index] == '"') {
+            if (line[index] == '"' && index > 1 && line[index-1] != '\\') {
                 if (encode) {
                     int indexStart1 = indexStart + 1;
                     int string_length = (index - indexStart - 1);

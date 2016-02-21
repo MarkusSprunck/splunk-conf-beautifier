@@ -73,6 +73,7 @@ void formater_test::testMethod() {
     executeTest("./data/long", "ok");
     executeTest("./data/toString", "ok");
     executeTest("./data/simple", "ok");
+    executeTest("./data/strings", "ok");
 
     cout << "   " << m_numberOk << " succeeded, ";
     cout << m_number - m_numberOk << " failed, ";

@@ -2,6 +2,11 @@
 <configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="data" displayName="data" projectFiles="true">
+      <logicalFolder name="data" displayName="data" projectFiles="true">
+        <itemPath>data/strings-expected.txt</itemPath>
+        <itemPath>data/strings.txt.html</itemPath>
+        <itemPath>data/strings.txt.result</itemPath>
+      </logicalFolder>
       <itemPath>data/eval-if-expected.txt</itemPath>
       <itemPath>data/eval-if.txt</itemPath>
       <itemPath>data/eval-if.txt.html</itemPath>
@@ -20,6 +25,7 @@
       <itemPath>data/simple.txt.html</itemPath>
       <itemPath>data/simple.txt.result</itemPath>
       <itemPath>data/spl2html.exe.stackdump</itemPath>
+      <itemPath>data/strings.txt</itemPath>
       <itemPath>data/subsearch-expected.txt</itemPath>
       <itemPath>data/subsearch.txt</itemPath>
       <itemPath>data/subsearch.txt.html</itemPath>
@@ -133,6 +139,14 @@
       <item path="data/simple.txt.result" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/spl2html.exe.stackdump" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings.txt.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings.txt.result" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/subsearch-expected.txt" ex="false" tool="3" flavor2="0">
       </item>
@@ -265,6 +279,14 @@
       <item path="data/simple.txt.result" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/spl2html.exe.stackdump" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings.txt.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings.txt.result" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/subsearch-expected.txt" ex="false" tool="3" flavor2="0">
       </item>
