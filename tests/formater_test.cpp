@@ -71,10 +71,12 @@ void formater_test::testMethod() {
     executeTest("./data/join", "ok");
     executeTest("./data/subsearch", "ok");
     executeTest("./data/long", "ok");
+    executeTest("./data/long_formated", "ok");
     executeTest("./data/toString", "ok");
     executeTest("./data/simple", "ok");
     executeTest("./data/strings", "ok");
     executeTest("./data/strings-single-quote", "ok");
+    executeTest("./data/append", "ok");
 
     cout << "   " << m_numberOk << " succeeded, ";
     cout << m_number - m_numberOk << " failed, ";
@@ -92,12 +94,12 @@ void formater_test::executeTest(const string& name, const string soll) {
 
     string quelle1 = name;
     quelle1.append(".txt");
-    importAllLines(quelle1, lines);
+    importAllLines(quelle1, lines, true);
 
     string quelle2 = name;
     quelle2.append("-expected.txt");
     if (0 == soll.compare("ok")) {
-        importAllLines(quelle2, m_LinesSoll);
+        importAllLines(quelle2, m_LinesSoll, false);
         for_each(m_LinesSoll.begin(), m_LinesSoll.end(), trimRight);
 
     }
@@ -105,7 +107,6 @@ void formater_test::executeTest(const string& name, const string soll) {
 
     // formater - start
     createHtml = false;
-    removeEmptyAll();
     formatPre();
     wrapLines("[");
     wrapLines("]");

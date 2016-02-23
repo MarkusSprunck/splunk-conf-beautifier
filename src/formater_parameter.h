@@ -49,7 +49,9 @@ const map_string getReplacePrepocessing() {
 const map_string getReplacePostprocessing() {
     map_string replace;
     replace[" ("] = "(";
+    replace["  ="] = "=";
     replace[" ="] = "=";
+    replace["=  "] = "=";
     replace["= "] = "=";
     replace[" ,"] = ",";
     replace[" )"] = ")";
@@ -98,7 +100,13 @@ const map_command getCommand() {
     command["latest" ] = KEYWORD;
     command["coalesce" ] = KEYWORD;
     command["sourcetype" ] = KEYWORD;
+    command["field" ] = KEYWORD;
+    command["savedsearch" ] = KEYWORD;
+    command["case" ] = KEYWORD;
     command["source" ] = KEYWORD;
+    command["type" ] = KEYWORD;
+    command["sum" ] = KEYWORD;
+    
 
     // Streaming Commands | START
     command["addinfo" ] = KEYWORD;

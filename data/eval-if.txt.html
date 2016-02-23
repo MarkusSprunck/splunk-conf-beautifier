@@ -1,11 +1,11 @@
 <style TYPE='text/css'> <!-- p { line-height: 100%; } body { font-family: 'courier new'; line-height: 100%; } --> </style>
-</font><font color=black></font><font color=black>| </font><font color=black></font><font color=blue>metadata </font><font color=black>type=hosts index=_internal</p>
-&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>| </font><font color=black></font><font color=blue>search </font><font color=black>NOT(host=</font><font color=#04B404>"YourSplunkServers"</font><font color=black>)</p>
-&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>| </font><font color=black></font><font color=blue>table </font><font color=black>host</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>, </font><font color=black> recentTime</p>
-&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>| </font><font color=black></font><font color=blue>eval </font><font color=black>age=now()-recentTime</p>
-&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>| </font><font color=black></font><font color=blue>eval </font><font color=black>status=if(age&lt300</p>
+</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>metadata</font><font color=black> </font><font color=blue>type</font><font color=black>=hosts index=_internal</p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>search</font><font color=black> NOT(host=</font><font color=#04B404>"YourSplunkServers"</font><font color=black>)</p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>table</font><font color=black> host</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>,</font><font color=black>  recentTime</p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>eval</font><font color=black> age=now()-recentTime</p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>eval</font><font color=black> status=if(age&lt300</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black>,</font><font color=#04B404>"UP"</font><font color=black></p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black>,</font><font color=#04B404>"DOWN"</font><font color=black>)</p>
-&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>| </font><font color=black></font><font color=blue>table </font><font color=black>host</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>, </font><font color=black>status</p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>table</font><font color=black> host</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>,</font><font color=black> status</p>

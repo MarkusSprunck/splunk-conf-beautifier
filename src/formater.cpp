@@ -54,10 +54,9 @@ replacePatternHtml(getReplaceHtml()) {
 void formater::run(const string& inputFile) {
     // create text file
     createHtml = false;
-    importAllLines(inputFile, lines);
+    importAllLines(inputFile, lines, true);
     for_each(lines.begin(), lines.end(), trimLeft);
     for_each(lines.begin(), lines.end(), trimRight);
-    removeEmptyAll();
     formatPre();
     wrapLines("[");
     wrapLines("]");
@@ -70,10 +69,9 @@ void formater::run(const string& inputFile) {
 
     // create html file
     createHtml = true;
-    importAllLines(inputFile, lines);
+    importAllLines(inputFile, lines, true);
     for_each(lines.begin(), lines.end(), trimLeft);
     for_each(lines.begin(), lines.end(), trimRight);
-    removeEmptyAll();
     formatPre();
     wrapLines("[");
     wrapLines("]");
@@ -86,7 +84,7 @@ void formater::run(const string& inputFile) {
     cout << string("create 'file://").append(outputFileHtml).append("' ").append(result) << endl;
 }
 
-void formater::importAllLines(const string& file, list<string>& m_Lines) {
+void formater::importAllLines(const string& file, list<string>& m_Lines, bool single) {
     fstream fin(file.c_str(), ios_base::in);
     if (fin.fail()) {
         result = "file open failed";
@@ -94,6 +92,7 @@ void formater::importAllLines(const string& file, list<string>& m_Lines) {
     }
 
     m_Lines.clear();
+    string result;
     string line;
     while (getline(fin, line) && (!fin.fail())) {
         if (createHtml) {
@@ -101,12 +100,20 @@ void formater::importAllLines(const string& file, list<string>& m_Lines) {
             formater_replace::repeated_replace(line, "<", "&lt");
             formater_replace::repeated_replace(line, ">", "&gt");
         }
-        m_Lines.push_back(line);
+        if (single) {
+            result = result.append(line).append(" ");
+        } else {
+            m_Lines.push_back(line);
+        }
+    }
+    if (single) {
+        m_Lines.push_back(result);
     }
     fin.close();
 }
 
 void formater::exportAllLines(const string& file) {
+
     if (0 == result.compare("ok")) {
         fstream fout(file.c_str(), ios_base::out | ios_base::trunc);
         if (fout.fail()) {
@@ -316,29 +323,6 @@ void formater::replaceSubstrings(const index_string& begin, index_string& end, s
         s = s.substr(0, begin).append(midNeu).append(s.substr(end + 1, string::npos).c_str());
         end = begin + midNeu.length() - 1;
     }
-}
-
-void formater::removeEmptyAll() {
-    bool bLineEmpty = false;
-    bool bLineRemoved = false;
-    bool bIsNotFirstLine = false;
-
-    do {
-        bLineRemoved = false;
-        string line;
-        for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
-            line = *iter;
-            bLineEmpty = (string::npos == line.find_last_not_of(" "));
-            bIsNotFirstLine = (iter != lines.begin());
-
-            if (!bIsNotFirstLine && bLineEmpty) {
-                // Leerzeile in der ersten Zeile öffnen
-                iter = lines.erase(iter);
-                line = *iter;
-                bLineRemoved = true;
-            }
-        }
-    } while (bLineRemoved);
 }
 
 void formater::wrapLines(string pattern) {

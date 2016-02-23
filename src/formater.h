@@ -50,14 +50,13 @@ public:
 protected:
 
     // file input & output
-    void importAllLines(const string& file, list<string>& m_Lines);
+    void importAllLines(const string& file, list<string>& m_Lines, bool single);
     void exportAllLines(const string& file);
 
     // each line
     void formatPre();
     void formatPost();
     string replacePattern(map_string pattern, string line, int iterations);
-    void removeEmptyAll();
     void wrapLines(string pattern);
     void createHtmlDocument();
 

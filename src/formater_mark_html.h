@@ -54,9 +54,9 @@ public:
     // The function call to process the next element
 
     void operator()(const pair_command& p1) {
-        string value = p1.first + " ";
+        string value = p1.first;
         long command = p1.second;
-        index_string anf = line.find(value);
+        index_string anf = line.find(value + " ");
         while (string::npos != anf) {
             size_t length = 0;
             string start = "";
