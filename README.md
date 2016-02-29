@@ -1,23 +1,19 @@
-# spl2html
-Splunk search processing language beautifier and to html converter
+##spl2html
+###Splunk search processing language beautifier and to html converter
 
-Function
---------
-- the executable spl2html.exe (takes an input file and as parameter '-h'), e.g. 
+1) Call spl2html.exe (takes an input file and as parameter '-h') 
  
 ```cmd
 ./spl2html.exe -h simple.txt
 ```
 
-Expected Result
----------------
-- Input not formated text file:
+2) Input not formated text file:
 
 ```txt
 search source = mytabl1 mycolumn = value | stats avg( mycolumn ) by mycolumn | search TST123 = value | fields mycolumn, avg(mycolumn) | eval test = "abc"."xyz".'ghf'."'hij'".'hhh' | search source = mytabl1 mycolumn = value | table ABC
 ```
 
-- Output formated text file (with the extension .result):
+3) Output formated text file (with the extension .result):
 
 ```txt
 search source=mytabl1 mycolumn=value</br>
