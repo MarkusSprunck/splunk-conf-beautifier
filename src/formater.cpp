@@ -61,7 +61,6 @@ void formater::run(const string& inputFile) {
     wrapLines("[");
     wrapLines("]");
     wrapLines("|");
-    wrapLines(",");
     formatPost();
     string outputFileResult = string(inputFile).append(".result");
     exportAllLines(outputFileResult);
@@ -76,7 +75,6 @@ void formater::run(const string& inputFile) {
     wrapLines("[");
     wrapLines("]");
     wrapLines("|");
-    wrapLines(",");
     formatPost();
     createHtmlDocument();
     string outputFileHtml = string(inputFile).append(".html");
@@ -122,7 +120,7 @@ void formater::exportAllLines(const string& file) {
         }
 
         for_each(lines.begin(), lines.end(), trimRight);
-        copy(lines.begin(), lines.end(), ostream_iterator<string>(fout, "\n"));
+        copy(lines.begin(), lines.end(), ostream_iterator<string>(fout, "\r\n"));
     }
 }
 
@@ -218,6 +216,10 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
 
     do {
         if (ls.inCode()) {
+            if (line[index] == '(') {
+                ls.SetBracketsCount(ls.GetBracketsCount() + 1);
+            }
+
             if (line[index] == '"') {
                 ls.SetActiveDoubleQuoteString();
                 if (createHtml && !encode) {
@@ -291,6 +293,13 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
                 indexStart = index;
             }
         }
+
+        if (ls.inCode() && ls.inBrackets()) {
+            if (line[index] == ')') {
+                ls.SetBracketsCount(ls.GetBracketsCount() - 1);
+            }
+        }
+
     } while (++index <= line.size());
 
     if (ls.inDoubleQuoteString()) {
@@ -299,6 +308,8 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
         result = "invalid state - single quote string";
     } else if (ls.inMacro()) {
         result = "invalid state - macro";
+    } else if (ls.inBrackets()) {
+        result = "invalid state - brackets";
     }
 
     return false;

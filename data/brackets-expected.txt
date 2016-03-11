@@ -2,6 +2,7 @@
     | metadata type=hosts index=_internal
     | search NOT(host="YourSplunkServers")
     | table host, recentTime
-    | eval age=now()-recentTime
+    | eval age=(now()-recentTime)
     | eval status=if(age<300,"UP","DOWN")
     | table host, status
+

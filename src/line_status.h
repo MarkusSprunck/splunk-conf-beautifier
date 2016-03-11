@@ -47,7 +47,7 @@ public:
 protected:
 
     enum eFlagIndex {
-        STATUS, INDEX_COUNT
+        STATUS, INDEX_COUNT, BRACKETS_COUNT, NUMBER_OF_ELEMENTS
     };
 
     vector<long> status_current, status_once;
@@ -59,20 +59,24 @@ public:
     const bool inMacro(void);
     const bool inDoubleQuoteString(void);
     const bool inSingleQuoteString(void);
+    const bool inBrackets(void);
 
     long GetStatus();
 
+    void SetActiveBrackets(void);
     void SetActiveCode(void);
     void SetActiveMacro(void);
     void SetActiveDoubleQuoteString(void);
     void SetActiveSingleQuoteString(void);
 
+    long GetBracketsCount(void); // count valid for all lines
     long GetLayerCount(void); // count valid for all lines
     long GetLayerCountOnce(void); // count valid for the current line 
     long GetLayerCountTotal(void); // sum of all counts
 
     void SetLayerCount(int layer);
     void SetLayerCountOnce(int layer);
-
+    void SetBracketsCount(int count);
+ 
 };
 

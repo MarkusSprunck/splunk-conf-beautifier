@@ -79,7 +79,7 @@ const map_command getCommand() {
     map_command command;
 
     command["|"] = MARK | INCREMENTONCE;
-    command[","] = MARK | DOUBLE_INCREMENTONCE;
+    command[","] = MARK ;
     command["["] = MARK | INCREMENT;
     command["]"] = MARK | INCREMENTONCE | DECREMENT;
 

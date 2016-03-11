@@ -71,7 +71,6 @@ void formater_test::testMethod() {
     executeTest("./data/join", "ok");
     executeTest("./data/subsearch", "ok");
     executeTest("./data/long", "ok");
-    executeTest("./data/long_formated", "ok");
     executeTest("./data/toString", "ok");
     executeTest("./data/simple", "ok");
     executeTest("./data/strings", "ok");
@@ -111,7 +110,6 @@ void formater_test::executeTest(const string& name, const string soll) {
     wrapLines("[");
     wrapLines("]");
     wrapLines("|");
-    wrapLines(",");
     formatPost();
     // formater - end
 

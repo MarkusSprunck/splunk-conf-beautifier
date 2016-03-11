@@ -39,9 +39,10 @@
 #include "string_utils.h"
 
 line_status::line_status(void) :
-status_current(INDEX_COUNT),
-status_once(INDEX_COUNT) {
+status_current(eFlagIndex::NUMBER_OF_ELEMENTS),
+status_once(eFlagIndex::NUMBER_OF_ELEMENTS) {
     status_current[INDEX_COUNT] = 0;
+    status_current[BRACKETS_COUNT] = 0;
     status_current[STATUS] = IN_CODE;
     status_once[INDEX_COUNT] = 0;
     status_once[STATUS] = IN_CODE;
@@ -63,6 +64,10 @@ const bool line_status::inSingleQuoteString(void) {
     return (IN_SINGLE_QUOTE == status_current[STATUS]);
 }
 
+const bool line_status::inBrackets(void) {
+    return (0 < status_current[BRACKETS_COUNT]);
+}
+
 void line_status::SetActiveCode(void) {
     status_current[STATUS] = IN_CODE;
 }
@@ -77,6 +82,10 @@ void line_status::SetActiveDoubleQuoteString(void) {
 
 void line_status::SetActiveSingleQuoteString(void) {
     status_current[STATUS] = IN_SINGLE_QUOTE;
+}
+
+long line_status::GetBracketsCount(void) {
+    return status_current[BRACKETS_COUNT];
 }
 
 long line_status::GetLayerCount(void) {
@@ -103,6 +112,6 @@ void line_status::SetLayerCountOnce(int layer) {
     status_once[INDEX_COUNT] = layer;
 }
 
-
-
-
+void line_status::SetBracketsCount(int count) {
+    status_current[BRACKETS_COUNT] = count;    
+}

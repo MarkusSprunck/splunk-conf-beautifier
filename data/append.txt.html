@@ -1,19 +1,12 @@
 <style TYPE='text/css'> <!-- p { line-height: 100%; } body { font-family: 'courier new'; line-height: 100%; } --> </style>
-</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>savedsearch</font><font color=black> EO_CT_XPE_TOO_LONG_BASE_DATA</p>
+</font><font color=black></p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>savedsearch</font><font color=black> EO_CT_XPE_TOO_LONG_BASE_DATA</p>
 &nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>append</font><font color=black></p>
 &nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>[</font><font color=black> </font><font color=orange>`eo_xx_parser_too_long_threshold(too_long_xpe_sepa)`</font><font color=black></p>
 &nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>]</font><font color=black></p>
 &nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>search</font><font color=black> MONITORINGPOINT=EO_CT_XP_AUS</p>
-&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>stats</font><font color=black> max(active) </font><font color=blue>as</font><font color=black> active</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>,</font><font color=black>  count </font><font color=blue>as</font><font color=black> value</p>
-&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>eval</font><font color=black> value=if(active=0</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black>,</font><font color=#04B404>"-"</font><font color=black></p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black>,value-1)</p>
-&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>eval</font><font color=black> range=case(active=0</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black>,</font><font color=#04B404>"none"</font><font color=black></p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>,</font><font color=black> value=0</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>,</font><font color=black> </font><font color=#04B404>"green"</font><font color=black></p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>,</font><font color=black> value!=0</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>,</font><font color=black> </font><font color=#04B404>"red"</font><font color=black>)</p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>stats</font><font color=black> max(active) </font><font color=blue>as</font><font color=black> active </font><font color=black>,</font><font color=black>  count </font><font color=blue>as</font><font color=black> value</p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>eval</font><font color=black> value=if(active=0,</font><font color=#04B404>"-"</font><font color=black>,value-1)</p>
+&nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>eval</font><font color=black> range=case(active=0,</font><font color=#04B404>"none"</font><font color=black>, value=0, </font><font color=#04B404>"green"</font><font color=black>, value!=0, </font><font color=#04B404>"red"</font><font color=black>)</p>
 &nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>eval</font><font color=black> _time=now()</p>
 &nbsp;&nbsp;&nbsp;</font><font color=black></font><font color=black>|</font><font color=black> </font><font color=blue>table</font><font color=black> value range _time</p>
