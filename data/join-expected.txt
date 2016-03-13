@@ -1,6 +1,5 @@
 index="_internal"
-    | stats sum(kb) as kb by splunk_server
-    | join type="outer" splunk_server
-    [ search index="_internal" source="*metrics.log" group=queue name=parsingqueue
-        | chart perc95(current_size_kb) as p95sz by splunk_server
-    ]
+   | stats sum(kb) as kb by splunk_server
+   | join type="outer" splunk_server
+   [ search index="_internal" source="*metrics.log" group=queue name=parsingqueue
+      | chart perc95(current_size_kb) as p95sz by splunk_server ]

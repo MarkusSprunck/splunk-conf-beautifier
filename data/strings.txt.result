@@ -1,6 +1,9 @@
 index=_internal
-    | head 1
-    | eval first1="123 | search | 456"
-    | eval second2="123 | 'search | 456'"
-    | eval third3="123 | \"search | 456\""
-    | table, first1, second2, third3
+   | head 1
+   | eval first1="123 | search | 456"
+   | eval second2="123 | 'search | 456'"
+   | eval third3="123 | \"search | 456\""
+   | table
+, first1
+, second2
+, third3

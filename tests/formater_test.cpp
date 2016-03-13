@@ -106,10 +106,10 @@ void formater_test::executeTest(const string& name, const string soll) {
 
     // formater - start
     createHtml = false;
+    for_each(lines.begin(), lines.end(), trimLeft);
+    for_each(lines.begin(), lines.end(), trimRight);
     formatPre();
-    wrapLines("[");
-    wrapLines("]");
-    wrapLines("|");
+    createNewLineIfNeeded();
     formatPost();
     // formater - end
 

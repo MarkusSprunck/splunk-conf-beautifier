@@ -7,3 +7,4 @@ string base64_decode(const string &in);
 
 void trimLeft(string & s);
 void trimRight(string & s);
+std::vector<std::string> split(const std::string &s, char delim);

@@ -58,9 +58,7 @@ void formater::run(const string& inputFile) {
     for_each(lines.begin(), lines.end(), trimLeft);
     for_each(lines.begin(), lines.end(), trimRight);
     formatPre();
-    wrapLines("[");
-    wrapLines("]");
-    wrapLines("|");
+    createNewLineIfNeeded();
     formatPost();
     string outputFileResult = string(inputFile).append(".result");
     exportAllLines(outputFileResult);
@@ -72,9 +70,7 @@ void formater::run(const string& inputFile) {
     for_each(lines.begin(), lines.end(), trimLeft);
     for_each(lines.begin(), lines.end(), trimRight);
     formatPre();
-    wrapLines("[");
-    wrapLines("]");
-    wrapLines("|");
+    createNewLineIfNeeded();
     formatPost();
     createHtmlDocument();
     string outputFileHtml = string(inputFile).append(".html");
@@ -119,8 +115,7 @@ void formater::exportAllLines(const string& file) {
             return;
         }
 
-        for_each(lines.begin(), lines.end(), trimRight);
-        copy(lines.begin(), lines.end(), ostream_iterator<string>(fout, "\r\n"));
+        copy(lines.begin(), lines.end(), ostream_iterator<string>(fout, "\n"));
     }
 }
 
@@ -216,6 +211,11 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
 
     do {
         if (ls.inCode()) {
+            if (encode && (!ls.inBrackets() && line[index] == ',' || line[index] == '|' || line[index] == '[')) {
+                line.insert(index, "\n");
+                index++;
+            }
+
             if (line[index] == '(') {
                 ls.SetBracketsCount(ls.GetBracketsCount() + 1);
             }
@@ -317,7 +317,7 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
 
 void formater::createIndenting(string &line, line_status & ls) {
     for (int i = 0; i < ls.GetLayerCountTotal(); i++) {
-        line.insert(0, createHtml ? "&nbsp;&nbsp;&nbsp;" : "    ");
+        line.insert(0, createHtml ? "&nbsp;&nbsp;&nbsp;" : "   ");
     }
 }
 
@@ -336,43 +336,15 @@ void formater::replaceSubstrings(const index_string& begin, index_string& end, s
     }
 }
 
-void formater::wrapLines(string pattern) {
+void formater::createNewLineIfNeeded() {
     list<string> result;
-
     for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
         string line = *iter;
-        if (pattern.size() <= line.size()) {
-            bool isFirstTimeProcessed = false;
-            bool isNewLineNeeded = false;
-            do {
-                index_string last = 0;
-                index_string anf = line.find(pattern);
-                if (anf != string::npos) {
-                    if (!isFirstTimeProcessed) {
-                        string lineAnfang = line.substr(0, anf);
-                        result.push_back(lineAnfang);
-                        isFirstTimeProcessed = true;
-                    } else {
-                        string startLine = pattern + line.substr(last, anf);
-                        last = anf;
-                        result.push_back(startLine);
-                    }
-
-                    line = line.substr(anf + pattern.size(), line.size());
-                    isNewLineNeeded = true;
-                } else {
-                    if (!isFirstTimeProcessed) {
-                        result.push_back(line);
-                    } else {
-                        result.push_back(pattern + line);
-                    }
-                    isNewLineNeeded = false;
-                    isFirstTimeProcessed = true;
-                }
-            } while (isNewLineNeeded);
+        std::vector<std::string> lines = split(line, '\n');
+        for (string copied_line : lines) {
+            result.push_back(copied_line);
         }
     }
-
     lines = result;
 }
 
@@ -389,7 +361,7 @@ string formater::GetHtmlFontTag(unsigned long id) {
         return "<FONT>";
 }
 
-void formater::insertHtmlFont(index_string& pos, string& s, line_status& ls) {
+void formater::insertHtmlFont(index_string& pos, string& s, line_status & ls) {
     s.insert(pos, GetHtmlFontTag(ls.GetStatus()));
     pos += GetHtmlFontTag(ls.GetStatus()).length();
 }

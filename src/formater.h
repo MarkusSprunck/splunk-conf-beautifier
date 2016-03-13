@@ -57,7 +57,7 @@ protected:
     void formatPre();
     void formatPost();
     string replacePattern(map_string pattern, string line, int iterations);
-    void wrapLines(string pattern);
+    void createNewLineIfNeeded();
     void createHtmlDocument();
 
     // single line

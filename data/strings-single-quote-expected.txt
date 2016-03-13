@@ -1,5 +1,5 @@
 index=_internal
-    | head 1
-    | eval foo="use single quotes 'This is in the quotes' test"
-    | rex field=foo '(?P<myfoo>.+)'
-    | table foo myfoo
+   | head 1
+   | eval foo="use single quotes 'This is in the quotes' test"
+   | rex field=foo '(?P<myfoo>.+)'
+   | table foo myfoo
