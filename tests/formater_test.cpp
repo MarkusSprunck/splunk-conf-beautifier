@@ -76,6 +76,7 @@ void formater_test::testMethod() {
     executeTest("./data/strings", "ok");
     executeTest("./data/strings-single-quote", "ok");
     executeTest("./data/append", "ok");
+    executeTest("./data/to_string_commas_locale", "ok");
 
     cout << "   " << m_numberOk << " succeeded, ";
     cout << m_number - m_numberOk << " failed, ";

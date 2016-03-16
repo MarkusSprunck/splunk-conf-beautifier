@@ -50,6 +50,7 @@
         <itemPath>tests/test_runner.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
+    <itemPath>data/to_string_commas_locale.txt</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>data</Elem>
@@ -71,6 +72,8 @@
           <useLinkerLibraries>false</useLinkerLibraries>
         </ccTool>
       </compileType>
+      <item path="data/to_string_commas_locale.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -151,6 +154,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="data/to_string_commas_locale.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>

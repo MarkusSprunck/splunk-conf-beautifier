@@ -8,4 +8,5 @@
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h strings-single-quote.txt
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h append.txt
 ..\dist\Debug\Cygwin-Windows\spl2html.exe -h brackets.txt
+..\dist\Debug\Cygwin-Windows\spl2html.exe -h to_string_commas_locale.txt
 

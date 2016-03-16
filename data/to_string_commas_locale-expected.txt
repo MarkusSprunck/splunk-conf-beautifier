@@ -1,0 +1,6 @@
+eval temp_value_decimal_en_$VALUE$=tostring('$VALUE$', "commas") 
+   | eval temp_value_decimal_de_$VALUE$=temp_value_decimal_en_$VALUE$ 
+   | rex field=temp_value_decimal_de_$VALUE$ mode=sed "s/,/|/g" 
+   | rex field=temp_value_decimal_de_$VALUE$ mode=sed "s/\./,/g"
+   | rex field=temp_value_decimal_de_$VALUE$ mode=sed "s/\|/./g" 
+   | eval thousanders_$VALUE$=IF("de"=="$LOCALE_IN$", temp_value_decimal_de_$VALUE$, temp_value_decimal_en_$VALUE$)
