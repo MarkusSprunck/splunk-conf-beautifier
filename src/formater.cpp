@@ -55,53 +55,66 @@ void formater::run(const string& inputFile) {
     // create text file
     createHtml = false;
     importAllLines(inputFile, lines, true);
-    for_each(lines.begin(), lines.end(), trimLeft);
-    for_each(lines.begin(), lines.end(), trimRight);
-    formatPre();
-    createNewLineIfNeeded();
-    formatPost();
-    string outputFileResult = string(inputFile).append(".result");
-    exportAllLines(outputFileResult);
-    cout << string("create 'file://").append(outputFileResult).append("' ").append(result) << endl;
+    if ("ok" == result) {
+        for_each(lines.begin(), lines.end(), trimLeft);
+        for_each(lines.begin(), lines.end(), trimRight);
+        formatPre();
+        createNewLineIfNeeded();
+        formatPost();
+        string outputFileResult = string(inputFile).append(".result");
+        exportAllLines(outputFileResult);
+        cout << string("create 'file://").append(outputFileResult).append("' ").append(result) << endl;
 
-    // create html file
-    createHtml = true;
-    importAllLines(inputFile, lines, true);
-    for_each(lines.begin(), lines.end(), trimLeft);
-    for_each(lines.begin(), lines.end(), trimRight);
-    formatPre();
-    createNewLineIfNeeded();
-    formatPost();
-    createHtmlDocument();
-    string outputFileHtml = string(inputFile).append(".html");
-    exportAllLines(outputFileHtml);
-    cout << string("create 'file://").append(outputFileHtml).append("' ").append(result) << endl;
+        // create html file
+        createHtml = true;
+        importAllLines(inputFile, lines, true);
+        for_each(lines.begin(), lines.end(), trimLeft);
+        for_each(lines.begin(), lines.end(), trimRight);
+        formatPre();
+        createNewLineIfNeeded();
+        formatPost();
+        createHtmlDocument();
+        string outputFileHtml = string(inputFile).append(".html");
+        exportAllLines(outputFileHtml);
+        cout << string("create 'file://").append(outputFileHtml).append("' ").append(result) << endl;
+    }
+
+
 }
 
 void formater::importAllLines(const string& file, list<string>& m_Lines, bool single) {
     fstream fin(file.c_str(), ios_base::in);
     if (fin.fail()) {
-        result = "file open failed";
+        result = "ERROR: file open failed";
+        cout << result << endl;
         return;
     }
 
     m_Lines.clear();
-    string result;
+    string result_line;
     string line;
     while (getline(fin, line) && (!fin.fail())) {
+
+        string line_copy = line;
+        stripUnicode(line_copy);
+        if (line_copy.length() != line.length()) {
+            result = "ERROR: file contains non ascii character";
+            cout << result << endl;
+            return;
+        }
         if (createHtml) {
             formater_replace::repeated_replace(line, "&", "&amp");
             formater_replace::repeated_replace(line, "<", "&lt");
             formater_replace::repeated_replace(line, ">", "&gt");
         }
         if (single) {
-            result = result.append(line).append(" ");
+            result_line = result_line.append(line).append(" ");
         } else {
             m_Lines.push_back(line);
         }
     }
     if (single) {
-        m_Lines.push_back(result);
+        m_Lines.push_back(result_line);
     }
     fin.close();
 }
@@ -111,7 +124,8 @@ void formater::exportAllLines(const string& file) {
     if (0 == result.compare("ok")) {
         fstream fout(file.c_str(), ios_base::out | ios_base::trunc);
         if (fout.fail()) {
-            result = "file create failed";
+            result = "ERROR: file create failed";
+            cout << result << endl;
             return;
         }
 
@@ -303,13 +317,23 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
     } while (++index <= line.size());
 
     if (ls.inDoubleQuoteString()) {
-        result = "invalid state - double quote string";
-    } else if (ls.inSingleQuoteString()) {
-        result = "invalid state - single quote string";
-    } else if (ls.inMacro()) {
-        result = "invalid state - macro";
-    } else if (ls.inBrackets()) {
-        result = "invalid state - brackets";
+        result = "ERROR: invalid state - double quote string";
+        cout << result << endl;
+    }
+
+    if (ls.inSingleQuoteString()) {
+        result = "ERROR: invalid state - single quote string";
+        cout << result << endl;
+    }
+
+    if (ls.inMacro()) {
+        result = "ERROR: invalid state - macro";
+        cout << result << endl;
+    }
+
+    if (ls.inBrackets()) {
+        result = "ERROR: invalid state - brackets";
+        cout << result << endl;
     }
 
     return false;

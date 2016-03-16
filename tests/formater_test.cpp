@@ -65,7 +65,7 @@ void formater_test::tearDown() {
 
 void formater_test::testMethod() {
 
-    m_numberOk = m_number = m_time = 0;
+    m_numberOk = m_number = 0;
 
     executeTest("./data/eval-if", "ok");
     executeTest("./data/join", "ok");
@@ -77,16 +77,17 @@ void formater_test::testMethod() {
     executeTest("./data/strings-single-quote", "ok");
     executeTest("./data/append", "ok");
     executeTest("./data/to_string_commas_locale", "ok");
+    executeTest("./data/to_string_commas_locale_hair_space_before_point", "ERROR: file contains non ascii character");
+    executeTest("./data/not_existing_file", "ERROR: file open failed");
 
     cout << "   " << m_numberOk << " succeeded, ";
     cout << m_number - m_numberOk << " failed, ";
-    cout << m_time << " clocks" << endl;
 
     CPPUNIT_ASSERT(m_number == m_numberOk);
 }
 
-void formater_test::executeTest(const string& name, const string soll) {
-    clock_t start = clock();
+void formater_test::executeTest(const string& name, const string expected) {
+
     m_number++;
     result = "ok";
     m_LinesSoll.clear();
@@ -94,16 +95,20 @@ void formater_test::executeTest(const string& name, const string soll) {
 
     string quelle1 = name;
     quelle1.append(".txt");
+    cout << "   run " << quelle1.c_str() << " expected=" << expected << endl;
+
     importAllLines(quelle1, lines, true);
 
     string quelle2 = name;
     quelle2.append("-expected.txt");
-    if (0 == soll.compare("ok")) {
+    if (0 == expected.compare("ok")) {
         importAllLines(quelle2, m_LinesSoll, false);
         for_each(m_LinesSoll.begin(), m_LinesSoll.end(), trimRight);
-
+    } else if (0 == result.compare(expected)) {
+        cout << " suceeded" << endl;
+        m_numberOk++;
+        return;
     }
-    cout << "   run " << quelle1.c_str();
 
     // formater - start
     createHtml = false;
@@ -114,15 +119,16 @@ void formater_test::executeTest(const string& name, const string soll) {
     formatPost();
     // formater - end
 
-    if (0 != result.compare(soll))
+    if (0 != result.compare(expected))
         cout << " error: " << result << endl;
     else {
         bool result = true;
-        if (0 == soll.compare("ok")) {
+        if (0 == expected.compare("ok")) {
             if (m_LinesSoll.size() <= lines.size()) {
                 result = equal(m_LinesSoll.begin(), m_LinesSoll.end(), lines.begin(), string_compare(true));
-                if (!result)
+                if (!result) {
                     cout << endl << "[expected|actual]";
+                }
             } else {
                 result = equal(lines.begin(), lines.end(), m_LinesSoll.begin(), string_compare(true));
                 if (!result) {
@@ -130,12 +136,10 @@ void formater_test::executeTest(const string& name, const string soll) {
                 }
             }
         }
-        if (result)
+        if (result) {
             m_numberOk++;
-
-        clock_t mytime = clock() - start;
-        m_time += mytime;
-        cout << ((result) ? " suceeded, " : " failed, ") << mytime << " clock(s)" << endl;
+        }
+        cout << ((result) ? " suceeded " : " failed ") << endl;
     }
 };
 

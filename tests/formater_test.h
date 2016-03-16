@@ -38,7 +38,6 @@ private:
    
    list<string> m_LinesSoll;
    int m_number, m_numberOk;
-   long m_time;
 };
 
 #endif /* FORMATER_TEST_H */
