@@ -45,7 +45,7 @@ class formater {
 public:
     explicit formater();
 
-    void run(const string& inputFile);
+    void run(const string& inputFile, bool createHtmlFile);
 
 protected:
 

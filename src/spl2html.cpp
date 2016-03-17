@@ -34,18 +34,19 @@
 
 #include "formater.h"
 
-int main(int argc, char* argv[])
-{
-   //	parse command line
-  if ((3==argc) && (0==string("-h").compare(argv[1]))) {
-      formater f;
-      f.run(argv[2]);       
-   }
-   else {
-      cout << "spl2html.exe [Flag] [FilePath]" << endl;
-      cout << "   " << g_sVersion << endl;
-      cout << "   -h (create html file)" << endl;
-      cout << "   -t (run test cases)" << endl;
-   }
-   return 0;
+int main(int argc, char* argv[]) {
+    //	parse command line
+    if ((2 == argc)) {
+        formater f;
+        f.run(argv[1], false);
+    } else if ((3 == argc) && (0 == string("-h").compare(argv[1]))) {
+        formater f;
+        f.run(argv[2], true);
+    } else {
+        cout << "spl2html.exe [Flag] [FilePath]" << endl;
+        cout << "   " << g_sVersion << endl;
+        cout << "   -h (create html file)" << endl;
+        cout << "   -t (run test cases)" << endl;
+    }
+    return 0;
 }

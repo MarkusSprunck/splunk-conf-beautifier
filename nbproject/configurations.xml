@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="data" displayName="data" projectFiles="true">
+      <itemPath>data/append-expected.txt</itemPath>
+      <itemPath>data/append.txt</itemPath>
+      <itemPath>data/brackets-expected.txt</itemPath>
+      <itemPath>data/brackets.txt</itemPath>
+      <itemPath>data/clean.cmd</itemPath>
+      <itemPath>data/eval-if-expected.txt</itemPath>
+      <itemPath>data/eval-if.txt</itemPath>
+      <itemPath>data/join-expected.txt</itemPath>
+      <itemPath>data/join.txt</itemPath>
+      <itemPath>data/long-expected.txt</itemPath>
+      <itemPath>data/long.txt</itemPath>
+      <itemPath>data/run.cmd</itemPath>
+      <itemPath>data/simple-expected.txt</itemPath>
+      <itemPath>data/simple.txt</itemPath>
+      <itemPath>data/strings-expected.txt</itemPath>
+      <itemPath>data/strings-single-quote-expected.txt</itemPath>
+      <itemPath>data/strings-single-quote.txt</itemPath>
+      <itemPath>data/strings.txt</itemPath>
+      <itemPath>data/subsearch-expected.txt</itemPath>
+      <itemPath>data/subsearch.txt</itemPath>
+      <itemPath>data/toString-expected.txt</itemPath>
+      <itemPath>data/toString.txt</itemPath>
+      <itemPath>data/to_string_commas_locale-expected.txt</itemPath>
+      <itemPath>data/to_string_commas_locale_hair_space_before_point.txt</itemPath>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
@@ -72,7 +98,64 @@
           <useLinkerLibraries>false</useLinkerLibraries>
         </ccTool>
       </compileType>
+      <item path="data/append-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/append.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/brackets-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/brackets.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/clean.cmd" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/eval-if-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/eval-if.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/join-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/join.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/long-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/long.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/run.cmd" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings-single-quote-expected.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/strings-single-quote.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/subsearch-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/subsearch.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/to_string_commas_locale-expected.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="data/to_string_commas_locale.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/to_string_commas_locale_hair_space_before_point.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>
@@ -154,7 +237,64 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="data/append-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/append.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/brackets-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/brackets.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/clean.cmd" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/eval-if-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/eval-if.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/join-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/join.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/long-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/long.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/run.cmd" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/simple.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings-single-quote-expected.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/strings-single-quote.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/strings.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/subsearch-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/subsearch.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString-expected.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/toString.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/to_string_commas_locale-expected.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="data/to_string_commas_locale.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/to_string_commas_locale_hair_space_before_point.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>

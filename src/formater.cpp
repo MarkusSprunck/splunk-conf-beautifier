@@ -51,7 +51,7 @@ replacePatternPostprocessing(getReplacePostprocessing()),
 replacePatternHtml(getReplaceHtml()) {
 }
 
-void formater::run(const string& inputFile) {
+void formater::run(const string& inputFile, bool createHtmlFile) {
     // create text file
     createHtml = false;
     importAllLines(inputFile, lines, true);
@@ -65,18 +65,19 @@ void formater::run(const string& inputFile) {
         exportAllLines(outputFileResult);
         cout << string("create 'file://").append(outputFileResult).append("' ").append(result) << endl;
 
-        // create html file
-        createHtml = true;
-        importAllLines(inputFile, lines, true);
-        for_each(lines.begin(), lines.end(), trimLeft);
-        for_each(lines.begin(), lines.end(), trimRight);
-        formatPre();
-        createNewLineIfNeeded();
-        formatPost();
-        createHtmlDocument();
-        string outputFileHtml = string(inputFile).append(".html");
-        exportAllLines(outputFileHtml);
-        cout << string("create 'file://").append(outputFileHtml).append("' ").append(result) << endl;
+        if (createHtmlFile) {
+            createHtml = true;
+            importAllLines(inputFile, lines, true);
+            for_each(lines.begin(), lines.end(), trimLeft);
+            for_each(lines.begin(), lines.end(), trimRight);
+            formatPre();
+            createNewLineIfNeeded();
+            formatPost();
+            createHtmlDocument();
+            string outputFileHtml = string(inputFile).append(".html");
+            exportAllLines(outputFileHtml);
+            cout << string("create 'file://").append(outputFileHtml).append("' ").append(result) << endl;
+        }
     }
 
 
