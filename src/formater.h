@@ -37,7 +37,7 @@
 
 #include "std_typedef.h"
 
-static const string g_sVersion = "spl2html v0.3";
+static const string g_sVersion = "spl2html v0.4";
 
 class line_status;
 
@@ -45,35 +45,25 @@ class formater {
 public:
     explicit formater();
 
-    void run(const string& inputFile, bool createHtmlFile);
+    void run(const string& inputFile);
 
 protected:
 
     // file input & output
-    void importAllLines(const string& file, list<string>& m_Lines, bool single);
+    void importAllLines(const string& file, list<string>& m_Lines);
     void exportAllLines(const string& file);
 
     // each line
-    void formatPre();
-    void formatPost();
+    void format();
+    void unformat();
     string replacePattern(map_string pattern, string line, int iterations);
-    void createNewLineIfNeeded();
-    void createHtmlDocument();
 
     // single line
     bool parseLine(string &line, line_status& ls, bool encode);
     void replaceSubstrings(const index_string& begin, index_string& end, string &s);
-    void createIndenting(string &line, line_status& ls);
-
-    // helper
-    static string GetHtmlFontTag(unsigned long id);
-    void insertHtmlFont(index_string& pos, string& s, line_status& ls);
 
     // succsses information
     string result;
-
-    // create a html file
-    bool createHtml;
 
     // file content
     list<string> lines;
@@ -82,6 +72,6 @@ protected:
     map<string, long> spl_keywords;
 
     // string replace map
-    map<string, string> replacePatternPreprocessing, replacePatternPostprocessing, replacePatternHtml;
+    map<string, string> replacePatternPreprocessing, replacePatternPostprocessing;
 
 };

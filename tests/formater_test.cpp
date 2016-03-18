@@ -97,12 +97,12 @@ void formater_test::executeTest(const string& name, const string expected) {
     quelle1.append(".txt");
     cout << "   run " << quelle1.c_str() << " expected=" << expected << endl;
 
-    importAllLines(quelle1, lines, true);
+    importAllLines(quelle1, lines);
 
     string quelle2 = name;
     quelle2.append("-expected.txt");
     if (0 == expected.compare("ok")) {
-        importAllLines(quelle2, m_LinesSoll, false);
+        importAllLines(quelle2, m_LinesSoll);
         for_each(m_LinesSoll.begin(), m_LinesSoll.end(), trimRight);
     } else if (0 == result.compare(expected)) {
         cout << " suceeded" << endl;
@@ -111,12 +111,9 @@ void formater_test::executeTest(const string& name, const string expected) {
     }
 
     // formater - start
-    createHtml = false;
     for_each(lines.begin(), lines.end(), trimLeft);
     for_each(lines.begin(), lines.end(), trimRight);
-    formatPre();
-    createNewLineIfNeeded();
-    formatPost();
+    format();
     // formater - end
 
     if (0 != result.compare(expected))

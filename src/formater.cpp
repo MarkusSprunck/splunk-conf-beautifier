@@ -38,52 +38,40 @@
 #include "formater_parameter.h"
 #include "formater_replace.h"
 #include "layer_counter.h"
-#include "formater_mark_html.h"
 #include "string_utils.h"
 #include "line_status.h"
 
 formater::formater() :
 result("ok"),
-createHtml(true),
 spl_keywords(getCommand()),
 replacePatternPreprocessing(getReplacePrepocessing()),
-replacePatternPostprocessing(getReplacePostprocessing()),
-replacePatternHtml(getReplaceHtml()) {
+replacePatternPostprocessing(getReplacePostprocessing()) {
 }
 
-void formater::run(const string& inputFile, bool createHtmlFile) {
-    // create text file
-    createHtml = false;
-    importAllLines(inputFile, lines, true);
+void formater::run(const string& inputFile) {
+    importAllLines(inputFile, lines);
     if ("ok" == result) {
-        for_each(lines.begin(), lines.end(), trimLeft);
-        for_each(lines.begin(), lines.end(), trimRight);
-        formatPre();
-        createNewLineIfNeeded();
-        formatPost();
-        string outputFileResult = string(inputFile).append(".result");
+
+        string outputFileResult = string(inputFile).append("result");
+        string pattern("savedsearches.conf");
+        string pattern2("savedsearches.conf.formated");
+        if (inputFile.substr(inputFile.size() - pattern.size(), inputFile.size()) == pattern) {
+            outputFileResult = ".\\savedsearches.conf.formated";
+            cout << "format file " << pattern << endl;
+            format();
+        } else if (inputFile.substr(inputFile.size() - pattern2.size(), inputFile.size()) == pattern2) {
+            outputFileResult = ".\\savedsearches.conf";
+            cout << "format file " << pattern2 << endl;
+            unformat();
+        }
+        cout << "FORMAT5" << endl;
+
         exportAllLines(outputFileResult);
         cout << string("create 'file://").append(outputFileResult).append("' ").append(result) << endl;
-
-        if (createHtmlFile) {
-            createHtml = true;
-            importAllLines(inputFile, lines, true);
-            for_each(lines.begin(), lines.end(), trimLeft);
-            for_each(lines.begin(), lines.end(), trimRight);
-            formatPre();
-            createNewLineIfNeeded();
-            formatPost();
-            createHtmlDocument();
-            string outputFileHtml = string(inputFile).append(".html");
-            exportAllLines(outputFileHtml);
-            cout << string("create 'file://").append(outputFileHtml).append("' ").append(result) << endl;
-        }
     }
-
-
 }
 
-void formater::importAllLines(const string& file, list<string>& m_Lines, bool single) {
+void formater::importAllLines(const string& file, list<string>& m_Lines) {
     fstream fin(file.c_str(), ios_base::in);
     if (fin.fail()) {
         result = "ERROR: file open failed";
@@ -92,10 +80,8 @@ void formater::importAllLines(const string& file, list<string>& m_Lines, bool si
     }
 
     m_Lines.clear();
-    string result_line;
     string line;
     while (getline(fin, line) && (!fin.fail())) {
-
         string line_copy = line;
         stripUnicode(line_copy);
         if (line_copy.length() != line.length()) {
@@ -103,26 +89,19 @@ void formater::importAllLines(const string& file, list<string>& m_Lines, bool si
             cout << result << endl;
             return;
         }
-        if (createHtml) {
-            formater_replace::repeated_replace(line, "&", "&amp");
-            formater_replace::repeated_replace(line, "<", "&lt");
-            formater_replace::repeated_replace(line, ">", "&gt");
-        }
-        if (single) {
-            result_line = result_line.append(line).append(" ");
-        } else {
-            m_Lines.push_back(line);
-        }
+        trimRight(line);
+        m_Lines.push_back(line);
+        cout << "IMPORT:" << line << endl;
     }
-    if (single) {
-        m_Lines.push_back(result_line);
-    }
+
     fin.close();
 }
 
 void formater::exportAllLines(const string& file) {
-
+    cout << "EXPORT: file " << file << " result=" << result << endl;
     if (0 == result.compare("ok")) {
+        //  for_each(lines.begin(), lines.end(), trimLeft);
+
         fstream fout(file.c_str(), ios_base::out | ios_base::trunc);
         if (fout.fail()) {
             result = "ERROR: file create failed";
@@ -134,67 +113,66 @@ void formater::exportAllLines(const string& file) {
     }
 }
 
-void formater::createHtmlDocument() {
-
-    // add line breaks at the end of each line
-    for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
-        basic_stringstream<char> psz2;
-        *iter = psz2.str().append(*iter).append("</p>");
-    }
-
-    // add css styles at the top of the document
-    string css_settings;
-    css_settings.append("<style TYPE='text/css'> <!-- ")
-            .append("p { line-height: 100%; } ")
-            .append("body { font-family: 'courier new'; line-height: 100%; } ")
-            .append("--> </style>");
-    lines.push_front(css_settings.c_str());
-}
-
-void formater::formatPre() {
+void formater::format() {
     line_status ls;
     for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
-        // encode strings with base64 to avoid formating
-        parseLine(*iter, ls, true);
-
-        // replace pattern
-        *iter = replacePattern(replacePatternPreprocessing, *iter, 1);
-    }
-    for_each(lines.begin(), lines.end(), trimRight);
-}
-
-void formater::formatPost() {
-    line_status ls;
-    for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
-        string line = *iter;
-
-        // calcualte layer based on commands
-        for_each(spl_keywords.begin(), spl_keywords.end(), layer_counter(&ls, line));
-
-        // set special color for commands 
-        if (createHtml) {
-            line = for_each(spl_keywords.begin(), spl_keywords.end(), formater_mark_html(line));
-        }
-
-        // decode strings  
-        parseLine(line, ls, false);
-
-        // remove some strings
-        line = replacePattern(replacePatternPostprocessing, line, 5);
-
-        // create indenting (but not for first line)
-        if (lines.begin() != iter) {
-            createIndenting(line, ls);
-        }
-
-        // store current line
-        *iter = line;
 
         // reset state for next line
         ls.SetLayerCountOnce(0);
-    }
 
-    for_each(lines.begin(), lines.end(), trimRight);
+        string line = *iter;
+        string prefix("search =");
+        if (line.substr(0, prefix.size()) == prefix) {
+
+            cout << "FORMAT1:" << line << endl;
+
+            // encode strings with base64 to avoid formating
+            parseLine(line, ls, true);
+
+            // replace pattern
+            line = replacePattern(replacePatternPreprocessing, line, 1);
+
+            // calcualte layer based on commands
+            for_each(spl_keywords.begin(), spl_keywords.end(), layer_counter(&ls, line));
+
+            // remove some strings
+            line = replacePattern(replacePatternPostprocessing, line, 5);
+
+            // decode strings with base64 to avoid formating
+            parseLine(line, ls, false);
+
+            cout << "FORMAT2:" << line << endl;
+
+            *iter = line;
+        }
+    }
+}
+
+void formater::unformat() {
+    list<string> lines_result;
+
+    bool inSearch = false;
+    string search = "";
+    for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
+        string line = *iter;
+        trimLeft(line);
+        string prefix("search");
+        if (line.substr(0, prefix.size()) == prefix) {
+            inSearch = true;
+            search = line;
+        } else if (inSearch) {
+            search.append(line);
+        }
+
+        if (!inSearch) {
+            lines_result.push_back(line);
+        } else if (line.size() == 0) {
+            inSearch = false;
+            lines_result.push_back(search);
+            lines_result.push_back("");
+        }
+    }
+    lines = lines_result;
 }
 
 string formater::replacePattern(map_string pattern, string s1, int iterations) {
@@ -206,6 +184,7 @@ string formater::replacePattern(map_string pattern, string s1, int iterations) {
             string s3 = iterator->second;
             index_string anf = line.find(s2, 0);
             while (string::npos != anf) {
+
                 string right(line.substr(anf + s2.length(), string::npos));
                 string left(line.substr(0, anf));
                 line = left.append(s3).append(right);
@@ -220,38 +199,27 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
     index_string indexStart = 0;
     index_string index = 0;
 
-    if (createHtml && !encode) {
-        insertHtmlFont(index, line, ls);
-    }
-
     do {
         if (ls.inCode()) {
-            if (encode && (!ls.inBrackets() && line[index] == ',' || line[index] == '|' || line[index] == '[')) {
-                line.insert(index, "\n");
-                index++;
+            if (!encode && !ls.inBrackets() && (line[index] == ',' || line[index] == '|' || line[index] == '[')) {
+                line.insert(index, "\r\n");
+                index += 2;
+                for (int i = 0; i <= ls.GetLayerCountTotal(); i++) {
+                    line.insert(index, "   ");
+                    index += 3;
+                }
             }
-
             if (line[index] == '(') {
                 ls.SetBracketsCount(ls.GetBracketsCount() + 1);
             }
-
             if (line[index] == '"') {
                 ls.SetActiveDoubleQuoteString();
-                if (createHtml && !encode) {
-                    insertHtmlFont(index, line, ls);
-                }
                 indexStart = index;
             } else if (line[index] == '\'') {
                 ls.SetActiveSingleQuoteString();
-                if (createHtml && !encode) {
-                    insertHtmlFont(index, line, ls);
-                }
                 indexStart = index;
             } else if (line[index] == '`') {
                 ls.SetActiveMacro();
-                if (createHtml && !encode) {
-                    insertHtmlFont(index, line, ls);
-                }
                 indexStart = index;
             }
         } else if (ls.inDoubleQuoteString() || ls.inSingleQuoteString()) {
@@ -276,9 +244,6 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
                 }
 
                 ls.SetActiveCode();
-                if (createHtml && !encode) {
-                    insertHtmlFont(++index, line, ls);
-                }
                 indexStart = index;
             }
         } else if (ls.inMacro()) {
@@ -302,9 +267,6 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
                 }
 
                 ls.SetActiveCode();
-                if (createHtml && !encode) {
-                    insertHtmlFont(++index, line, ls);
-                }
                 indexStart = index;
             }
         }
@@ -333,6 +295,7 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
     }
 
     if (ls.inBrackets()) {
+
         result = "ERROR: invalid state - brackets";
         cout << result << endl;
     }
@@ -340,53 +303,16 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
     return false;
 }
 
-void formater::createIndenting(string &line, line_status & ls) {
-    for (int i = 0; i < ls.GetLayerCountTotal(); i++) {
-        line.insert(0, createHtml ? "&nbsp;&nbsp;&nbsp;" : "   ");
-    }
-}
-
 void formater::replaceSubstrings(const index_string& begin, index_string& end, string & s) {
     if (begin != string::npos && end != string::npos && begin < end) {
         string midNeu;
         string mid = s.substr(begin, end - begin + 1).c_str();
 
-        if (createHtml) {
-            midNeu = for_each(spl_keywords.begin(), spl_keywords.end(), formater_mark_html(mid));
-        } else {
-            midNeu = for_each(replacePatternPreprocessing.begin(), replacePatternPreprocessing.end(), formater_replace(mid));
-        }
+        midNeu = for_each(replacePatternPreprocessing.begin(), replacePatternPreprocessing.end(), formater_replace(mid));
+
         s = s.substr(0, begin).append(midNeu).append(s.substr(end + 1, string::npos).c_str());
         end = begin + midNeu.length() - 1;
     }
 }
 
-void formater::createNewLineIfNeeded() {
-    list<string> result;
-    for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
-        string line = *iter;
-        std::vector<std::string> lines = split(line, '\n');
-        for (string copied_line : lines) {
-            result.push_back(copied_line);
-        }
-    }
-    lines = result;
-}
 
-string formater::GetHtmlFontTag(unsigned long id) {
-    const string g_sFont[] = {
-        formater_mark_html::FONT_CODE,
-        formater_mark_html::FONT_DOUBLE_QUOTE,
-        formater_mark_html::FONT_SINGLE_QUOTE,
-        formater_mark_html::FONT_MACRO
-    };
-    if (id <= 3)
-        return g_sFont[id];
-    else
-        return "<FONT>";
-}
-
-void formater::insertHtmlFont(index_string& pos, string& s, line_status & ls) {
-    s.insert(pos, GetHtmlFontTag(ls.GetStatus()));
-    pos += GetHtmlFontTag(ls.GetStatus()).length();
-}

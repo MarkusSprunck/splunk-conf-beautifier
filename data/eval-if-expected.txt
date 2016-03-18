@@ -1,4 +1,3 @@
-
    | metadata type=hosts index=_internal
    | search NOT(host="YourSplunkServers")
    | table host recentTime

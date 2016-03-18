@@ -38,15 +38,13 @@ int main(int argc, char* argv[]) {
     //	parse command line
     if ((2 == argc)) {
         formater f;
-        f.run(argv[1], false);
-    } else if ((3 == argc) && (0 == string("-h").compare(argv[1]))) {
-        formater f;
-        f.run(argv[2], true);
+        f.run(argv[1]);
     } else {
-        cout << "spl2html.exe [Flag] [FilePath]" << endl;
+        cout << "spl2html.exe [FilePath]" << endl;
         cout << "   " << g_sVersion << endl;
-        cout << "   -h (create html file)" << endl;
-        cout << "   -t (run test cases)" << endl;
+        cout << "   All files with the name <savedsearches.conf> or <macros.conf> " << endl;
+        cout << "   are formated to <savedsearches.conf.formated> or <macros.conf.formated>" << endl;
+        cout << "   and vice versa. All other file names are ignored." << endl;
     }
     return 0;
 }

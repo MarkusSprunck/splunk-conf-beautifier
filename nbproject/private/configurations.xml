@@ -30,9 +30,12 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" "arg 1" "arg 2" "arg 3" "arg 4"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"  -h simple.txt</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"  simple.txt</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}\folder1"   simple.txt</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"   savedsearches.conf</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"  -h simple.txt</runcommand>
-        <rundir>C:\Projects\cpp\spl2html\data</rundir>
+        <runcommand>"${OUTPUT_PATH}"   savedsearches.conf</runcommand>
+        <rundir>C:\Projects\cpp\spl2html\data\folder1</rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>

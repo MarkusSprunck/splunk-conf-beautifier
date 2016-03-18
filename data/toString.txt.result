@@ -1,4 +1,1 @@
-index=_internal
-   | head 1
-   | eval numberString=tostring(123456.789, "commas")
-   | table numberString
+index=_internal | head 1 | eval numberString = tostring( 123456.789, "commas" ) | table numberString
