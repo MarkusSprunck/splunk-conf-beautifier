@@ -54,8 +54,8 @@ protected:
     void exportAllLines(const string& file);
 
     // each line
-    void format();
-    void unformat();
+    void format(string pattern);
+    void unformat(string pattern);
     string replacePattern(map_string pattern, string line, int iterations);
 
     // single line

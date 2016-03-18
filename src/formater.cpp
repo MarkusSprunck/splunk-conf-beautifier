@@ -49,25 +49,38 @@ replacePatternPostprocessing(getReplacePostprocessing()) {
 }
 
 void formater::run(const string& inputFile) {
+    cout << "import file " << inputFile << endl;
     importAllLines(inputFile, lines);
     if ("ok" == result) {
 
-        string outputFileResult = string(inputFile).append("result");
-        string pattern("savedsearches.conf");
+        string outputFileResult = string(inputFile).append(".result");
+        string pattern1("savedsearches.conf");
         string pattern2("savedsearches.conf.formated");
-        if (inputFile.substr(inputFile.size() - pattern.size(), inputFile.size()) == pattern) {
-            outputFileResult = ".\\savedsearches.conf.formated";
-            cout << "format file " << pattern << endl;
-            format();
-        } else if (inputFile.substr(inputFile.size() - pattern2.size(), inputFile.size()) == pattern2) {
-            outputFileResult = ".\\savedsearches.conf";
+        string pattern3("macros.conf");
+        string pattern4("macros.conf.formated");
+        if (inputFile == pattern1) {
+            outputFileResult = "savedsearches.conf.formated";
+            cout << "format file " << pattern1 << endl;
+            format("search =");
+        } else if (inputFile == pattern2) {
+            outputFileResult = "savedsearches.conf";
             cout << "format file " << pattern2 << endl;
-            unformat();
+            unformat("search =");
+        } else if (inputFile == pattern3) {
+            outputFileResult = "macros.conf.formated";
+            cout << "format file " << pattern3 << endl;
+            format("definition =");
+        } else if (inputFile == pattern4) {
+            outputFileResult = "macros.conf";
+            cout << "format file " << pattern4 << endl;
+            unformat("definition =");
+        } else {
+            cout << "not formated file " << inputFile << endl;
         }
-        cout << "FORMAT5" << endl;
 
-        exportAllLines(outputFileResult);
         cout << string("create 'file://").append(outputFileResult).append("' ").append(result) << endl;
+        exportAllLines(outputFileResult);
+        cout << "ready" << endl;
     }
 }
 
@@ -91,14 +104,14 @@ void formater::importAllLines(const string& file, list<string>& m_Lines) {
         }
         trimRight(line);
         m_Lines.push_back(line);
-        cout << "IMPORT:" << line << endl;
+        // cout << "IMPORT:" << line << endl;
     }
 
     fin.close();
 }
 
 void formater::exportAllLines(const string& file) {
-    cout << "EXPORT: file " << file << " result=" << result << endl;
+    // cout << "EXPORT: file " << file << " result=" << result << endl;
     if (0 == result.compare("ok")) {
         //  for_each(lines.begin(), lines.end(), trimLeft);
 
@@ -113,7 +126,7 @@ void formater::exportAllLines(const string& file) {
     }
 }
 
-void formater::format() {
+void formater::format(string pattern) {
     line_status ls;
     for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
 
@@ -121,10 +134,9 @@ void formater::format() {
         ls.SetLayerCountOnce(0);
 
         string line = *iter;
-        string prefix("search =");
-        if (line.substr(0, prefix.size()) == prefix) {
+        if (line.substr(0, pattern.size()) == pattern) {
 
-            cout << "FORMAT1:" << line << endl;
+            // cout << "FORMAT1:" << line << endl;
 
             // encode strings with base64 to avoid formating
             parseLine(line, ls, true);
@@ -141,14 +153,14 @@ void formater::format() {
             // decode strings with base64 to avoid formating
             parseLine(line, ls, false);
 
-            cout << "FORMAT2:" << line << endl;
+            // cout << "FORMAT2:" << line << endl;
 
             *iter = line;
         }
     }
 }
 
-void formater::unformat() {
+void formater::unformat(string pattern) {
     list<string> lines_result;
 
     bool inSearch = false;
@@ -156,8 +168,8 @@ void formater::unformat() {
     for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
         string line = *iter;
         trimLeft(line);
-        string prefix("search");
-        if (line.substr(0, prefix.size()) == prefix) {
+
+        if (line.substr(0, pattern.size()) == pattern) {
             inSearch = true;
             search = line;
         } else if (inSearch) {
@@ -166,7 +178,7 @@ void formater::unformat() {
 
         if (!inSearch) {
             lines_result.push_back(line);
-        } else if (line.size() == 0) {
+        } else if (line.size() == 0 || std::distance( iter, lines.end() ) == 1 ) {
             inSearch = false;
             lines_result.push_back(search);
             lines_result.push_back("");

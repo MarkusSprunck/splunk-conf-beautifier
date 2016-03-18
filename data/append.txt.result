@@ -1,1 +1,0 @@
-| savedsearch EO_CT_XPE_TOO_LONG_BASE_DATA | append [ `eo_xx_parser_too_long_threshold(too_long_xpe_sepa)` ] | search MONITORINGPOINT=EO_CT_XP_AUS | stats, max(active) as active, count as value | eval value=if(active=0,"-",value-1) | eval range=case(active=0,"none", value=0, "green", value!=0, "red") | eval _time=now()  | table, value, range, _time

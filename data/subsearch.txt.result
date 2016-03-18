@@ -1,1 +1,0 @@
-index=foo sourcetype=bar field=quux [ my_sub_search | stats count by dimension ]  [ some really really long sub_searc  | eval subsearch=fields | rex field=subsearch "(?<extract>\d+)" | eval omg=how_much_more ] | stats count by something | eval field1=stuff | eval field2=more_stuff | timechart sum(something) by something_else
