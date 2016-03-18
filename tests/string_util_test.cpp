@@ -138,7 +138,6 @@ void string_util_test::test_encode() {
 
     // when 
     string result = base64_encode(value);
-    // cout << "'" << result << "'" << endl;
 
     // then
     CPPUNIT_ASSERT_EQUAL(expected, result);

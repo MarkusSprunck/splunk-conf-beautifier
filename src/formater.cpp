@@ -104,17 +104,15 @@ void formater::importAllLines(const string& file, list<string>& m_Lines) {
         }
         trimRight(line);
         m_Lines.push_back(line);
-        // cout << "IMPORT:" << line << endl;
     }
 
     fin.close();
 }
 
 void formater::exportAllLines(const string& file) {
-    // cout << "EXPORT: file " << file << " result=" << result << endl;
+    
     if (0 == result.compare("ok")) {
-        //  for_each(lines.begin(), lines.end(), trimLeft);
-
+    
         fstream fout(file.c_str(), ios_base::out | ios_base::trunc);
         if (fout.fail()) {
             result = "ERROR: file create failed";
@@ -136,8 +134,6 @@ void formater::format(string pattern) {
         string line = *iter;
         if (line.substr(0, pattern.size()) == pattern) {
 
-            // cout << "FORMAT1:" << line << endl;
-
             // encode strings with base64 to avoid formating
             parseLine(line, ls, true);
 
@@ -152,8 +148,6 @@ void formater::format(string pattern) {
 
             // decode strings with base64 to avoid formating
             parseLine(line, ls, false);
-
-            // cout << "FORMAT2:" << line << endl;
 
             *iter = line;
         }
