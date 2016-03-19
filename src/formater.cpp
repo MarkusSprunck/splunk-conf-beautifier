@@ -110,17 +110,26 @@ void formater::importAllLines(const string& file, list<string>& m_Lines) {
 }
 
 void formater::exportAllLines(const string& file) {
-    
-    if (0 == result.compare("ok")) {
-    
+
+    // read existing file content
+    std::ifstream t(file);
+    std::stringstream oldContent;
+    oldContent << t.rdbuf();
+
+    // create new  file content
+    std::ostringstream newContent;
+    std::copy(lines.begin(), lines.end(), std::ostream_iterator<std::string>(newContent, "\n"));
+
+    if (oldContent.str() == newContent.str()) {
+        cout << "no change, store not needed" << endl;
+    } else if (0 == result.compare("ok")) {
         fstream fout(file.c_str(), ios_base::out | ios_base::trunc);
         if (fout.fail()) {
             result = "ERROR: file create failed";
             cout << result << endl;
             return;
         }
-
-        copy(lines.begin(), lines.end(), ostream_iterator<string>(fout, "\n"));
+        fout << newContent.str();
     }
 }
 
@@ -172,7 +181,7 @@ void formater::unformat(string pattern) {
 
         if (!inSearch) {
             lines_result.push_back(line);
-        } else if (line.size() == 0 || std::distance( iter, lines.end() ) == 1 ) {
+        } else if (line.size() == 0 || std::distance(iter, lines.end()) == 1) {
             inSearch = false;
             lines_result.push_back(search);
             lines_result.push_back("");
