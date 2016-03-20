@@ -2,7 +2,7 @@
 
 ####Function
 
-1) Call spl2html.exe  
+1) Call on commandline 
  
 ```cmd
 ./splunk-conf-formater.exe savedsearches.conf
