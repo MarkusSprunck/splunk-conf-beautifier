@@ -1,4 +1,4 @@
-###Splunk search processing language beautifier (spl2html)
+###Splunk search processing language beautifier
 
 ####Function
 
