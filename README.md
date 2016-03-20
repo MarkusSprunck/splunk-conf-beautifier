@@ -5,10 +5,10 @@
 1) Call spl2html.exe  
  
 ```cmd
-./spl2html.exe savedsearches.conf
+./splunk-conf-formater.exe savedsearches.conf
 ```
 
-2) Input not formated file:
+2) Input not formated savedsearches.conf file:
 
 ```txt
 [my search #4]
@@ -32,7 +32,7 @@ enableSched = 1
 search = index=_internal| head 1| eval first1 = "123 | search | 456"| eval second2= "123 | 'search | 456'"| eval third3= "123       | \"search | 456\""| table first1 second2 third3
 ```
 
-3) Expected Resul: Output formated text file (with the name savedsearches.conf.formated):
+3) Output formated text file with the name savedsearches.conf.formated:
 
 ```txt
 [my search #4]
@@ -71,5 +71,9 @@ search = index=_internal
 - Compiler: cygwin c++ (windows 7)
 - IDE:      netbeans 8 
 - Status:   first draft
-- works with ASCII files (convert if needed)
+
+
+####Limitations
+-----------
+- works with ASCII files (you have to convert from UTF-8 if needed)
 
