@@ -49,7 +49,6 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>src/include/formater.h</itemPath>
-      <itemPath>src/include/formater_parameter.h</itemPath>
       <itemPath>src/include/formater_replace.h</itemPath>
       <itemPath>src/include/layer_counter.h</itemPath>
       <itemPath>src/include/line_status.h</itemPath>
@@ -240,8 +239,6 @@
       </item>
       <item path="src/include/formater.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/include/formater_parameter.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/include/formater_replace.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/include/layer_counter.h" ex="false" tool="3" flavor2="0">
@@ -408,8 +405,6 @@
       <item path="src/formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/include/formater.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/include/formater_parameter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/include/formater_replace.h" ex="false" tool="3" flavor2="0">
       </item>
