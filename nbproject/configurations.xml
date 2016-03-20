@@ -62,7 +62,7 @@
                    projectFiles="true">
       <itemPath>src/formater.cpp</itemPath>
       <itemPath>src/line_status.cpp</itemPath>
-      <itemPath>src/spl2html.cpp</itemPath>
+      <itemPath>src/splunk-conf-formater.cpp</itemPath>
       <itemPath>src/string_utils.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -87,8 +87,25 @@
         <itemPath>tests/test_runner.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="String Utils Test"
+                     projectFiles="true"
+                     kind="TEST">
+      </logicalFolder>
+    </logicalFolder>
   </logicalFolder>
   <sourceRootList>
+    <Elem>data</Elem>
+    <Elem>build</Elem>
     <Elem>data</Elem>
     <Elem>build</Elem>
   </sourceRootList>
@@ -224,7 +241,7 @@
       </item>
       <item path="src/line_status.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/spl2html.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/splunk-conf-formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -384,7 +401,7 @@
       </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/spl2html.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/splunk-conf-formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
       </item>

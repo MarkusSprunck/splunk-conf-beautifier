@@ -37,7 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/formater.o \
 	${OBJECTDIR}/src/line_status.o \
-	${OBJECTDIR}/src/spl2html.o \
+	${OBJECTDIR}/src/splunk-conf-formater.o \
 	${OBJECTDIR}/src/string_utils.o
 
 # Test Directory
@@ -72,11 +72,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/splunk-conf-formater.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/splunk-conf-formater.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/splunk-conf-formater ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/src/formater.o: src/formater.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -88,10 +88,10 @@ ${OBJECTDIR}/src/line_status.o: src/line_status.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/line_status.o src/line_status.cpp
 
-${OBJECTDIR}/src/spl2html.o: src/spl2html.cpp 
+${OBJECTDIR}/src/splunk-conf-formater.o: src/splunk-conf-formater.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/spl2html.o src/spl2html.cpp
+	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/splunk-conf-formater.o src/splunk-conf-formater.cpp
 
 ${OBJECTDIR}/src/string_utils.o: src/string_utils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -160,17 +160,17 @@ ${OBJECTDIR}/src/line_status_nomain.o: ${OBJECTDIR}/src/line_status.o src/line_s
 	    ${CP} ${OBJECTDIR}/src/line_status.o ${OBJECTDIR}/src/line_status_nomain.o;\
 	fi
 
-${OBJECTDIR}/src/spl2html_nomain.o: ${OBJECTDIR}/src/spl2html.o src/spl2html.cpp 
+${OBJECTDIR}/src/splunk-conf-formater_nomain.o: ${OBJECTDIR}/src/splunk-conf-formater.o src/splunk-conf-formater.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/spl2html.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/splunk-conf-formater.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -std=c++14 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/spl2html_nomain.o src/spl2html.cpp;\
+	    $(COMPILE.cc) -O2 -std=c++14 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/splunk-conf-formater_nomain.o src/splunk-conf-formater.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/src/spl2html.o ${OBJECTDIR}/src/spl2html_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/splunk-conf-formater.o ${OBJECTDIR}/src/splunk-conf-formater_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/string_utils_nomain.o: ${OBJECTDIR}/src/string_utils.o src/string_utils.cpp 
@@ -198,7 +198,7 @@ ${OBJECTDIR}/src/string_utils_nomain.o: ${OBJECTDIR}/src/string_utils.o src/stri
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spl2html.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/splunk-conf-formater.exe
 
 # Subprojects
 .clean-subprojects:

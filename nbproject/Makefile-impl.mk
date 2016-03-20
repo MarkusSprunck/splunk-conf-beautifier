@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=spl2html
+PROJECTNAME=splunk-conf-formater
 
 # Active Configuration
 DEFAULTCONF=Debug

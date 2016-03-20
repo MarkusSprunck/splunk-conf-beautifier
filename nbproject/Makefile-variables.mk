@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=spl2html
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/spl2html
+CND_ARTIFACT_NAME_Debug=splunk-conf-formater
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/splunk-conf-formater
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=spl2html.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/spl2html.tar
+CND_PACKAGE_NAME_Debug=splunk-conf-formater.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/splunk-conf-formater.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=spl2html
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/spl2html
+CND_ARTIFACT_NAME_Release=splunk-conf-formater
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/splunk-conf-formater
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=spl2html.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/spl2html.tar
+CND_PACKAGE_NAME_Release=splunk-conf-formater.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/splunk-conf-formater.tar
 #
 # include compiler specific variables
 #

@@ -37,7 +37,7 @@
 
 #include "std_typedef.h"
 
-static const string g_sVersion = "spl2html v0.4";
+static const string g_sVersion = "splunk-conf-formater v0.4";
 
 class line_status;
 

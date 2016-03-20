@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.cnd.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>spl2html</name>
+            <name>splunk-conf-formater</name>
             <make-project-type>0</make-project-type>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
@@ -11,6 +11,8 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
+                <sourceRootElem>data</sourceRootElem>
+                <sourceRootElem>build</sourceRootElem>
                 <sourceRootElem>data</sourceRootElem>
                 <sourceRootElem>build</sourceRootElem>
             </sourceRootList>
