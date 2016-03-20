@@ -1,4 +1,5 @@
 #pragma once
+
 /**
  * Copyright (C) 2016, Markus Sprunck
  *
@@ -34,42 +35,4 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-
-// useage: for_each(command.begin(), command.end(), formater_counter(&line_status, line));
-
-#include "std_typedef.h"
-#include "line_status.h"
-
-class layer_counter {    
-    line_status* ls;    
-    const string* line;
-
-public:
-
-    layer_counter(line_status* line_status, const string& line) : ls(line_status), line(&line) {
-    }
-
-    // The function call to process the next element
-
-    void operator()(const pair_command& p1) {
-        if (string::npos != line->find(p1.first)) {
-            if (INCREMENTONCE == (INCREMENTONCE & p1.second) && 20 > (*ls).GetLayerCount()) {
-                (*ls).SetLayerCountOnce((*ls).GetLayerCountOnce() + 1);
-            }
-
-            if (DOUBLE_INCREMENTONCE == (DOUBLE_INCREMENTONCE & p1.second) && 20 > (*ls).GetLayerCount()) {
-                (*ls).SetLayerCountOnce((*ls).GetLayerCountOnce() + 2);
-            }
-
-            if (INCREMENT == (INCREMENT & p1.second) && 10 > (*ls).GetLayerCount()) {
-                (*ls).SetLayerCount((*ls).GetLayerCount() + 1);
-            }
-
-            if (DECREMENT == (DECREMENT & p1.second) && 1 <= (*ls).GetLayerCount()) {
-                (*ls).SetLayerCount((*ls).GetLayerCount() - 1);
-            }
-        }
-    }
-};
 

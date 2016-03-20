@@ -56,7 +56,7 @@
 
 #include "string_compare_test.h"
 #include "string_compare.h"
-#include "../src/string_utils.h"
+#include "../src/include/string_utils.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(string_compare_test);
 

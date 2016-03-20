@@ -34,12 +34,81 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "formater.h"
-#include "formater_parameter.h"
-#include "formater_replace.h"
-#include "layer_counter.h"
-#include "string_utils.h"
-#include "line_status.h"
+#include "include\string_utils.h"
+#include "include\formater.h"
+#include "include\formater_replace.h"
+#include "include\line_status.h"
+#include <algorithm>
+#include <string>
+#include <list>
+#include <map>
+
+const map_string getReplacePrepocessing() {
+    map_string replace;
+    replace[")"] = " ) ";
+    replace["("] = " ( ";
+    replace[","] = " , ";
+    return replace;
+}
+
+const map_string getReplacePostprocessing() {
+    map_string replace;
+    replace[" ("] = "(";
+    replace["  "] = " ";
+    replace[" ,"] = ",";
+    replace["  ,"] = " ,";
+    replace[" )"] = ")";
+    replace["( "] = "(";
+    replace[") `"] = ")`";
+    replace[",  "] = ", ";
+    replace[")  "] = ") ";
+    return replace;
+}
+
+enum eCommand {
+    KEYWORD = 1, MARK = 2, INCREMENT = 4, DECREMENT = 8, INCREMENTONCE = 16, DOUBLE_INCREMENTONCE = 32
+};
+
+const map_command getCommand() {
+    map_command command;
+    command["|"] = MARK | INCREMENTONCE;
+    command[","] = MARK | INCREMENTONCE;
+    command["["] = MARK | INCREMENT;
+    command["]"] = MARK | INCREMENTONCE | DECREMENT;
+    return command;
+}
+
+class layer_counter {
+    line_status* ls;
+    const string* line;
+
+public:
+
+    layer_counter(line_status* line_status, const string& line) : ls(line_status), line(&line) {
+    }
+
+    // The function call to process the next element
+
+    void operator()(const pair_command& p1) {
+        if (string::npos != line->find(p1.first)) {
+            if (INCREMENTONCE == (INCREMENTONCE & p1.second) && 20 > (*ls).GetLayerCount()) {
+                (*ls).SetLayerCountOnce((*ls).GetLayerCountOnce() + 1);
+            }
+
+            if (DOUBLE_INCREMENTONCE == (DOUBLE_INCREMENTONCE & p1.second) && 20 > (*ls).GetLayerCount()) {
+                (*ls).SetLayerCountOnce((*ls).GetLayerCountOnce() + 2);
+            }
+
+            if (INCREMENT == (INCREMENT & p1.second) && 10 > (*ls).GetLayerCount()) {
+                (*ls).SetLayerCount((*ls).GetLayerCount() + 1);
+            }
+
+            if (DECREMENT == (DECREMENT & p1.second) && 1 <= (*ls).GetLayerCount()) {
+                (*ls).SetLayerCount((*ls).GetLayerCount() - 1);
+            }
+        }
+    }
+};
 
 formater::formater() :
 result("ok"),
@@ -52,7 +121,6 @@ void formater::run(const string& inputFile) {
     cout << "import file " << inputFile << endl;
     importAllLines(inputFile, lines);
     if ("ok" == result) {
-
         string outputFileResult = string(inputFile).append(".result");
         string pattern1("savedsearches.conf");
         string pattern2("savedsearches.conf.formated");
@@ -110,7 +178,6 @@ void formater::importAllLines(const string& file, list<string>& m_Lines) {
 }
 
 void formater::exportAllLines(const string& file) {
-
     // read existing file content
     std::ifstream t(file);
     std::stringstream oldContent;
@@ -136,13 +203,11 @@ void formater::exportAllLines(const string& file) {
 void formater::format(string pattern) {
     line_status ls;
     for (list <string>::iterator iter = lines.begin(); iter != lines.end(); iter++) {
-
         // reset state for next line
         ls.SetLayerCountOnce(0);
 
         string line = *iter;
         if (line.substr(0, pattern.size()) == pattern) {
-
             // encode strings with base64 to avoid formating
             parseLine(line, ls, true);
 
@@ -199,7 +264,6 @@ string formater::replacePattern(map_string pattern, string s1, int iterations) {
             string s3 = iterator->second;
             index_string anf = line.find(s2, 0);
             while (string::npos != anf) {
-
                 string right(line.substr(anf + s2.length(), string::npos));
                 string left(line.substr(0, anf));
                 line = left.append(s3).append(right);
@@ -291,7 +355,6 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
                 ls.SetBracketsCount(ls.GetBracketsCount() - 1);
             }
         }
-
     } while (++index <= line.size());
 
     if (ls.inDoubleQuoteString()) {
@@ -310,7 +373,6 @@ bool formater::parseLine(string &line, line_status & ls, bool encode) {
     }
 
     if (ls.inBrackets()) {
-
         result = "ERROR: invalid state - brackets";
         cout << result << endl;
     }
@@ -323,7 +385,8 @@ void formater::replaceSubstrings(const index_string& begin, index_string& end, s
         string midNeu;
         string mid = s.substr(begin, end - begin + 1).c_str();
 
-        midNeu = for_each(replacePatternPreprocessing.begin(), replacePatternPreprocessing.end(), formater_replace(mid));
+        midNeu = for_each(replacePatternPreprocessing.begin(),
+                replacePatternPreprocessing.end(), formater_replace(mid));
 
         s = s.substr(0, begin).append(midNeu).append(s.substr(end + 1, string::npos).c_str());
         end = begin + midNeu.length() - 1;

@@ -43,7 +43,7 @@
 
 #include "string_util_test.h"
 
-#include "../src/string_utils.h"
+#include "../src/include/string_utils.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(string_util_test);
 

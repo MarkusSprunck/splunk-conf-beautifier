@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="cpplint" displayName="cpplint" projectFiles="true">
+      <itemPath>cpplint/cpplint.py</itemPath>
+      <itemPath>cpplint/run.cmd</itemPath>
+    </logicalFolder>
     <logicalFolder name="data" displayName="data" projectFiles="true">
       <logicalFolder name="archive" displayName="archive" projectFiles="true">
         <itemPath>data/archive/append-expected.txt</itemPath>
@@ -44,14 +48,14 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>src/formater.h</itemPath>
-      <itemPath>src/formater_parameter.h</itemPath>
-      <itemPath>src/formater_replace.h</itemPath>
-      <itemPath>src/layer_counter.h</itemPath>
-      <itemPath>src/line_status.h</itemPath>
-      <itemPath>src/std_typedef.h</itemPath>
+      <itemPath>src/include/formater.h</itemPath>
+      <itemPath>src/include/formater_parameter.h</itemPath>
+      <itemPath>src/include/formater_replace.h</itemPath>
+      <itemPath>src/include/layer_counter.h</itemPath>
+      <itemPath>src/include/line_status.h</itemPath>
+      <itemPath>src/include/std_typedef.h</itemPath>
       <itemPath>tests/string_compare.h</itemPath>
-      <itemPath>src/string_utils.h</itemPath>
+      <itemPath>src/include/string_utils.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -108,6 +112,7 @@
     <Elem>build</Elem>
     <Elem>data</Elem>
     <Elem>build</Elem>
+    <Elem>cpplint</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -125,6 +130,10 @@
           <useLinkerLibraries>false</useLinkerLibraries>
         </ccTool>
       </compileType>
+      <item path="cpplint/cpplint.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpplint/run.cmd" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="data/archive/append-expected.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/archive/append.txt" ex="false" tool="3" flavor2="0">
@@ -229,25 +238,25 @@
       </folder>
       <item path="src/formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/formater.h" ex="false" tool="3" flavor2="0">
+      <item path="src/include/formater.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/formater_parameter.h" ex="false" tool="3" flavor2="0">
+      <item path="src/include/formater_parameter.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/formater_replace.h" ex="false" tool="3" flavor2="0">
+      <item path="src/include/formater_replace.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/layer_counter.h" ex="false" tool="3" flavor2="0">
+      <item path="src/include/layer_counter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/include/line_status.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/include/std_typedef.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/include/string_utils.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/line_status.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/splunk-conf-formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/line_status_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -275,6 +284,9 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <incFile>
+            <pElem>include</pElem>
+          </incFile>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
@@ -287,6 +299,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="cpplint/cpplint.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpplint/run.cmd" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="data/archive/append-expected.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/archive/append.txt" ex="false" tool="3" flavor2="0">
@@ -391,23 +407,23 @@
       </folder>
       <item path="src/formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/formater.h" ex="false" tool="3" flavor2="0">
+      <item path="src/include/formater.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/formater_parameter.h" ex="false" tool="3" flavor2="0">
+      <item path="src/include/formater_parameter.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/formater_replace.h" ex="false" tool="3" flavor2="0">
+      <item path="src/include/formater_replace.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/layer_counter.h" ex="false" tool="3" flavor2="0">
+      <item path="src/include/layer_counter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/include/std_typedef.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/include/string_utils.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/splunk-conf-formater.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/std_typedef.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/string_utils.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/line_status_test.cpp" ex="false" tool="1" flavor2="0">
       </item>

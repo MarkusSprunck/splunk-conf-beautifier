@@ -35,7 +35,12 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "std_typedef.h"
+// #include "std_typedef.h"
+
+
+#include <vector>
+
+using namespace std;
 
 class line_status {
 public:

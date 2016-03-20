@@ -14,7 +14,6 @@
 #ifndef LINE_STATUS_TEST_H
 #define LINE_STATUS_TEST_H
 
-#include "../src/std_typedef.h"
 #include <cppunit/extensions/HelperMacros.h>
 
 class line_status_test : public CPPUNIT_NS::TestFixture {

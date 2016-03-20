@@ -13,7 +13,7 @@
 
 #include "line_status_test.h"
 
-#include "../src/line_status.h"
+#include "../src/include/line_status.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(line_status_test);
 

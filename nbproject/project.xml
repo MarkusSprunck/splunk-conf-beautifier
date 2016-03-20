@@ -15,6 +15,7 @@
                 <sourceRootElem>build</sourceRootElem>
                 <sourceRootElem>data</sourceRootElem>
                 <sourceRootElem>build</sourceRootElem>
+                <sourceRootElem>cpplint</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

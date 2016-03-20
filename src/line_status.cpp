@@ -35,8 +35,8 @@
  */
 
 
-#include "line_status.h"
-#include "string_utils.h"
+#include "include\line_status.h"
+#include "include\string_utils.h"
 
 line_status::line_status(void) :
 status_current(eFlagIndex::NUMBER_OF_ELEMENTS),
@@ -113,5 +113,5 @@ void line_status::SetLayerCountOnce(int layer) {
 }
 
 void line_status::SetBracketsCount(int count) {
-    status_current[BRACKETS_COUNT] = count;    
+    status_current[BRACKETS_COUNT] = count;
 }

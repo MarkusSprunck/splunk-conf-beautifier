@@ -1,5 +1,4 @@
 #pragma once
-
 /**
  * Copyright (C) 2016, Markus Sprunck
  *
@@ -36,37 +35,62 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-const map_string getReplacePrepocessing() {
-    map_string replace;
-    replace[")"] = " ) ";
-    replace["("] = " ( ";
-    replace[","] = " , ";
-    return replace;
-}
+#include <map>
+#include <list>
+#include <queue>
+#include <string>
+#include <iostream>
+#include <iterator> 
+#include <ostream>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <vector>
 
-const map_string getReplacePostprocessing() {
-    map_string replace;
-    replace[" ("] = "(";
-    replace["  "] = " ";
-    replace[" ,"] = ",";
-    replace["  ,"] = " ,";
-    replace[" )"] = ")";
-    replace["( "] = "(";
-    replace[") `"] = ")`";
-    replace[",  "] = ", ";
-    replace[")  "] = ") ";
-    return replace;
-}
+using namespace std;
 
-enum eCommand {
-    KEYWORD = 1, MARK = 2, INCREMENT = 4, DECREMENT = 8, INCREMENTONCE = 16, DOUBLE_INCREMENTONCE = 32
+typedef map<string, long> map_command;
+typedef pair<string, long> pair_command;
+typedef map<string, string> map_string;
+typedef pair<string, string> pair_string;
+
+#include "std_typedef.h"
+
+static const string g_sVersion = "splunk-conf-formater v0.4";
+
+class line_status;
+
+class formater {
+public:
+    explicit formater();
+
+    void run(const string& inputFile);
+
+protected:
+
+    // file input & output
+    void importAllLines(const string& file, list<string>& m_Lines);
+    void exportAllLines(const string& file);
+
+    // each line
+    void format(string pattern);
+    void unformat(string pattern);
+    string replacePattern(map_string pattern, string line, int iterations);
+
+    // single line
+    bool parseLine(string &line, line_status& ls, bool encode);
+    void replaceSubstrings(const index_string& begin, index_string& end, string &s);
+
+    // succsses information
+    string result;
+
+    // file content
+    list<string> lines;
+
+    // commands for each 'string pattern'
+    map<string, long> spl_keywords;
+
+    // string replace map
+    map<string, string> replacePatternPreprocessing, replacePatternPostprocessing;
+
 };
-
-const map_command getCommand() {
-    map_command command;
-    command["|"] = MARK | INCREMENTONCE;
-    command[","] = MARK | INCREMENTONCE;
-    command["["] = MARK | INCREMENT;
-    command["]"] = MARK | INCREMENTONCE | DECREMENT;
-    return command;
-}

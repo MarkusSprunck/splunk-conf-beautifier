@@ -35,43 +35,11 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "std_typedef.h"
 
-static const string g_sVersion = "splunk-conf-formater v0.4";
+// useage: for_each(command.begin(), command.end(), formater_counter(&line_status, line));
 
-class line_status;
+// #include "std_typedef.h"
+#include "include/line_status.h"
 
-class formater {
-public:
-    explicit formater();
 
-    void run(const string& inputFile);
 
-protected:
-
-    // file input & output
-    void importAllLines(const string& file, list<string>& m_Lines);
-    void exportAllLines(const string& file);
-
-    // each line
-    void format(string pattern);
-    void unformat(string pattern);
-    string replacePattern(map_string pattern, string line, int iterations);
-
-    // single line
-    bool parseLine(string &line, line_status& ls, bool encode);
-    void replaceSubstrings(const index_string& begin, index_string& end, string &s);
-
-    // succsses information
-    string result;
-
-    // file content
-    list<string> lines;
-
-    // commands for each 'string pattern'
-    map<string, long> spl_keywords;
-
-    // string replace map
-    map<string, string> replacePatternPreprocessing, replacePatternPostprocessing;
-
-};

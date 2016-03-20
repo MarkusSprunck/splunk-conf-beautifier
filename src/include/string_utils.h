@@ -1,6 +1,9 @@
 #pragma once
 
-#include "std_typedef.h"
+#include <string>
+#include <vector>
+
+using namespace std;
 
 string base64_encode(const string &in);
 string base64_decode(const string &in);

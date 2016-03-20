@@ -32,10 +32,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "formater.h"
+#include "include\formater.h"
 
 int main(int argc, char* argv[]) {
-    //	parse command line
     if ((2 == argc)) {
         formater f;
         f.run(argv[1]);

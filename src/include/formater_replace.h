@@ -35,24 +35,40 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <map>
-#include <list>
-#include <queue>
-#include <string>
-#include <iostream>
-#include <iterator> 
-#include <ostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <vector>
-#include <sstream>
+// #include "std_typedef.h"
 
-using namespace std;
+class formater_replace {
+    string line;
 
-typedef map<string, long> map_command;
-typedef pair<string, long> pair_command;
-typedef map<string, string> map_string;
-typedef pair<string, string> pair_string;
-typedef string::size_type index_string;
+public:
 
+    explicit formater_replace(const string& s) : line(s) {
+    }
+
+    static bool repeated_replace(string& s1, const string& s2, const string& s3) {
+        index_string anf = s1.find(s2, 0);
+        bool bResult = false;
+        while (string::npos != anf) {
+            // replace s2 with s3 in s1
+            string right(s1.substr(anf + s2.length(), string::npos));
+            string left(s1.substr(0, anf));
+            s1 = left.append(s3).append(right);
+            anf = s1.find(s2, anf + s3.length());
+            bResult = false;
+        }
+
+        return bResult;
+    }
+
+    // The function call to process the next element
+
+    void operator()(const pair_string& p1) {
+        for (; repeated_replace(line, p1.first, p1.second););
+    }
+
+    // The function call to get the return value
+
+    operator string() {
+        return line;
+    }
+};
