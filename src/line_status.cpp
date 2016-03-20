@@ -35,8 +35,8 @@
  */
 
 
-#include "include\line_status.h"
-#include "include\string_utils.h"
+#include "../src/include/line_status.h"
+#include "../src/include/string_utils.h"
 
 line_status::line_status(void) :
 status_current(eFlagIndex::NUMBER_OF_ELEMENTS),
@@ -84,34 +84,34 @@ void line_status::SetActiveSingleQuoteString(void) {
     status_current[STATUS] = IN_SINGLE_QUOTE;
 }
 
-long line_status::GetBracketsCount(void) {
+std::int32_t line_status::GetBracketsCount(void) {
     return status_current[BRACKETS_COUNT];
 }
 
-long line_status::GetLayerCount(void) {
+std::int32_t line_status::GetLayerCount(void) {
     return status_current[INDEX_COUNT];
 }
 
-long line_status::GetLayerCountTotal(void) {
+std::int32_t line_status::GetLayerCountTotal(void) {
     return status_current[INDEX_COUNT] + status_once[INDEX_COUNT];
 }
 
-void line_status::SetLayerCount(int layer) {
+void line_status::SetLayerCount(std::int32_t layer) {
     status_current[INDEX_COUNT] = layer;
 }
 
-long line_status::GetStatus() {
+std::int32_t line_status::GetStatus() {
     return status_current[STATUS];
 }
 
-long line_status::GetLayerCountOnce(void) {
+std::int32_t line_status::GetLayerCountOnce(void) {
     return status_once[INDEX_COUNT];
 }
 
-void line_status::SetLayerCountOnce(int layer) {
+void line_status::SetLayerCountOnce(std::int32_t layer) {
     status_once[INDEX_COUNT] = layer;
 }
 
-void line_status::SetBracketsCount(int count) {
+void line_status::SetBracketsCount(std::int32_t count) {
     status_current[BRACKETS_COUNT] = count;
 }

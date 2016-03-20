@@ -32,7 +32,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "include\formater.h"
+#include "../src/include/formater.h"
 
 int main(int argc, char* argv[]) {
     if ((2 == argc)) {

@@ -36,5 +36,5 @@
  */
 
 
-typedef string::size_type index_string;
+typedef std::string::size_type index_string;
 

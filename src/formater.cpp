@@ -34,14 +34,15 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "include\string_utils.h"
-#include "include\formater.h"
-#include "include\formater_replace.h"
-#include "include\line_status.h"
 #include <algorithm>
 #include <string>
 #include <list>
 #include <map>
+
+#include "../src/include/string_utils.h"
+#include "../src/include/formater.h"
+#include "../src/include/formater_replace.h"
+#include "../src/include/line_status.h"
 
 const map_string getReplacePrepocessing() {
     map_string replace;
@@ -82,12 +83,9 @@ class layer_counter {
     line_status* ls;
     const string* line;
 
-public:
-
+ public:
     layer_counter(line_status* line_status, const string& line) : ls(line_status), line(&line) {
     }
-
-    // The function call to process the next element
 
     void operator()(const pair_command& p1) {
         if (string::npos != line->find(p1.first)) {

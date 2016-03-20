@@ -37,7 +37,8 @@
 
 // #include "std_typedef.h"
 
-
+ #include <cstdint> //or <stdint.h>
+ #include <limits>
 #include <vector>
 
 using namespace std;
@@ -55,7 +56,7 @@ protected:
         STATUS, INDEX_COUNT, BRACKETS_COUNT, NUMBER_OF_ELEMENTS
     };
 
-    vector<long> status_current, status_once;
+    vector<std::int32_t> status_current, status_once;
 
 public:
     line_status();
@@ -66,7 +67,7 @@ public:
     const bool inSingleQuoteString(void);
     const bool inBrackets(void);
 
-    long GetStatus();
+    std::int32_t GetStatus();
 
     void SetActiveBrackets(void);
     void SetActiveCode(void);
@@ -74,14 +75,14 @@ public:
     void SetActiveDoubleQuoteString(void);
     void SetActiveSingleQuoteString(void);
 
-    long GetBracketsCount(void); // count valid for all lines
-    long GetLayerCount(void); // count valid for all lines
-    long GetLayerCountOnce(void); // count valid for the current line 
-    long GetLayerCountTotal(void); // sum of all counts
+    std::int32_t GetBracketsCount(void); // count valid for all lines
+    std::int32_t GetLayerCount(void); // count valid for all lines
+    std::int32_t GetLayerCountOnce(void); // count valid for the current line 
+    std::int32_t GetLayerCountTotal(void); // sum of all counts
 
-    void SetLayerCount(int layer);
-    void SetLayerCountOnce(int layer);
-    void SetBracketsCount(int count);
- 
+    void SetLayerCount(std::int32_t layer);
+    void SetLayerCountOnce(std::int32_t layer);
+    void SetBracketsCount(std::int32_t count);
+
 };
 

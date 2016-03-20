@@ -55,7 +55,7 @@
 #include <cppunit/portability/Stream.h>
 
 class ProgressListener : public CPPUNIT_NS::TestListener {
-public:
+  public:
 
     ProgressListener()
     : m_lastTestFailed(false) {
@@ -83,16 +83,16 @@ public:
         CPPUNIT_NS::stdCOut() << "\n";
     }
 
-private:
+  private:
     /// Prevents the use of the copy constructor.
     ProgressListener(const ProgressListener &copy);
 
     /// Prevents the use of the copy operator.
     void operator=(const ProgressListener &copy);
 
-private:
+  private:
     bool m_lastTestFailed;
-};
+} ;
 
 int main() {
     // Create the event manager and test controller
