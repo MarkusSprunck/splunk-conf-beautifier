@@ -33,15 +33,15 @@
       </logicalFolder>
       <logicalFolder name="folder1" displayName="folder1" projectFiles="true">
         <itemPath>data/folder1/macros.conf</itemPath>
-        <itemPath>data/folder1/macros.conf.formated</itemPath>
+        <itemPath>data/folder1/macros.conf.formatted</itemPath>
         <itemPath>data/folder1/savedsearches.conf</itemPath>
-        <itemPath>data/folder1/savedsearches.conf.formated</itemPath>
+        <itemPath>data/folder1/savedsearches.conf.formatted</itemPath>
       </logicalFolder>
       <logicalFolder name="folder2" displayName="folder2" projectFiles="true">
         <itemPath>data/folder2/macros.conf</itemPath>
-        <itemPath>data/folder2/macros.conf.formated</itemPath>
+        <itemPath>data/folder2/macros.conf.formatted</itemPath>
         <itemPath>data/folder2/savedsearches.conf</itemPath>
-        <itemPath>data/folder2/savedsearches.conf.formated</itemPath>
+        <itemPath>data/folder2/savedsearches.conf.formatted</itemPath>
       </logicalFolder>
       <itemPath>data/run.cmd</itemPath>
     </logicalFolder>
@@ -199,22 +199,22 @@
       </item>
       <item path="data/folder1/macros.conf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="data/folder1/macros.conf.formated" ex="false" tool="3" flavor2="0">
+      <item path="data/folder1/macros.conf.formatted" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/folder1/savedsearches.conf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="data/folder1/savedsearches.conf.formated"
+      <item path="data/folder1/savedsearches.conf.formatted"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
       <item path="data/folder2/macros.conf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="data/folder2/macros.conf.formated" ex="false" tool="3" flavor2="0">
+      <item path="data/folder2/macros.conf.formatted" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/folder2/savedsearches.conf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="data/folder2/savedsearches.conf.formated"
+      <item path="data/folder2/savedsearches.conf.formatted"
             ex="false"
             tool="3"
             flavor2="0">
@@ -367,22 +367,22 @@
       </item>
       <item path="data/folder1/macros.conf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="data/folder1/macros.conf.formated" ex="false" tool="3" flavor2="0">
+      <item path="data/folder1/macros.conf.formatted" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/folder1/savedsearches.conf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="data/folder1/savedsearches.conf.formated"
+      <item path="data/folder1/savedsearches.conf.formatted"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
       <item path="data/folder2/macros.conf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="data/folder2/macros.conf.formated" ex="false" tool="3" flavor2="0">
+      <item path="data/folder2/macros.conf.formatted" ex="false" tool="3" flavor2="0">
       </item>
       <item path="data/folder2/savedsearches.conf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="data/folder2/savedsearches.conf.formated"
+      <item path="data/folder2/savedsearches.conf.formatted"
             ex="false"
             tool="3"
             flavor2="0">

@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
         cout << "splunk-conf-beautifier.exe [FilePath]" << endl;
         cout << "   " << g_sVersion << endl;
         cout << "   All files with the name <savedsearches.conf> or <macros.conf> " << endl;
-        cout << "   are formated to <savedsearches.conf.formated> or <macros.conf.formated>" << endl;
+        cout << "   are formatted to <savedsearches.conf.formatted> or <macros.conf.formatted>" << endl;
         cout << "   and vice versa. All other file names are ignored." << endl;
     }
     return 0;

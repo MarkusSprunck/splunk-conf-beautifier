@@ -121,11 +121,11 @@ void formater::run(const string& inputFile) {
     if ("ok" == result) {
         string outputFileResult = string(inputFile).append(".result");
         string pattern1("savedsearches.conf");
-        string pattern2("savedsearches.conf.formated");
+        string pattern2("savedsearches.conf.formatted");
         string pattern3("macros.conf");
-        string pattern4("macros.conf.formated");
+        string pattern4("macros.conf.formatted");
         if (inputFile == pattern1) {
-            outputFileResult = "savedsearches.conf.formated";
+            outputFileResult = "savedsearches.conf.formatted";
             cout << "format file " << pattern1 << endl;
             format("search =");
         } else if (inputFile == pattern2) {
@@ -133,7 +133,7 @@ void formater::run(const string& inputFile) {
             cout << "format file " << pattern2 << endl;
             unformat("search =");
         } else if (inputFile == pattern3) {
-            outputFileResult = "macros.conf.formated";
+            outputFileResult = "macros.conf.formatted";
             cout << "format file " << pattern3 << endl;
             format("definition =");
         } else if (inputFile == pattern4) {
@@ -141,7 +141,7 @@ void formater::run(const string& inputFile) {
             cout << "format file " << pattern4 << endl;
             unformat("definition =");
         } else {
-            cout << "not formated file " << inputFile << endl;
+            cout << "not formatted file " << inputFile << endl;
             return;
         }
 
