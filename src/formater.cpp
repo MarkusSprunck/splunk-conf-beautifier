@@ -68,7 +68,7 @@ const map_string getReplacePostprocessing() {
 
 enum eCommand {
     INCREMENT = 1, DECREMENT = 2, INCREMENTONCE = 4, DOUBLE_INCREMENTONCE = 8
-} ;
+};
 
 const map_command getCommand() {
     map_command command;
@@ -106,7 +106,7 @@ class layer_counter {
             }
         }
     }
-} ;
+};
 
 formater::formater() :
 result("ok"),
