@@ -73,7 +73,9 @@ search = index=_internal
 - Status:   first draft
 
 
-####Limitations
+####Notes
 -----------
-- works with ASCII files (you have to convert from UTF-8 if needed)
+- works with ASCII files - you have to convert manually from UTF-8 if needed
+- after the line with spl code ("definition =" or "search =") a empty line is needed
+- the debug version needs some DLLs: cyggcc_s-seh-1.dll, cygstdc++-6.dll and cygwin1.dll
 
