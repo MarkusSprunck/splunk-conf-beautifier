@@ -67,15 +67,15 @@ const map_string getReplacePostprocessing() {
 }
 
 enum eCommand {
-    KEYWORD = 1, MARK = 2, INCREMENT = 4, DECREMENT = 8, INCREMENTONCE = 16, DOUBLE_INCREMENTONCE = 32
-};
+    INCREMENT = 1, DECREMENT = 2, INCREMENTONCE = 4, DOUBLE_INCREMENTONCE = 8
+} ;
 
 const map_command getCommand() {
     map_command command;
-    command["|"] = MARK | INCREMENTONCE;
-    command[","] = MARK | INCREMENTONCE;
-    command["["] = MARK | INCREMENT;
-    command["]"] = MARK | INCREMENTONCE | DECREMENT;
+    command["|"] = INCREMENTONCE;
+    command[","] = INCREMENTONCE;
+    command["["] = INCREMENT;
+    command["]"] = INCREMENTONCE | DECREMENT;
     return command;
 }
 
@@ -106,7 +106,7 @@ class layer_counter {
             }
         }
     }
-};
+} ;
 
 formater::formater() :
 result("ok"),
@@ -142,6 +142,7 @@ void formater::run(const string& inputFile) {
             unformat("definition =");
         } else {
             cout << "not formated file " << inputFile << endl;
+            return;
         }
 
         cout << string("create 'file://").append(outputFileResult).append("' ").append(result) << endl;

@@ -17,7 +17,7 @@
           <DebugOptions>
             <option name="gdb_init_file" value=""/>
             <option name="debug_command" value="&quot;${OUTPUT_PATH}&quot;  -h simple.txt"/>
-            <option name="debug_dir" value="C:\Projects\cpp\splunk-conf-formater\data"/>
+            <option name="debug_dir" value="C:\Projects\cpp\splunk-conf-beautifier\data"/>
           </DebugOptions>
         </gdb_options>
         <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>

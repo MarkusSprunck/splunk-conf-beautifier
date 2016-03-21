@@ -65,7 +65,7 @@
                    projectFiles="true">
       <itemPath>src/formater.cpp</itemPath>
       <itemPath>src/line_status.cpp</itemPath>
-      <itemPath>src/splunk-conf-formater.cpp</itemPath>
+      <itemPath>src/splunk-conf-beautifier.cpp</itemPath>
       <itemPath>src/string_utils.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -251,7 +251,7 @@
       </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/splunk-conf-formater.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/splunk-conf-beautifier.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -288,6 +288,7 @@
         <ccTool>
           <developmentMode>5</developmentMode>
           <standard>11</standard>
+          <commandLine>-static</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -416,7 +417,7 @@
       </item>
       <item path="src/line_status.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/splunk-conf-formater.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/splunk-conf-beautifier.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/string_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>

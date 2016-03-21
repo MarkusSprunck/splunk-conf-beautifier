@@ -56,7 +56,7 @@ typedef pair<string, string> pair_string;
 
 #include "std_typedef.h"
 
-static const string g_sVersion = "splunk-conf-formater v0.4";
+static const string g_sVersion = "splunk-conf-beautifier v0.5";
 
 class line_status;
 

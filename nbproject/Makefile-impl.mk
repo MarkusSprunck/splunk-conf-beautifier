@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=splunk-conf-formater
+PROJECTNAME=splunk-conf-beautifier
 
 # Active Configuration
 DEFAULTCONF=Debug
