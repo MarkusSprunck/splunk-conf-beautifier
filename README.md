@@ -5,8 +5,8 @@
 1) Call on commandline 
  
 ```cmd
-./splunk-conf-formater.exe savedsearches.conf
-```
+./splunk-conf-beautifier.exe savedsearches.conf
+``s
 
 2) Input not formated savedsearches.conf file:
 
@@ -78,4 +78,3 @@ search = index=_internal
 - works with ASCII files - you have to convert manually from UTF-8 if needed
 - after the line with spl code ("definition =" or "search =") a empty line is needed
 - the debug version needs some DLLs: cyggcc_s-seh-1.dll, cygstdc++-6.dll and cygwin1.dll
-
