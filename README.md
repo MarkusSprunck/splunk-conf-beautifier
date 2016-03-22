@@ -4,9 +4,8 @@
 
 1) Call on commandline 
  
-```cmd
 ./splunk-conf-beautifier.exe savedsearches.conf
-``s
+
 
 2) Input not formated savedsearches.conf file:
 
